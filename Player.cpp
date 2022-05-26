@@ -14,31 +14,31 @@ Player::~Player()
 
 }
 
-Player::increase_banana()
+void Player::increase_banana()
 {
 
 }
 
-Player::move_detected(){
+bool Player::move_detected(){
 
 }
 
-Player::move_check()
+bool Player::move_check()
 {
 
 }
 
-Player::move()
+void Player::move()
 {
 
 }
 
-Player::change_lives(int value)
+void Player::change_lives(int value)
 {
 
 }
 
-Player::check_new_cmd()
+void Player::check_new_cmd()
 {
 
 }

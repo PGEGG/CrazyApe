@@ -13,27 +13,27 @@ Gui::~Gui()
 
 }
 
-Gui::setField()
+void Gui::setField()
 {
 
 }
 
-Gui::info_button()
+void Gui::info_button()
 {
 
 }
 
-Gui::start_button()
+void Gui::start_button()
 {
 
 }
 
-Gui::stop_button()
+void Gui::stop_button()
 {
 
 }
 
-Gui::reset_button()
+void Gui::reset_button()
 {
 
 }
