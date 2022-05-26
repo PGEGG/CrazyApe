@@ -1,0 +1,22 @@
+CrazyApe
+================================================================================
+
+- Herzen:
+    geben +1 Leben
+
+- Tiger: (direkt Tot)
+    tauch nach t = 10s auf
+    wird immer schneller
+
+- Skorpion: (damage -1)
+
+- Spieler (Affe):
+    5 Leben
+
+- Hindernisse:
+    dichter Urwald (statt Wasser)
+    Bananenbaum
+
+- Ziel:
+    "Affen Zuhause"
+    -> 3 Bananen sammeln und hinbringen
