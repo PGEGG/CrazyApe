@@ -4,11 +4,11 @@
 class Item
 {
 private:
-    virtual int posX;
-    virtual int posY;
+    int posX;
+    int posY;
 
 public: 
-    virtual void setField(int x, int y);
+    virtual void setField(int x, int y) = 0;
 };
 
 
