@@ -1,4 +1,5 @@
 #include "Heart.h"
+#include "Item.h"
 #include <iostream>
 using namespace std;
 
@@ -14,4 +15,5 @@ Heart::Heart(int x, int y)
 
 Heart::~Heart()
 {
+    
 }

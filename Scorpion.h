@@ -8,6 +8,7 @@ private:
     
 public:
     Scorpion();
+    Scorpion(int x, int y);
     ~Scorpion();
 
 };

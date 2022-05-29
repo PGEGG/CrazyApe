@@ -6,9 +6,9 @@ class Heart: public Item
 private:
     int lifetime;
 public:
-    heart();
-    heart(int x, int y);
-    ~heart();
+    Heart();
+    Heart(int x, int y);
+    ~Heart();
 };
 
 #endif

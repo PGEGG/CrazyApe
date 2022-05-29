@@ -6,6 +6,8 @@ using namespace std;
 
 Player::Player()
 {
+    pos_x = 5;
+    pos_y = 5;
 
 }
 

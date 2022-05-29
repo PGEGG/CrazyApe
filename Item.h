@@ -3,12 +3,14 @@
 
 class Item
 {
-private:
+protected:
     int posX;
     int posY;
 
 public: 
-    virtual void setField(int x, int y) = 0;
+    Item();
+    virtual ~Item()=0;
+    //virtual void setField(int x, int y) = 0;
 };
 
 

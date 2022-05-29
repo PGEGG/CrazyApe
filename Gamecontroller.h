@@ -12,6 +12,8 @@ private:
 
     bool checkDeath();
     bool freePosition(int x, int y);
+    int randomNumber(int size);
+    int getfield();
 public:
     Gamecontroller();
     ~Gamecontroller();

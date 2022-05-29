@@ -1,6 +1,5 @@
 #ifndef Tiger_h
 #define Tiger_h
-#include "Animal.h"
 
 class Tiger : public Animal
 {
