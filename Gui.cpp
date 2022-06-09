@@ -8,7 +8,27 @@ using namespace std;
 
 Gui::Gui()
 {
+    sf::RenderWindow window(sf::VideoMode(500, 400), "CrazyApe");
+    sf::CircleShape shape(5.f);
+    shape.setFillerColor(sf::Color::Blue);
 
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+            {
+                window.close();
+            }
+            
+        }
+        window.clear();
+        window.draw(shape);
+        window.display();
+    }
+    
+    
 }
 Gui::~Gui()
 {
