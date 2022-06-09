@@ -1,6 +1,8 @@
 
 #include "Gui.h"
 #include <iostream>
+#include <SFML/Graphics.hpp>
+
 
 using namespace std;
 
