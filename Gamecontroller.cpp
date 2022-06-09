@@ -63,7 +63,7 @@ bool Gamecontroller::checkWon(){
 void Gamecontroller::reset(){
     for (int i=0;i<50;i++) {
         for (int j=0;j<40;j++) {
-            field[i][j]=0;
+            field[i][j] = 0;
         }
     }
 }
@@ -85,8 +85,8 @@ int Gamecontroller::randomNumber(int size){
 int Gamecontroller::getfield(){
     int x = 0, y = 0;
     do{
-        x =randomNumber(50);
-        y= randomNumber(40);
+        x = randomNumber(50);
+        y = randomNumber(40);
         //überprüfen feld fei?
     } while (field[x][y]!=0);
 
