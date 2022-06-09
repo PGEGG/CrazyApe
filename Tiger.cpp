@@ -10,6 +10,3 @@ Tiger::~Tiger()
 {
 
 }
-void Tiger::move(int x, int y){
-
-}

@@ -9,6 +9,6 @@ Animal::~Animal(){
     
 }
 
-void Animal::move(){
+void Animal::move(int x,int y){
 
 }//end move
