@@ -6,6 +6,7 @@ class Tiger : public Animal
 private:
     int lifetime = 0;
 public:
+    
     Tiger();
     ~Tiger();
 };

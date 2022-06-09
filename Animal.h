@@ -9,7 +9,7 @@ protected:
 public:
     Animal();
     virtual ~Animal() = 0;
-    virtual void move(int x, int y) = 0;
+    virtual void move(int x, int y);
 };
 
 
