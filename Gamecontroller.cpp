@@ -24,7 +24,6 @@ Gamecontroller::~Gamecontroller()
 }
 
 void Gamecontroller::startGame(){
-    int field=getfield();
     // Create Object Player
     Player myPlayer;
 
@@ -32,34 +31,45 @@ void Gamecontroller::startGame(){
     Gui myGui;
 
     // Create bananas
-    Banana myBanana1((field/100),(field%100));  //later--> random number and proofe if field free
-    field=getfield();
-    Banana myBanana2(8,8);
-    Banana myBanana3(9,9);
+    int position=getfield();
+    Banana myBanana1((position/100),(position%100));  
+    position=getfield();
+    Banana myBanana2((position/100),(position%100));
+    position=getfield();
+    Banana myBanana3((position/100),(position%100));
 
     //create Object Heart
-    Heart myHeart(10,10);
+    position=getfield();
+    Heart myHeart((position/100),(position%100));
 
     //Create Object Tiger
     Tiger myTiger;      //Sporns in Forest
 
     //create scorpions
-    Scorpion myScorpion1(3,3);
-    Scorpion myScorpion2(4,4);
-    Scorpion myScorpion3(5,5);
+    position=getfield();
+    Scorpion myScorpion1((position/100),(position%100));
+    position=getfield();
+    Scorpion myScorpion2((position/100),(position%100));
+    position=getfield();
+    Scorpion myScorpion3((position/100),(position%100));
 
 
 }
 
 bool Gamecontroller::checkWon(){
-
+    return false;
 }
 
 void Gamecontroller::reset(){
-
+    for (int i=0;i<50;i++) {
+        for (int j=0;j<40;j++) {
+            field[i][j]=0;
+        }
+    }
 }
 bool Gamecontroller::freePosition(int x, int y){
     
+    return false;
     
 
 }
@@ -70,17 +80,23 @@ int Gamecontroller::randomNumber(int size){
 
     /* generate secret number between 1 and 10: */
     return (rand() % size + 1);
-
 }
+
 int Gamecontroller::getfield(){
     int x = 0, y = 0;
     do{
         x =randomNumber(50);
         y= randomNumber(40);
         //überprüfen feld fei?
-        bool fieldfree=false;
-    } while (false);
+    } while (field[x][y]!=0);
+
+    printf("X: %d\n",x);
+    printf("Y: %d\n",y);
+
+    
     x *= 100;
-    return(x + y);
+    //bsp.: 5040 for x=50;y=40
+    
+    return (x+y);
     
 }
