@@ -11,7 +11,7 @@
 #include "Item.h"
 #include "Player.h"
 #include "Scorpion.h"
-#include "tiger.h"
+#include "Tiger.h"
 
 int main(int argc, char* argv[]){
 

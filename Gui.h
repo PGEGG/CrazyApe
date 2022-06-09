@@ -4,7 +4,7 @@
 class Gui
 {
 public:
-    void setField(int field[][]);
+    void setField(int *field[]);
     void info_button();
     void start_button();
     void stop_button();
