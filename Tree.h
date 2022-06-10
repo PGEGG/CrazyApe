@@ -1,5 +1,6 @@
 #ifndef Tree_h
 #define Tree_h
+#include "Item.h"
 
 class Tree: public Item
 {
