@@ -4,15 +4,11 @@
 #define FIELDSIZEX 50
 #define FIELDSIZEY 40
 
-#include "Player.h"
-
 class Gamecontroller
 {
 private:
     int runtime = 0;
     int field[FIELDSIZEY][FIELDSIZEX];
-
-    Player ape;
 
     bool checkDeath();
     bool freePosition(int x, int y);
