@@ -68,10 +68,10 @@ void Gamecontroller::reset(){
     }
 }
 bool Gamecontroller::freePosition(int x, int y){
-    
+    if(field[x][y]==0) {
+        return true;
+    }
     return false;
-    
-
 }
 
 int Gamecontroller::randomNumber(int size){
@@ -87,8 +87,8 @@ int Gamecontroller::getfield(){
     do{
         x = randomNumber(50);
         y = randomNumber(40);
-        //überprüfen feld fei?
-    } while (field[x][y]!=0);
+        //proofe if field free? (if field =0)
+    } while (!freePosition(x,y));
 
     printf("X: %d\n",x);
     printf("Y: %d\n",y);

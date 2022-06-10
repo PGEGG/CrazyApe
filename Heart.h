@@ -1,5 +1,6 @@
 #ifndef Heart_h
 #define Heart_h
+#include "Item.h"
 
 class Heart: public Item
 {

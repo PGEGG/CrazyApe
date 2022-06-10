@@ -1,17 +1,16 @@
 #ifndef Coconut_h
 #define Coconut_h
+#include "Item.h"
 
-class Coconut: public Item
-{
+class Coconut : public Item {
 private:
-    int damage;
+    int deamage;
 public:
     Coconut();
     Coconut(int y);
     ~Coconut();
     void Fly();
+
+
 };
-
-
-
 #endif
