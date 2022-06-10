@@ -2,8 +2,6 @@
 #include "Gui.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
-
-
 using namespace std;
 
 Gui::Gui()
@@ -40,6 +38,7 @@ Gui::Gui()
     
     
 }
+
 Gui::~Gui()
 {
 
