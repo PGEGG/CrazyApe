@@ -13,13 +13,17 @@
 #include "Scorpion.h"
 #include "Tiger.h"
 
+using namespace std;
+
 int main(int argc, char* argv[]){
 
-    printf("CrazyApe\n");
+    cout << "Starting CrazyApe ...\n" << endl;
 
-    // Create an Object fram Gamecontroller
-    Gamecontroller myGc;
-    myGc.startGame();
+    // Create an dynamic Object "on HEAP" fram Gamecontroller
+    Gamecontroller *myGc = new Gamecontroller;
+    myGc->startGame();
+
+    delete(myGc);
 
     return 0;
 
