@@ -18,16 +18,16 @@ Player::~Player()
 
 void Player::increase_banana()
 {
-
+    
 }
 
 bool Player::move_detected(){
-
+    return false;
 }
 
 bool Player::move_check()
 {
-
+    return false;
 }
 
 void Player::move()
