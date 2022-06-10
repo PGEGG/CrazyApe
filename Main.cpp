@@ -19,7 +19,7 @@ int main(int argc, char* argv[]){
 
     cout << "Starting CrazyApe ...\n" << endl;
 
-    // Create an Object fram Gamecontroller
+    // Create an dynamic Object "on HEAP" fram Gamecontroller
     Gamecontroller *myGc = new Gamecontroller;
     myGc->startGame();
 
