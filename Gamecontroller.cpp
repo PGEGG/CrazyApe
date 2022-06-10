@@ -32,33 +32,26 @@ void Gamecontroller::startGame(){
 
     // Create bananas
     int position=getfield();
-    Banana *myBanana1 = new Banana;
-    myBanana1->Banana((position/100),(position%100));  
+    Banana *myBanana1 = new Banana((position/100),(position%100));
     position=getfield();
-    Banana *myBanana2 = new Banana;
-    myBanana2->Banana((position/100),(position%100));
+    Banana *myBanana2 = new Banana((position/100),(position%100));
     position=getfield();
-    Banana *myBanana3 = new Banana;
-    myBanana3->Banana((position/100),(position%100));
+    Banana *myBanana3 = new Banana((position/100),(position%100));
 
     //create Object Heart
     position=getfield();
-    Heart *myHeart = new Heart;
-    myHeart->Heart((position/100),(position%100));
+    Heart *myHeart = new Heart((position/100),(position%100));
 
     //Create Object Tiger
     Tiger *myTiger = new Tiger;      //Sporns in Forest
 
     //create scorpions
     position=getfield();
-    Scorpion *myScorpion1 = new Scorpion;
-    myScorpion1->Scorpion((position/100),(position%100));
+    Scorpion *myScorpion1 = new Scorpion((position/100),(position%100));
     position=getfield();
-    Scorpion *myScorpion2 = new Scorpion;
-    myScorpion2->Scorpion((position/100),(position%100));
+    Scorpion *myScorpion2 = new Scorpion((position/100),(position%100));
     position=getfield();
-    Scorpion *myScorpion3 = new Scorpion;
-    myScorpion3->Scorpion((position/100),(position%100));
+    Scorpion *myScorpion3 = new Scorpion((position/100),(position%100));
 
 
 }
