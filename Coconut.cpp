@@ -1,4 +1,5 @@
 #include "Coconut.h"
+#include "Item.h"
 #include <iostream>
 using namespace std;
 
@@ -17,6 +18,6 @@ Coconut::Coconut(int y)
 {
     posY = y;
 }
-Coconut::Fly(){
+void Coconut::Fly(){
 
 }
