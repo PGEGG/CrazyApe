@@ -45,7 +45,7 @@ Gui::~Gui()
 
 }
 
-void Gui::setField()
+void Gui::setField(int *field[])
 {
 
 }
