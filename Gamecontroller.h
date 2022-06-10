@@ -12,8 +12,6 @@ private:
     int runtime = 0;
     int field[FIELDSIZEY][FIELDSIZEX];
 
-    Player ape;
-
     bool checkDeath();
     bool freePosition(int x, int y);
     int randomNumber(int size);
