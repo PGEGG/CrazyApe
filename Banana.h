@@ -1,6 +1,6 @@
 #ifndef Banana_h
 #define Banana_h
-
+#include "Item.h"
 
 class Banana: public Item
 {
