@@ -4,8 +4,6 @@
 #define FIELDSIZEX 50
 #define FIELDSIZEY 40
 
-#include "Player.h"
-
 class Gamecontroller
 {
 private:
