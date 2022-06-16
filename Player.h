@@ -19,6 +19,8 @@ public:
     void move();
     void change_lives(int value);
     void check_new_cmd();
+    int get_Banana();
+    int get_Lives();
     
         
 };

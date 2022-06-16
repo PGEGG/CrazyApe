@@ -44,3 +44,13 @@ void Player::check_new_cmd()
 {
 
 }
+
+int Player::get_Banana()
+{
+    return collected_banana;
+}
+
+int Player::get_Lives()
+{
+    return lives;
+}

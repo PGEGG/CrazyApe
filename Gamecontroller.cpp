@@ -57,16 +57,37 @@ void Gamecontroller::startGame(){
 }
 
 bool Gamecontroller::checkWon(){
+    /*
+    if(myPlayer->get_banana==3) {
+
+        return true;
+    }
+    */
     return false;
 }
 
+bool Gamecontroller::checkDeath(){
+    /*
+    if (myPlayer->get_Lives==0) {
+        return true;
+    }
+    return false;
+    */
+}
+
+// method is called if the game is finished
 void Gamecontroller::reset(){
+    //reset gamefield
     for (int i=0;i<50;i++) {
         for (int j=0;j<40;j++) {
             field[i][j] = 0;
         }
     }
+    //delete player and create a new one or reset all variables (lives, banana...)
+    //same for Animals and Items to change their position
+    //create bananas
 }
+// check if Gamefield is free
 bool Gamecontroller::freePosition(int x, int y){
     if(field[x][y]==0) {
         return true;
@@ -74,6 +95,7 @@ bool Gamecontroller::freePosition(int x, int y){
     return false;
 }
 
+// get a random number
 int Gamecontroller::randomNumber(int size){
     /* initialize random seed: */
      srand (time(NULL));
@@ -82,6 +104,7 @@ int Gamecontroller::randomNumber(int size){
     return (rand() % size + 1);
 }
 
+//get an empty gamefield
 int Gamecontroller::getfield(){
     int x = 0, y = 0;
     do{

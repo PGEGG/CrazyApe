@@ -10,7 +10,6 @@ private:
     int runtime = 0;
     int field[FIELDSIZEY][FIELDSIZEX];
 
-    bool checkDeath();
     bool freePosition(int x, int y);
     int randomNumber(int size);
     int getfield();
@@ -21,6 +20,7 @@ public:
     void startGame();
     void reset();
     bool checkWon();
+    bool checkDeath();
 };
 
 #endif
