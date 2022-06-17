@@ -25,6 +25,6 @@ int main(int argc, char* argv[]){
 
     delete(myGc);
 
-    return 0;
+    return EXIT_SUCCESS;
 
 }//end main
