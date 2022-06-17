@@ -72,8 +72,8 @@ bool Gamecontroller::checkDeath(){
         return true;
     }
     //or proofe if he touch the tiger
-    return false;
     */
+    return false;
 }
 
 // method is called if the game is finished

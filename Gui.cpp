@@ -6,22 +6,33 @@ using namespace std;
 
 Gui::Gui()
 {
-    sf::RenderWindow window(sf::VideoMode(310, 163), "CrazyApe.exe");
+    sf::RenderWindow window(sf::VideoMode(600, 400), "CrazyApe.exe");
 
     // Load image
     sf::Image image;
-    if ((image.loadFromFile("CrazyApe.png")) == false );
+    if ((image.loadFromFile("images\\APE.png")) == false );
     {
         std::cerr << "Can`t load image!";
     }
 
     // Give Image to texture
     sf::Texture texture;
+    // Glättet die Pixel (Schärft das Bild)
+    texture.setSmooth(true);
     texture.loadFromImage(image);
+
+    // create Shape
+    sf::RectangleShape shape(sf::Vector2(50.f,80.f));
+    shape.setTexture(&texture);
+    //shape.setFillColor(sf::Color(255, 255, 255, 255));
+    shape.setPosition(50, 10);
 
     // Texture to Sprite
     sf::Sprite sprite(texture);
-
+    
+    // Färbe Sprite mit RGB Farbe
+    sprite.setColor(sf::Color(205, 102, 29));
+    
     while (window.isOpen())
     {
         sf::Event event;
@@ -31,11 +42,10 @@ Gui::Gui()
                 window.close();
         }
 
-        window.clear(); // clear screen
-        window.draw(sprite);    // display Sprite "Image" on window
+        window.clear(sf::Color(139,139,0)); // clear screen
+        window.draw(shape);
         window.display();  // update the window
     }
-    
     
 }
 
