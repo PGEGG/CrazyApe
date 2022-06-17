@@ -10,6 +10,7 @@ array:
 6: -Tree        only blocks the field
 7: -Tiger       moves random around the field,  ape dies if the touch
 8: -Scorpion    moves random around the field,  ape loses 1 life if the touch
+9: -forest
 
 
 rules: 
