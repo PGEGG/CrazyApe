@@ -71,6 +71,7 @@ bool Gamecontroller::checkDeath(){
     if (myPlayer->get_Lives==0) {
         return true;
     }
+    //or proofe if he touch the tiger
     return false;
     */
 }

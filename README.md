@@ -13,7 +13,7 @@ array:
 
 
 rules: 
-winnig: if 3(all) bananas are collected
+winnig: if 3(all) bananas are collected and reahes sporning point
 
 death: -lives empty(0)
        -touch the tiger
