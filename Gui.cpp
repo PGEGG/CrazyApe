@@ -43,7 +43,7 @@ void Gui::update()
 void Gui::render()
 {
     this->window->clear(sf::Color(139,139,0));
-    this->window->draw(shape);
+    this->window->draw(shapeApe);
     this->window->display();
 }
 
@@ -59,16 +59,16 @@ void Gui::pollEvents()
             {    // moves the Ape (player) with "wasd" or "arrow keys"
                 if ((this->event.key.code == sf::Keyboard::Left) || (this->event.key.code == sf::Keyboard::A))
                 {
-                    shape.move(-10.f, 0.f);
+                    shapeApe.move(-10.f, 0.f);
                 }else if ((this->event.key.code == sf::Keyboard::Right) || (this->event.key.code == sf::Keyboard::D))
                 {
-                    shape.move(+10.f, 0.f);
+                    shapeApe.move(+10.f, 0.f);
                 }else if ((this->event.key.code == sf::Keyboard::Down) || (this->event.key.code == sf::Keyboard::S))
                 {
-                    shape.move(0.f, +10.f);
+                    shapeApe.move(0.f, +10.f);
                 }else if ((this->event.key.code == sf::Keyboard::Up) || (this->event.key.code == sf::Keyboard::W))
                 {
-                    shape.move(0.f, -10.f);
+                    shapeApe.move(0.f, -10.f);
                 }//end if-moving
             }// end if-event
         }
@@ -85,28 +85,28 @@ void Gui::checkWindow(){
 
     if (guiCounter == 0)
     {
-    // Load image
+    // Load imageApe
     
-    if (!(image.loadFromFile("images\\APE.png")));
+    if (!(imageApe.loadFromFile("images\\APE.png")));
     {
         std::cerr << "Can`t load image!";
     }
 
     // Give Image to texture
     // Glättet die Pixel (Schärft das Bild)
-    texture.setSmooth(true);
-    texture.loadFromImage(image);
+    textureApe.setSmooth(true);
+    textureApe.loadFromImage(imageApe);
 
     // declarate Shape
-    shape.setSize(sf::Vector2(50.f,80.f));
-    shape.setTexture(&texture);
-    shape.setPosition(50, 10);
+    shapeApe.setSize(sf::Vector2(50.f,80.f));
+    shapeApe.setTexture(&textureApe);
+    shapeApe.setPosition(50, 10);
 
     // Texture to Sprite
-    sprite.setTexture(texture);
+    spriteApe.setTexture(textureApe);
     
-    // setcolor from sprite with RGB
-    sprite.setColor(sf::Color(205, 102, 29));
+    // setcolor from spriteApe with RGB
+    spriteApe.setColor(sf::Color(205, 102, 29));
     }
     
 

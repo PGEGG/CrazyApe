@@ -9,10 +9,10 @@ private:
     sf::RenderWindow* window;
     sf::Event event;
     sf::VideoMode videoMode;
-    sf::Image image;
-    sf::Texture texture;
-    sf::RectangleShape shape;
-    sf::Sprite sprite;
+    sf::Image imageApe;
+    sf::Texture textureApe;
+    sf::RectangleShape shapeApe;
+    sf::Sprite spriteApe;
 
     void initVariables();
     void initWindow();
