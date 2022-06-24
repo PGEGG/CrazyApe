@@ -27,8 +27,16 @@ void Gamecontroller::startGame(){
     // Create Object Player
     Player *myPlayer = new Player;
     //Create Object Gui
-    Gui *myGui = new Gui;
+    Gui myGui;
     
+    /*
+    while (myGui.running())
+    {
+        myGui.update();
+        myGui.render();
+    }
+    */
+    myGui.checkWindow();
 
     // Create bananas
     int position=getfield();
