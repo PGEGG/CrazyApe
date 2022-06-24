@@ -43,7 +43,12 @@ void Gui::update()
 void Gui::render()
 {
     this->window->clear(sf::Color(139,139,0));
+    this->window->draw(shapeJungle);
+    this->window->draw(shapeHome);
     this->window->draw(shapeApe);
+    this->window->draw(shapeTiger);
+    this->window->draw(shapeHeart);
+    this->window->draw(shapeCoconut);
     this->window->display();
 }
 
@@ -85,28 +90,12 @@ void Gui::checkWindow(){
 
     if (guiCounter == 0)
     {
-    // Load imageApe
-    
-    if (!(imageApe.loadFromFile("images\\APE.png")));
-    {
-        std::cerr << "Can`t load image!";
-    }
-
-    // Give Image to texture
-    // Glättet die Pixel (Schärft das Bild)
-    textureApe.setSmooth(true);
-    textureApe.loadFromImage(imageApe);
-
-    // declarate Shape
-    shapeApe.setSize(sf::Vector2(50.f,80.f));
-    shapeApe.setTexture(&textureApe);
-    shapeApe.setPosition(50, 10);
-
-    // Texture to Sprite
-    spriteApe.setTexture(textureApe);
-    
-    // setcolor from spriteApe with RGB
-    spriteApe.setColor(sf::Color(205, 102, 29));
+        this->createJungle();
+        this->createApe();
+        this->createTiger();
+        this->createHeart();
+        this->createCoconut();
+        this->createHome();
     }
     
 
@@ -143,3 +132,153 @@ void Gui::reset_button()
 {
 
 }
+
+void Gui::createApe()
+{
+    // Load imageApe
+    if (!(imageApe.loadFromFile("images\\APE.png")));
+    {
+        std::cerr << "Can`t load image!";
+    }
+
+    // Give Image to texture
+    // Glättet die Pixel (Schärft das Bild)
+    textureApe.setSmooth(true);
+    textureApe.loadFromImage(imageApe);
+
+    // declarate Shape
+    shapeApe.setSize(sf::Vector2(50.f,80.f));
+    shapeApe.setTexture(&textureApe);
+    shapeApe.setPosition(70, this->videoMode.height-80);
+
+    // Texture to Sprite
+    spriteApe.setTexture(textureApe);
+    
+    // setcolor from spriteApe with RGB
+    spriteApe.setColor(sf::Color(205, 102, 29));
+}// end createApe
+
+void Gui::createTiger()
+{
+    if (!(imageTiger.loadFromFile("images\\TIGER.png")));
+    {
+        std::cerr << "Can`t load image!";
+    }
+
+    // Give Image to texture
+    // Glättet die Pixel (Schärft das Bild)
+    textureTiger.setSmooth(true);
+    textureTiger.loadFromImage(imageTiger);
+
+    // declarate Shape
+    shapeTiger.setSize(sf::Vector2(50.f,80.f));
+    shapeTiger.setTexture(&textureTiger);
+    shapeTiger.setPosition(this->videoMode.width/2-50, this->videoMode.height/2-80);
+
+    // Texture to Sprite
+    spriteTiger.setTexture(textureTiger);
+    
+    // setcolor from spriteApe with RGB
+    spriteTiger.setColor(sf::Color(205, 102, 29));
+
+}// end createTiger
+
+void Gui::createHeart()
+{
+    if (!(imageHeart.loadFromFile("images\\HEART.png")));
+    {
+        std::cerr << "Can`t load image!";
+    }
+
+    // Give Image to texture
+    // Glättet die Pixel (Schärft das Bild)
+    textureHeart.setSmooth(true);
+    textureHeart.loadFromImage(imageHeart);
+
+    // declarate Shape
+    shapeHeart.setSize(sf::Vector2(20.f,20.f));
+    shapeHeart.setTexture(&textureHeart);
+    shapeHeart.setPosition(200, 200);
+
+    // Texture to Sprite
+    spriteHeart.setTexture(textureHeart);
+    
+    // setcolor from spriteApe with RGB
+    spriteHeart.setColor(sf::Color(205, 102, 29));
+
+}// end createHeart
+
+void Gui::createCoconut()
+{
+    if (!(imageCoconut.loadFromFile("images\\COCONUT.png")));
+    {
+        std::cerr << "Can`t load image!";
+    }
+
+    // Give Image to texture
+    // Glättet die Pixel (Schärft das Bild)
+    textureCoconut.setSmooth(true);
+    textureCoconut.loadFromImage(imageCoconut);
+
+    // declarate Shape
+    shapeCoconut.setSize(sf::Vector2(20.f,20.f));
+    shapeCoconut.setTexture(&textureCoconut);
+    shapeCoconut.setPosition(300, 200);
+
+    // Texture to Sprite
+    spriteCoconut.setTexture(textureCoconut);
+    
+    // setcolor from spriteApe with RGB
+    spriteCoconut.setColor(sf::Color(205, 102, 29));
+
+}// end createCoconut
+
+void Gui::createHome()
+{
+    if (!(imageHome.loadFromFile("images\\HOME.png")));
+    {
+        std::cerr << "Can`t load image!";
+    }
+
+    // Give Image to texture
+    // Glättet die Pixel (Schärft das Bild)
+    textureHome.setSmooth(true);
+    textureHome.loadFromImage(imageHome);
+
+    // declarate Shape
+    shapeHome.setSize(sf::Vector2(100.f,120.f));
+    shapeHome.setTexture(&textureHome);
+    shapeHome.setPosition(0, this->videoMode.height-120);
+
+    // Texture to Sprite
+    spriteHome.setTexture(textureHome);
+    
+    // setcolor from spriteApe with RGB
+    spriteHome.setColor(sf::Color(205, 102, 29));
+
+}// end createHome
+
+void Gui::createJungle()
+{
+    if (!(imageJungle.loadFromFile("images\\JUNGLE.png")));
+    {
+        std::cerr << "Can`t load image!";
+    }
+
+    // Give Image to texture
+    // Glättet die Pixel (Schärft das Bild)
+    textureJungle.setSmooth(true);
+    textureJungle.loadFromImage(imageJungle);
+
+    // declarate Shape
+    shapeJungle.setSize(sf::Vector2(600.f,400.f));
+    shapeJungle.setTexture(&textureJungle);
+    shapeJungle.setPosition(0, 0);
+
+    // Texture to Sprite
+    spriteJungle.setTexture(textureJungle);
+    
+    // setcolor from spriteApe with RGB
+    spriteJungle.setColor(sf::Color(205, 102, 29));
+
+}// end createJungle
