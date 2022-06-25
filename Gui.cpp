@@ -49,6 +49,8 @@ void Gui::render()
     this->window->draw(shapeTiger);
     this->window->draw(shapeHeart);
     this->window->draw(shapeCoconut);
+    this->window->draw(shapeBananatree);
+    this->window->draw(shapeBanana);
     this->window->display();
 }
 
@@ -95,6 +97,8 @@ void Gui::checkWindow(){
         this->createTiger();
         this->createHeart();
         this->createCoconut();
+        this->createBananatree();
+        this->createBanana();
         this->createHome();
     }
     
@@ -232,6 +236,57 @@ void Gui::createCoconut()
     spriteCoconut.setColor(sf::Color(205, 102, 29));
 
 }// end createCoconut
+
+void Gui::createBananatree()
+{
+    if (!(imageBananatree.loadFromFile("images\\BANANATREE.png")));
+    {
+        std::cerr << "Can`t load image!";
+    }
+
+    // Give Image to texture
+    // Glättet die Pixel (Schärft das Bild)
+    textureBananatree.setSmooth(true);
+    textureBananatree.loadFromImage(imageBananatree);
+
+    // declarate Shape
+    shapeBananatree.setSize(sf::Vector2(80.f,80.f));
+    shapeBananatree.setTexture(&textureBananatree);
+    shapeBananatree.setPosition(100, 200);
+
+    // Texture to Sprite
+    spriteBananatree.setTexture(textureBananatree);
+    
+    // setcolor from spriteApe with RGB
+    spriteBananatree.setColor(sf::Color(205, 102, 29));
+
+}// end createBananatree
+
+void Gui::createBanana()
+{
+    if (!(imageBanana.loadFromFile("images\\BANANA.png")));
+    {
+        std::cerr << "Can`t load image!";
+    }
+
+    // Give Image to texture
+    // Glättet die Pixel (Schärft das Bild)
+    textureBanana.setSmooth(true);
+    textureBanana.loadFromImage(imageBanana);
+
+    // declarate Shape
+    shapeBanana.setSize(sf::Vector2(20.f,20.f));
+    shapeBanana.setTexture(&textureBanana);
+    shapeBanana.setPosition(200, 250);
+
+    // Texture to Sprite
+    spriteBanana.setTexture(textureBanana);
+    
+    // setcolor from spriteApe with RGB
+    spriteBanana.setColor(sf::Color(205, 102, 29));
+
+}// end createBanana
+
 
 void Gui::createHome()
 {

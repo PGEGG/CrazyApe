@@ -34,6 +34,18 @@ private:
     sf::RectangleShape shapeCoconut;
     sf::Sprite spriteCoconut;
 
+    // create Bananatree
+    sf::Image imageBananatree;
+    sf::Texture textureBananatree;
+    sf::RectangleShape shapeBananatree;
+    sf::Sprite spriteBananatree;
+
+    // create Banana
+    sf::Image imageBanana;
+    sf::Texture textureBanana;
+    sf::RectangleShape shapeBanana;
+    sf::Sprite spriteBanana;
+
     // create Home
     sf::Image imageHome;
     sf::Texture textureHome;
@@ -68,6 +80,8 @@ public:
     void createTiger();
     void createHeart();
     void createCoconut();
+    void createBananatree();
+    void createBanana();
     void createHome();
     void createJungle();
 
