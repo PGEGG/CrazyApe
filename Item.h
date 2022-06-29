@@ -5,8 +5,8 @@
 class Item
 {
 protected:
-    float posX;
-    float posY;
+    float posX = 0;
+    float posY = 0;
 
     // create Heart
     sf::Image image;

@@ -1,7 +1,6 @@
 #include "Animal.h"
 #include <iostream>
 
-using namespace std;
 Animal::Animal(){
 
 }
@@ -9,6 +8,6 @@ Animal::~Animal(){
     
 }
 
-void Animal::move(int x,int y){
+void Animal::move(float x, float y){
 
 }//end move

@@ -3,6 +3,7 @@
 #include "Heart.h"
 #include "Banana.h"
 #include "Coconut.h"
+#include "Tiger.h"
 
 class Gui
 {
@@ -22,11 +23,12 @@ private:
     sf::RectangleShape shapeApe;
     sf::Sprite spriteApe;
 
-    // create Tiger (Endboss)
+/*    // create Tiger (Endboss)
     sf::Image imageTiger;
     sf::Texture textureTiger;
     sf::RectangleShape shapeTiger;
-    sf::Sprite spriteTiger;
+    sf::Sprite spriteTiger;*/
+    Tiger *myTiger = new Tiger(this->videoMode.width/2-50, this->videoMode.height/2-80);
 
 /*    // create Heart
     sf::Image imageHeart;
@@ -41,7 +43,7 @@ private:
     sf::Texture textureCoconut;
     sf::RectangleShape shapeCoconut;
     sf::Sprite spriteCoconut;*/
-    Coconut *myCoconut = new Coconut(200);
+    Coconut *myCoconut = new Coconut(0, 200);
 
     // create Bananatree
     sf::Image imageBananatree;

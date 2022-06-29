@@ -1,15 +1,11 @@
-#ifndef Banana_h
-#define Banana_h
+#pragma once
 #include "Item.h"
 
 class Banana: public Item
 {
 public:
     Banana();
-    Banana(int x, int y);
+    Banana(float x, float y);
     ~Banana();
 
 };
-
-
-#endif

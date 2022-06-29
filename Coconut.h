@@ -1,16 +1,14 @@
-#ifndef Coconut_h
-#define Coconut_h
+#pragma once
 #include "Item.h"
 
 class Coconut : public Item {
 private:
-    int demage;
+    int deamage;
 public:
     Coconut();
-    Coconut(int y, int dem);
+    Coconut(float x, float y);
     ~Coconut();
     void Fly();
 
 
 };
-#endif

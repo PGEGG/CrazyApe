@@ -78,7 +78,7 @@ void Gui::checkWindow(){
     {
         this->createJungle();
         this->createApe();
-        this->createTiger();
+        //this->createTiger();
         //this->createHeart();
         //this->createCoconut();
         this->createBananatree();
@@ -104,7 +104,7 @@ void Gui::render()
     this->window->draw(shapeJungle);
     this->window->draw(shapeHome);
     this->window->draw(shapeApe);
-    this->window->draw(shapeTiger);
+    this->window->draw(myTiger->animalShape);
     this->window->draw(myHeart->itemShape);
     this->window->draw(myCoconut->itemShape);
     this->window->draw(shapeBananatree);
@@ -162,7 +162,7 @@ void Gui::createApe()
     // setcolor from spriteApe with RGB
     spriteApe.setColor(sf::Color(205, 102, 29));
 }// end createApe
-
+/*
 void Gui::createTiger()
 {
     if (!(imageTiger.loadFromFile("images\\TIGER.png")));
@@ -187,7 +187,7 @@ void Gui::createTiger()
     spriteTiger.setColor(sf::Color(205, 102, 29));
 
 }// end createTiger
-/*
+
 void Gui::createHeart()
 {
     if (!(imageHeart.loadFromFile("images\\HEART.png")));

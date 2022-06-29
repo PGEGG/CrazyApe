@@ -9,6 +9,7 @@ private:
 public:
     
     Tiger();
+    Tiger(float x, float y);
     ~Tiger();
 };
 
