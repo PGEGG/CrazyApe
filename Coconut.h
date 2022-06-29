@@ -4,10 +4,10 @@
 
 class Coconut : public Item {
 private:
-    int deamage;
+    int demage;
 public:
     Coconut();
-    Coconut(int y);
+    Coconut(int y, int dem);
     ~Coconut();
     void Fly();
 
