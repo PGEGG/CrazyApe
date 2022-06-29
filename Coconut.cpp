@@ -40,6 +40,9 @@ Coconut::Coconut(float x, float y)
 
 }
 
-void Coconut::Fly(){
-    posX++;
+void Coconut::flyCoconut(){
+    while(accumulator >= timePerFrame){
+        itemShape.move(sf::Vector2f(speed*direction*timePerFrame.asSeconds(), 0));
+        accumulator -= timePerFrame;
+    }
 }

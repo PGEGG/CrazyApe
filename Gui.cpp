@@ -36,6 +36,7 @@ void Gui::initWindow()
 void Gui::update()
 {
     this->pollEvents();
+    this->myCoconut->flyCoconut();
 }
 
 // This function checks if there is a Mouse or Keyboard event an the window
@@ -100,6 +101,7 @@ void Gui::checkWindow(){
 // This function renders the window with a rgb-color, draws the shape and display it on the screen
 void Gui::render()
 {
+    this->myCoconut->accumulator+= this->myCoconut->clock.restart();
     this->window->clear(sf::Color(139,139,0));
     this->window->draw(shapeJungle);
     this->window->draw(shapeHome);
