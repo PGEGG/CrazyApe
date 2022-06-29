@@ -1,15 +1,14 @@
-#ifndef Heart_h
-#define Heart_h
+#pragma once
 #include "Item.h"
 
 class Heart: public Item
 {
 private:
+    
     int lifetime;
 public:
     Heart();
-    Heart(int x, int y);
+    Heart(float x, float y);
     ~Heart();
-};
 
-#endif
+};

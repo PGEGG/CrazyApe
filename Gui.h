@@ -1,7 +1,8 @@
-#ifndef Gui_h
-#define Gui_h
+#pragma once
 #include <SFML/Graphics.hpp>
-
+#include "Heart.h"
+#include "Banana.h"
+#include "Coconut.h"
 
 class Gui
 {
@@ -9,6 +10,11 @@ private:
     sf::RenderWindow* window;
     sf::Event event;
     sf::VideoMode videoMode;
+
+    // create Label
+    std::string txt_line;
+    sf::Font font_comic;
+    sf::Text txt_manpage;
 
     // create Ape (Player)
     sf::Image imageApe;
@@ -22,29 +28,33 @@ private:
     sf::RectangleShape shapeTiger;
     sf::Sprite spriteTiger;
 
-    // create Heart
+/*    // create Heart
     sf::Image imageHeart;
     sf::Texture textureHeart;
     sf::RectangleShape shapeHeart;
-    sf::Sprite spriteHeart;
+    sf::Sprite spriteHeart;*/
+    Heart *myHeart = new Heart(100.f, 200.f);
 
-    // create Coconut
+
+/*    // create Coconut
     sf::Image imageCoconut;
     sf::Texture textureCoconut;
     sf::RectangleShape shapeCoconut;
-    sf::Sprite spriteCoconut;
+    sf::Sprite spriteCoconut;*/
+    Coconut *myCoconut = new Coconut(200);
 
     // create Bananatree
     sf::Image imageBananatree;
     sf::Texture textureBananatree;
     sf::RectangleShape shapeBananatree;
     sf::Sprite spriteBananatree;
-
+/*
     // create Banana
     sf::Image imageBanana;
     sf::Texture textureBanana;
     sf::RectangleShape shapeBanana;
-    sf::Sprite spriteBanana;
+    sf::Sprite spriteBanana;*/
+    Banana *myBanana = new Banana(200.f, 250.f);
 
     // create Home
     sf::Image imageHome;
@@ -75,17 +85,18 @@ public:
     void stop_button();
     void reset_button();
 
-    //create Gamethings
+    // create Gamethings
     void createApe();
     void createTiger();
-    void createHeart();
-    void createCoconut();
+    //void createHeart();
+    //void createCoconut();
     void createBananatree();
-    void createBanana();
+    //void createBanana();
     void createHome();
     void createJungle();
 
+    // Manpage
+    void openManpage();
+
     ~Gui();
 };
-
-#endif

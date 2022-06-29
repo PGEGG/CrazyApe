@@ -2,7 +2,6 @@
 #include <iostream>
 #include "Gui.h"
 #include "Gamecontroller.h"
-using namespace std;
 
 Gui::Gui()
 {
@@ -37,21 +36,6 @@ void Gui::initWindow()
 void Gui::update()
 {
     this->pollEvents();
-}
-
-// This function renders the window with a rgb-color, draws the shape and display it on the screen
-void Gui::render()
-{
-    this->window->clear(sf::Color(139,139,0));
-    this->window->draw(shapeJungle);
-    this->window->draw(shapeHome);
-    this->window->draw(shapeApe);
-    this->window->draw(shapeTiger);
-    this->window->draw(shapeHeart);
-    this->window->draw(shapeCoconut);
-    this->window->draw(shapeBananatree);
-    this->window->draw(shapeBanana);
-    this->window->display();
 }
 
 // This function checks if there is a Mouse or Keyboard event an the window
@@ -95,11 +79,12 @@ void Gui::checkWindow(){
         this->createJungle();
         this->createApe();
         this->createTiger();
-        this->createHeart();
-        this->createCoconut();
+        //this->createHeart();
+        //this->createCoconut();
         this->createBananatree();
-        this->createBanana();
+        //this->createBanana();
         this->createHome();
+        this->openManpage();
     }
     
 
@@ -111,6 +96,22 @@ void Gui::checkWindow(){
 
     guiCounter++;
 }
+
+// This function renders the window with a rgb-color, draws the shape and display it on the screen
+void Gui::render()
+{
+    this->window->clear(sf::Color(139,139,0));
+    this->window->draw(shapeJungle);
+    this->window->draw(shapeHome);
+    this->window->draw(shapeApe);
+    this->window->draw(shapeTiger);
+    this->window->draw(myHeart->itemShape);
+    this->window->draw(myCoconut->itemShape);
+    this->window->draw(shapeBananatree);
+    this->window->draw(myBanana->itemShape);
+    this->window->display();
+}
+
 
 void Gui::setField(int *field[])
 {
@@ -186,7 +187,7 @@ void Gui::createTiger()
     spriteTiger.setColor(sf::Color(205, 102, 29));
 
 }// end createTiger
-
+/*
 void Gui::createHeart()
 {
     if (!(imageHeart.loadFromFile("images\\HEART.png")));
@@ -236,7 +237,7 @@ void Gui::createCoconut()
     spriteCoconut.setColor(sf::Color(205, 102, 29));
 
 }// end createCoconut
-
+*/
 void Gui::createBananatree()
 {
     if (!(imageBananatree.loadFromFile("images\\BANANATREE.png")));
@@ -261,7 +262,7 @@ void Gui::createBananatree()
     spriteBananatree.setColor(sf::Color(205, 102, 29));
 
 }// end createBananatree
-
+/*
 void Gui::createBanana()
 {
     if (!(imageBanana.loadFromFile("images\\BANANA.png")));
@@ -286,7 +287,7 @@ void Gui::createBanana()
     spriteBanana.setColor(sf::Color(205, 102, 29));
 
 }// end createBanana
-
+*/
 
 void Gui::createHome()
 {
@@ -337,3 +338,28 @@ void Gui::createJungle()
     spriteJungle.setColor(sf::Color(205, 102, 29));
 
 }// end createJungle
+
+void Gui::openManpage()
+{   
+    
+    if (!font_comic.loadFromFile("fonts\\comic.ttf"))
+    {
+        std::cerr << "Unable to load Font!" << std::endl;
+    }
+    /*
+    FILE* manpage = nullptr;
+    if (fopen(manpage, "files\\manpage.txt"))
+    {
+        std::cerr << "Unable to load manpage!" << std::endl;
+    }
+
+    while (std::getline(manpage, txt_line))
+    {
+        txt_line += "\n";
+    }
+*/
+    txt_manpage.setString("Test");
+    txt_manpage.setCharacterSize(12);
+    txt_manpage.setFont(font_comic);
+    this->window->draw(txt_manpage);
+}// end openManpage
