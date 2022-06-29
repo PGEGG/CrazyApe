@@ -25,17 +25,17 @@ private:
     sf::Texture textureApe;
     sf::RectangleShape shapeApe;
     sf::Sprite spriteApe;*/
-    Player *myPlayer = new Player(70.f, 400.f);
+    Player *myPlayer = new Player(70.f, 300.f);
 
 /*    // create Tiger (Endboss)
     sf::Image imageTiger;
     sf::Texture textureTiger;
     sf::RectangleShape shapeTiger;
     sf::Sprite spriteTiger;*/
-    Tiger *myTiger = new Tiger(this->videoMode.width/2-50, this->videoMode.height/2-80);
+    Tiger *myTiger = new Tiger(300.f, 200.f);
 
     // create Scorpion
-    Scorpion *myScorpion = new Scorpion(300.f, 50.f);
+    Scorpion *myScorpion = new Scorpion(300.f, 100.f);
 
 /*    // create Heart
     sf::Image imageHeart;
