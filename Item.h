@@ -8,7 +8,7 @@ protected:
     float posX = 0;
     float posY = 0;
 
-    // create Heart
+    // create Item
     sf::Image image;
     sf::Texture texture;
     sf::Sprite sprite;

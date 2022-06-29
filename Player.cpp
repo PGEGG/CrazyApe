@@ -1,11 +1,36 @@
 #include "Player.h"
 #include <iostream>
 
-
-using namespace std;
-
 Player::Player()
 {
+
+}
+
+Player::Player(float x, float y)
+{
+    
+    // Load imageApe
+    if (!(image.loadFromFile("images\\APE.png")));
+    {
+        std::cerr << "Can`t load image!";
+    }
+
+    // Give Image to texture
+    // Glättet die Pixel (Schärft das Bild)
+    texture.setSmooth(true);
+    texture.loadFromImage(image);
+
+    // declarate Shape
+    playerShape.setSize(sf::Vector2(playerWidth, playerHeight));
+    playerShape.setTexture(&texture);
+    playerShape.setPosition(x, y);
+
+    // Texture to Sprite
+    sprite.setTexture(texture);
+    
+    // setcolor from spriteApe with RGB
+    sprite.setColor(sf::Color(205, 102, 29));
+    
     pos_x = 5;
     pos_y = 5;
 

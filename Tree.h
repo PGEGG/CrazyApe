@@ -7,7 +7,7 @@ class Tree: public Item
 
 public:
     Tree();
-    Tree(int x, int y);
+    Tree(float x, float y);
     ~Tree();
     
 };

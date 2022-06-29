@@ -50,16 +50,16 @@ void Gui::pollEvents()
             {    // moves the Ape (player) with "wasd" or "arrow keys"
                 if ((this->event.key.code == sf::Keyboard::Left) || (this->event.key.code == sf::Keyboard::A))
                 {
-                    shapeApe.move(-10.f, 0.f);
+                    myPlayer->playerShape.move(-10.f, 0.f);
                 }else if ((this->event.key.code == sf::Keyboard::Right) || (this->event.key.code == sf::Keyboard::D))
                 {
-                    shapeApe.move(+10.f, 0.f);
+                    myPlayer->playerShape.move(+10.f, 0.f);
                 }else if ((this->event.key.code == sf::Keyboard::Down) || (this->event.key.code == sf::Keyboard::S))
                 {
-                    shapeApe.move(0.f, +10.f);
+                    myPlayer->playerShape.move(0.f, +10.f);
                 }else if ((this->event.key.code == sf::Keyboard::Up) || (this->event.key.code == sf::Keyboard::W))
                 {
-                    shapeApe.move(0.f, -10.f);
+                    myPlayer->playerShape.move(0.f, -10.f);
                 }//end if-moving
             }// end if-event
         }
@@ -77,11 +77,11 @@ void Gui::checkWindow(){
     if (guiCounter == 0)
     {
         this->createJungle();
-        this->createApe();
+        //this->createApe();
         //this->createTiger();
         //this->createHeart();
         //this->createCoconut();
-        this->createBananatree();
+        //this->createBananatree();
         //this->createBanana();
         this->createHome();
         this->openManpage();
@@ -103,11 +103,12 @@ void Gui::render()
     this->window->clear(sf::Color(139,139,0));
     this->window->draw(shapeJungle);
     this->window->draw(shapeHome);
-    this->window->draw(shapeApe);
+    this->window->draw(myPlayer->playerShape);
     this->window->draw(myTiger->animalShape);
+    this->window->draw(myScorpion->animalShape);
     this->window->draw(myHeart->itemShape);
     this->window->draw(myCoconut->itemShape);
-    this->window->draw(shapeBananatree);
+    this->window->draw(myTree->itemShape);
     this->window->draw(myBanana->itemShape);
     this->window->display();
 }
@@ -137,7 +138,7 @@ void Gui::reset_button()
 {
 
 }
-
+/*
 void Gui::createApe()
 {
     // Load imageApe
@@ -162,7 +163,7 @@ void Gui::createApe()
     // setcolor from spriteApe with RGB
     spriteApe.setColor(sf::Color(205, 102, 29));
 }// end createApe
-/*
+
 void Gui::createTiger()
 {
     if (!(imageTiger.loadFromFile("images\\TIGER.png")));
@@ -237,7 +238,7 @@ void Gui::createCoconut()
     spriteCoconut.setColor(sf::Color(205, 102, 29));
 
 }// end createCoconut
-*/
+
 void Gui::createBananatree()
 {
     if (!(imageBananatree.loadFromFile("images\\BANANATREE.png")));
@@ -262,7 +263,7 @@ void Gui::createBananatree()
     spriteBananatree.setColor(sf::Color(205, 102, 29));
 
 }// end createBananatree
-/*
+
 void Gui::createBanana()
 {
     if (!(imageBanana.loadFromFile("images\\BANANA.png")));

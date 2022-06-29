@@ -4,6 +4,9 @@
 #include "Banana.h"
 #include "Coconut.h"
 #include "Tiger.h"
+#include "Scorpion.h"
+#include "Tree.h"
+#include "Player.h"
 
 class Gui
 {
@@ -17,11 +20,12 @@ private:
     sf::Font font_comic;
     sf::Text txt_manpage;
 
-    // create Ape (Player)
+/*    // create Ape (Player)
     sf::Image imageApe;
     sf::Texture textureApe;
     sf::RectangleShape shapeApe;
-    sf::Sprite spriteApe;
+    sf::Sprite spriteApe;*/
+    Player *myPlayer = new Player(70.f, 400.f);
 
 /*    // create Tiger (Endboss)
     sf::Image imageTiger;
@@ -29,6 +33,9 @@ private:
     sf::RectangleShape shapeTiger;
     sf::Sprite spriteTiger;*/
     Tiger *myTiger = new Tiger(this->videoMode.width/2-50, this->videoMode.height/2-80);
+
+    // create Scorpion
+    Scorpion *myScorpion = new Scorpion(300.f, 50.f);
 
 /*    // create Heart
     sf::Image imageHeart;
@@ -45,11 +52,12 @@ private:
     sf::Sprite spriteCoconut;*/
     Coconut *myCoconut = new Coconut(0, 200);
 
-    // create Bananatree
+/*    // create Bananatree
     sf::Image imageBananatree;
     sf::Texture textureBananatree;
     sf::RectangleShape shapeBananatree;
-    sf::Sprite spriteBananatree;
+    sf::Sprite spriteBananatree;*/
+    Tree *myTree = new Tree(100.f, 200.f);
 /*
     // create Banana
     sf::Image imageBanana;
@@ -88,11 +96,11 @@ public:
     void reset_button();
 
     // create Gamethings
-    void createApe();
-    void createTiger();
+    //void createApe();
+    //void createTiger();
     //void createHeart();
     //void createCoconut();
-    void createBananatree();
+    //void createBananatree();
     //void createBanana();
     void createHome();
     void createJungle();
