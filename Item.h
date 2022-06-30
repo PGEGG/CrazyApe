@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
+#include <random>
 
 class Item
 {
@@ -13,6 +13,9 @@ protected:
     sf::Texture texture;
     sf::Sprite sprite;
 
+    sf::Time timePerFrame = sf::seconds(1.f/60.f);
+    int speed = 100;
+
 public: 
     Item();
     virtual ~Item()=0;
@@ -22,5 +25,6 @@ public:
     float itemWidth = 20.f;
     float itemHeight = 20.f;
 
-
+    sf::Clock clock; 
+    sf::Time accumulator = sf::Time::Zero; 
 };
