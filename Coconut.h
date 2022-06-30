@@ -3,7 +3,7 @@
 
 class Coconut : public Item {
 private:
-    int deamage;
+    int deamage = 1;
     sf::Time timePerFrame = sf::seconds(1.f/60.f);
     int speed = 100;
     int direction = 1;
