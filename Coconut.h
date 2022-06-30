@@ -9,9 +9,9 @@ private:
     int direction = 1;
 public:
    sf::Clock clock; 
-    sf::Time accumulator = sf::Time::Zero;
+    sf::Time accumulator = sf::Time::Zero; 
     Coconut();
-    Coconut(float x, float y);
+    Coconut(float x, float y, int i);
     ~Coconut();
     void flyCoconut();
 

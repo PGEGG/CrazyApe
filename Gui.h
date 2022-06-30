@@ -50,8 +50,11 @@ private:
     sf::Texture textureCoconut;
     sf::RectangleShape shapeCoconut;
     sf::Sprite spriteCoconut;*/
-    Coconut *myCoconut = new Coconut(0, 200);
-
+    Coconut *myCoconut = new Coconut(-200.f,80.f, 1);
+    Coconut *myCoconut2 = new Coconut(-500.f,200.f, 1);
+    Coconut *myCoconut3 = new Coconut(-800.f,270.f, 1);
+    Coconut *myCoconut4 = new Coconut(-1000.f,320.f, 1);
+    Coconut *myCoconut5 = new Coconut(-1200.f,50.f, 0);
 /*    // create Bananatree
     sf::Image imageBananatree;
     sf::Texture textureBananatree;
@@ -94,7 +97,8 @@ public:
     void start_button();
     void stop_button();
     void reset_button();
-
+    void allCoconutsFly();
+    void resetCocoClock();
     // create Gamethings
     //void createApe();
     //void createTiger();

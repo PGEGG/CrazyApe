@@ -36,7 +36,14 @@ void Gui::initWindow()
 void Gui::update()
 {
     this->pollEvents();
+    this->allCoconutsFly();
+}
+void Gui::allCoconutsFly(){
     this->myCoconut->flyCoconut();
+    this->myCoconut2->flyCoconut();
+    this->myCoconut3->flyCoconut();
+    this->myCoconut4->flyCoconut();
+    this->myCoconut5->flyCoconut();
 }
 
 // This function checks if there is a Mouse or Keyboard event an the window
@@ -97,11 +104,18 @@ void Gui::checkWindow(){
 
     guiCounter++;
 }
+void Gui::resetCocoClock(){
+    this->myCoconut->accumulator+= this->myCoconut->clock.restart();
+    this->myCoconut2->accumulator+= this->myCoconut2->clock.restart();
+    this->myCoconut3->accumulator+= this->myCoconut3->clock.restart();
+    this->myCoconut4->accumulator+= this->myCoconut4->clock.restart();
+    this->myCoconut5->accumulator+= this->myCoconut5->clock.restart();
+}
 
 // This function renders the window with a rgb-color, draws the shape and display it on the screen
 void Gui::render()
 {
-    this->myCoconut->accumulator+= this->myCoconut->clock.restart();
+    this->resetCocoClock();
     this->window->clear(sf::Color(139,139,0));
     this->window->draw(shapeJungle);
     this->window->draw(shapeHome);
@@ -110,6 +124,10 @@ void Gui::render()
     this->window->draw(myScorpion->animalShape);
     this->window->draw(myHeart->itemShape);
     this->window->draw(myCoconut->itemShape);
+    this->window->draw(myCoconut2->itemShape);
+    this->window->draw(myCoconut3->itemShape);
+    this->window->draw(myCoconut4->itemShape);
+    this->window->draw(myCoconut5->itemShape);
     this->window->draw(myTree->itemShape);
     this->window->draw(myBanana->itemShape);
     this->window->display();

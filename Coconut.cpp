@@ -1,6 +1,10 @@
 #include "Coconut.h"
 #include <iostream>
-
+#include <random>
+std::random_device rd;
+std::mt19937 gen(rd());
+std::uniform_real_distribution<> dist(-1,-900);
+std::uniform_real_distribution<> disd(1,380);
 Coconut::Coconut()
 {
 
@@ -11,13 +15,19 @@ Coconut::~Coconut()
 {
 
 }
-Coconut::Coconut(float x, float y)
+Coconut::Coconut(float x, float y, int i)
 {
+    if(i==1){
     if (!(image.loadFromFile("images\\COCONUT.png")));
     {
         std::cerr << "Can`t load image!";
     }
-
+    }else{
+        if (!(image.loadFromFile("images\\red_coconut.png")));
+    {
+        std::cerr << "Can`t load image!";
+    }
+    }
     itemWidth = 20.f;
     itemHeight = 20.f;
     // Give Image to texture
@@ -44,5 +54,8 @@ void Coconut::flyCoconut(){
     while(accumulator >= timePerFrame){
         itemShape.move(sf::Vector2f(speed*direction*timePerFrame.asSeconds(), 0));
         accumulator -= timePerFrame;
+    }
+     if(itemShape.getPosition().x >= 600.f){
+        itemShape.setPosition(sf::Vector2f(dist(gen), disd(gen)));
     }
 }
