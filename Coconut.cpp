@@ -1,10 +1,11 @@
 #include "Coconut.h"
 #include <iostream>
-#include <random>
+
 std::random_device rd;
 std::mt19937 gen(rd());
-std::uniform_real_distribution<> dist(-1,-900);
-std::uniform_real_distribution<> disd(1,380);
+std::uniform_real_distribution<> distX(-1,-900);
+std::uniform_real_distribution<> distY(1,380);
+
 Coconut::Coconut()
 {
 
@@ -56,6 +57,6 @@ void Coconut::flyCoconut(){
         accumulator -= timePerFrame;
     }
      if(itemShape.getPosition().x >= 600.f){
-        itemShape.setPosition(sf::Vector2f(dist(gen), disd(gen)));
+        itemShape.setPosition(sf::Vector2f(distX(gen), distY(gen)));
     }
 }
