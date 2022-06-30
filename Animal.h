@@ -12,14 +12,21 @@ protected:
     sf::Image image;
     sf::Texture texture;
     sf::Sprite sprite;
+
+    sf::Time timePerFrame = sf::seconds(1.f/5.f);
+    int getDirection();
+
 public:
     Animal();
     virtual ~Animal() = 0;
-    virtual void move(float x, float y);
+    virtual void move();
 
     sf::RectangleShape animalShape;
-    float animalWidth = 20.f;
-    float animalHeight = 20.f;
+    float animalWidth = 30.f;
+    float animalHeight = 30.f;
+
+    sf::Clock clock; 
+    sf::Time accumulator = sf::Time::Zero; 
 };
 
 

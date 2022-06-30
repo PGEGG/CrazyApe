@@ -37,6 +37,8 @@ private:
 
     // create Scorpion
     Scorpion *myScorpion = new Scorpion(300.f, 100.f);
+    Scorpion *myScorpion2 = new Scorpion(80.f, 80.f);
+    Scorpion *myScorpion3= new Scorpion(150.f, 200.f);
 
 /*    // create Heart
     sf::Image imageHeart;

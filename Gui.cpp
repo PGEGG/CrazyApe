@@ -49,6 +49,10 @@ void Gui::allCoconutsFly(){
     this->myCoconut3->flyCoconut();
     this->myCoconut4->flyCoconut();
     this->myCoconut5->flyCoconut();
+    this->myScorpion->move();
+    this->myScorpion2->move();
+    this->myScorpion3->move();
+    this->myTiger->move();
 }
 
 // This function checks if there is a Mouse or Keyboard event an the window
@@ -63,16 +67,16 @@ void Gui::pollEvents()
             {    // moves the Ape (player) with "wasd" or "arrow keys"
                 if ((this->event.key.code == sf::Keyboard::Left) || (this->event.key.code == sf::Keyboard::A))
                 {
-                    myPlayer->playerShape.move(-10.f, 0.f);
+                    myPlayer->playerShape.move(-5.f, 0.f);
                 }else if ((this->event.key.code == sf::Keyboard::Right) || (this->event.key.code == sf::Keyboard::D))
                 {
-                    myPlayer->playerShape.move(+10.f, 0.f);
+                    myPlayer->playerShape.move(+5.f, 0.f);
                 }else if ((this->event.key.code == sf::Keyboard::Down) || (this->event.key.code == sf::Keyboard::S))
                 {
-                    myPlayer->playerShape.move(0.f, +10.f);
+                    myPlayer->playerShape.move(0.f, +5.f);
                 }else if ((this->event.key.code == sf::Keyboard::Up) || (this->event.key.code == sf::Keyboard::W))
                 {
-                    myPlayer->playerShape.move(0.f, -10.f);
+                    myPlayer->playerShape.move(0.f, -5.f);
                 }//end if-moving
             }// end if-event
         }
@@ -115,6 +119,10 @@ void Gui::resetCocoClock(){
     this->myCoconut3->accumulator+= this->myCoconut3->clock.restart();
     this->myCoconut4->accumulator+= this->myCoconut4->clock.restart();
     this->myCoconut5->accumulator+= this->myCoconut5->clock.restart();
+    this->myScorpion->accumulator+= this->myScorpion->clock.restart();
+    this->myScorpion2->accumulator+= this->myScorpion2->clock.restart();
+    this->myScorpion3->accumulator+= this->myScorpion3->clock.restart();
+    this->myTiger->accumulator+= this->myTiger->clock.restart();
 }
 
 // This function renders the window with a rgb-color, draws the shape and display it on the screen
@@ -127,6 +135,8 @@ void Gui::render()
     this->window->draw(myPlayer->playerShape);
     this->window->draw(myTiger->animalShape);
     this->window->draw(myScorpion->animalShape);
+    this->window->draw(myScorpion2->animalShape);
+    this->window->draw(myScorpion3->animalShape);
     this->window->draw(myHeart->itemShape);
     this->window->draw(myCoconut->itemShape);
     this->window->draw(myCoconut2->itemShape);
