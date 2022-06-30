@@ -12,7 +12,7 @@ Player::Player(float x, float y)
     // Load imageApe
     if (!(image.loadFromFile("images\\APE.png")));
     {
-        std::cerr << "Can`t load image!";
+        std::cerr << "Can`t load image_ape!" << std::endl;
     }
 
     // Give Image to texture

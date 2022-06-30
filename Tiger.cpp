@@ -9,7 +9,7 @@ Tiger::Tiger(float x, float y)
 {
     if (!(image.loadFromFile("images\\TIGER.png")));
     {
-        std::cerr << "Can`t load image!";
+        std::cerr << "Can`t load image_tiger!" << std::endl;
     }
 
     animalWidth = 50.f;

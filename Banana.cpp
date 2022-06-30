@@ -9,7 +9,7 @@ Banana::Banana(float x, float y)
 {
     if (!(image.loadFromFile("images\\BANANA.png")));
     {
-        std::cerr << "Can`t load image!";
+        std::cerr << "Can`t load image_banana!" << std::endl;
     }
 
     // Give Image to texture

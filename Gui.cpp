@@ -26,10 +26,15 @@ void Gui::initVariables()
 // This function generates a window (Gui) with its size and title
 void Gui::initWindow()
 {
+    if (!(icon.loadFromFile("images\\ICON.png")))
+    {
+        std::cerr << "Can`t load image_icon!" << std::endl;
+    }
+    
     this->videoMode.height = 400;
     this->videoMode.width = 600;
     this->window = new sf::RenderWindow(this->videoMode, "CrazyApe.exe");
-
+    this->window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 }
 
 // This function refers to the pollEvent function
@@ -314,7 +319,7 @@ void Gui::createHome()
 {
     if (!(imageHome.loadFromFile("images\\HOME.png")));
     {
-        std::cerr << "Can`t load image!";
+        std::cerr << "Can`t load image_home!" << std::endl;
     }
 
     // Give Image to texture
@@ -339,7 +344,7 @@ void Gui::createJungle()
 {
     if (!(imageJungle.loadFromFile("images\\JUNGLE.png")));
     {
-        std::cerr << "Can`t load image!";
+        std::cerr << "Can`t load image_jungle!" << std::endl;
     }
 
     // Give Image to texture

@@ -9,7 +9,7 @@ Scorpion::Scorpion()
 Scorpion::Scorpion(float x, float y) {
     if (!(image.loadFromFile("images\\SCORPION.png")));
     {
-        std::cerr << "Can`t load image!";
+        std::cerr << "Can`t load image_scorpion!" << std::endl;
     }
 
     // Give Image to texture

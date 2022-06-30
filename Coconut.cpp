@@ -21,12 +21,12 @@ Coconut::Coconut(float x, float y, int i)
     if(i==1){
     if (!(image.loadFromFile("images\\COCONUT.png")));
     {
-        std::cerr << "Can`t load image!";
+        std::cerr << "Can`t load image_coconut!" << std::endl;
     }
     }else{
         if (!(image.loadFromFile("images\\red_coconut.png")));
     {
-        std::cerr << "Can`t load image!";
+        std::cerr << "Can`t load image_red_coconut!" << std::endl;
     }
     }
     itemWidth = 20.f;

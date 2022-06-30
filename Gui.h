@@ -14,6 +14,7 @@ private:
     sf::RenderWindow* window;
     sf::Event event;
     sf::VideoMode videoMode;
+    sf::Image icon;
 
     // create Label
     std::string txt_line;
