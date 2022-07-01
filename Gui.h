@@ -102,8 +102,8 @@ public:
     void reset_button();
     void allCoconutsFly();
     void resetCocoClock();
-    void checkBorderAnimal(Animal *animal);
-    void checkBorderPlayer();
+    //void checkBorderAnimal(Animal *animal);
+    void checkObjBorder(Item *object);
     void checkMyBorders();
     // create Gamethings
     //void createApe();

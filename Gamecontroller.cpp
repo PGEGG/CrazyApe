@@ -1,18 +1,5 @@
 #include "Gamecontroller.h"
-#include "Player.h"
-#include "Item.h"
-#include "Banana.h"
-#include "Heart.h"
-#include "Gui.h"
-#include "Animal.h"
-#include "Tiger.h"
-#include "Scorpion.h"
 
-#include <iostream>
-#include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
-
-using namespace std;
 
 Gamecontroller::Gamecontroller()
 {
@@ -24,6 +11,14 @@ Gamecontroller::~Gamecontroller()
 }
 
 void Gamecontroller::startGame(){
+    //Play music
+    sf::Music music;
+    if (!(music.openFromFile("music//music.ogg"))){
+        cout << "Failed to load music" <<endl;
+    } // error
+    music.play();
+    music.setLoop(true);
+
     // Create Object Player
     Player *myPlayer = new Player;
     //Create Object Gui

@@ -45,11 +45,11 @@ void Gui::update()
     this->checkMyBorders();
 }
 void Gui::checkMyBorders(){
-    this->checkBorderPlayer();
-    this->checkBorderAnimal(this->myScorpion);
-    this->checkBorderAnimal(this->myScorpion2);
-    this->checkBorderAnimal(this->myScorpion3);
-    this->checkBorderAnimal(this->myTiger);
+    this->checkObjBorder(this->myPlayer);
+    this->checkObjBorder(this->myScorpion);
+    this->checkObjBorder(this->myScorpion2);
+    this->checkObjBorder(this->myScorpion3);
+    this->checkObjBorder(this->myTiger);
 }
 void Gui::allCoconutsFly(){
     this->myCoconut->flyCoconut();
@@ -89,6 +89,7 @@ void Gui::pollEvents()
             }// end if-event
         }
 }
+/*
 void Gui::checkBorderAnimal(Animal *animal){
     if (animal->itemShape.getPosition().x <= -12.f){
         animal->itemShape.setPosition(-12.f, animal->itemShape.getPosition().y);
@@ -103,18 +104,19 @@ void Gui::checkBorderAnimal(Animal *animal){
         animal->itemShape.setPosition(animal->itemShape.getPosition().x, this->videoMode.height - animal->itemHeight);
     } //Bottom
 }
-void Gui::checkBorderPlayer(){
-    if (myPlayer->itemShape.getPosition().x <= -12.f){
-        myPlayer->itemShape.setPosition(-10.f, myPlayer->itemShape.getPosition().y);
+*/
+void Gui::checkObjBorder(Item *object){
+    if (object->itemShape.getPosition().x <= -12.f){
+        object->itemShape.setPosition(-10.f, object->itemShape.getPosition().y);
     } //Left
-    else if(myPlayer->itemShape.getPosition().x >= this->videoMode.width - myPlayer->itemWidth){
-        myPlayer->itemShape.setPosition(this->videoMode.width - myPlayer->itemWidth-5.f, myPlayer->itemShape.getPosition().y);
+    else if(object->itemShape.getPosition().x >= this->videoMode.width - object->itemWidth){
+        object->itemShape.setPosition(this->videoMode.width - object->itemWidth-5.f, object->itemShape.getPosition().y);
     } //Right
-    else if (myPlayer->itemShape.getPosition().y <= 0.f){
-        myPlayer->itemShape.setPosition(myPlayer->itemShape.getPosition().x, 5.f);
+    else if (object->itemShape.getPosition().y <= 0.f){
+        object->itemShape.setPosition(object->itemShape.getPosition().x, 5.f);
     } //Top
-    else if (myPlayer->itemShape.getPosition().y >= this->videoMode.height - myPlayer->itemHeight){
-        myPlayer->itemShape.setPosition(myPlayer->itemShape.getPosition().x,this->videoMode.height - myPlayer->itemHeight-5.f);
+    else if (object->itemShape.getPosition().y >= this->videoMode.height - object->itemHeight){
+        object->itemShape.setPosition(object->itemShape.getPosition().x,this->videoMode.height - object->itemHeight-5.f);
     } //Bottom
 }
 
