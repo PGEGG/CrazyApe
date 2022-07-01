@@ -8,7 +8,8 @@ Player::Player()
 
 Player::Player(float x, float y)
 {
-    
+    itemWidth = 50.f;
+    itemHeight = 70.f;
     // Load imageApe
     if (!(image.loadFromFile("images\\APE.png")));
     {
@@ -21,9 +22,9 @@ Player::Player(float x, float y)
     texture.loadFromImage(image);
 
     // declarate Shape
-    playerShape.setSize(sf::Vector2(playerWidth, playerHeight));
-    playerShape.setTexture(&texture);
-    playerShape.setPosition(x, y);
+    itemShape.setSize(sf::Vector2(itemWidth, itemHeight));
+    itemShape.setTexture(&texture);
+    itemShape.setPosition(x, y);
 
     // Texture to Sprite
     sprite.setTexture(texture);

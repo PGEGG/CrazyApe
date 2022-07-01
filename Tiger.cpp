@@ -12,8 +12,8 @@ Tiger::Tiger(float x, float y)
         std::cerr << "Can`t load image_tiger!" << std::endl;
     }
 
-    animalWidth = 50.f;
-    animalHeight = 80.f;
+    itemWidth = 50.f;
+    itemHeight = 80.f;
 
     // Give Image to texture
     // Glättet die Pixel (Schärft das Bild)
@@ -21,9 +21,9 @@ Tiger::Tiger(float x, float y)
     texture.loadFromImage(image);
 
     // declarate Shape
-    animalShape.setSize(sf::Vector2(animalWidth, animalHeight));
-    animalShape.setTexture(&texture);
-    animalShape.setPosition(x, y);
+    itemShape.setSize(sf::Vector2(itemWidth, itemHeight));
+    itemShape.setTexture(&texture);
+    itemShape.setPosition(x, y);
 
     // Texture to Sprite
     sprite.setTexture(texture);

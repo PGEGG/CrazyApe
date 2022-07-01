@@ -29,8 +29,6 @@ Coconut::Coconut(float x, float y, int i)
         std::cerr << "Can`t load image_red_coconut!" << std::endl;
     }
     }
-    itemWidth = 20.f;
-    itemHeight = 20.f;
     // Give Image to texture
     // Glättet die Pixel (Schärft das Bild)
     texture.setSmooth(true);
@@ -52,9 +50,9 @@ Coconut::Coconut(float x, float y, int i)
 }
 
 void Coconut::flyCoconut(){
-    while(accumulator >= timePerFrame){
+    while(framecounter >= timePerFrame){
         itemShape.move(sf::Vector2f(speed*direction*timePerFrame.asSeconds(), 0));
-        accumulator -= timePerFrame;
+        framecounter -= timePerFrame;
     }
      if(itemShape.getPosition().x >= 600.f){
         itemShape.setPosition(sf::Vector2f(distX(gen), distY(gen)));

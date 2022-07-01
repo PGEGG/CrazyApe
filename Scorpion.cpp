@@ -12,15 +12,19 @@ Scorpion::Scorpion(float x, float y) {
         std::cerr << "Can`t load image_scorpion!" << std::endl;
     }
 
+    itemWidth = 25.f;
+    itemHeight = 25.f;
+
     // Give Image to texture
     // Glättet die Pixel (Schärft das Bild)
     texture.setSmooth(true);
     texture.loadFromImage(image);
 
     // declarate Shape
-    animalShape.setSize(sf::Vector2(animalWidth, animalHeight));
-    animalShape.setTexture(&texture);
-    animalShape.setPosition(x, y);
+    itemShape.setSize(sf::Vector2(itemWidth, itemHeight));
+    itemShape.setTexture(&texture);
+    itemShape.setPosition(x, y);
+
 
     // Texture to Sprite
     sprite.setTexture(texture);

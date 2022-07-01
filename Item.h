@@ -26,5 +26,5 @@ public:
     float itemHeight = 20.f;
 
     sf::Clock clock; 
-    sf::Time accumulator = sf::Time::Zero; 
+    sf::Time framecounter = sf::Time::Zero; 
 };

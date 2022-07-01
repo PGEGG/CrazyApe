@@ -75,46 +75,46 @@ void Gui::pollEvents()
             {    // moves the Ape (player) with "wasd" or "arrow keys"
                 if ((this->event.key.code == sf::Keyboard::Left) || (this->event.key.code == sf::Keyboard::A))
                 {
-                    myPlayer->playerShape.move(-5.f, 0.f);
+                    myPlayer->itemShape.move(-5.f, 0.f);
                 }else if ((this->event.key.code == sf::Keyboard::Right) || (this->event.key.code == sf::Keyboard::D))
                 {
-                    myPlayer->playerShape.move(+5.f, 0.f);
+                    myPlayer->itemShape.move(+5.f, 0.f);
                 }else if ((this->event.key.code == sf::Keyboard::Down) || (this->event.key.code == sf::Keyboard::S))
                 {
-                    myPlayer->playerShape.move(0.f, +5.f);
+                    myPlayer->itemShape.move(0.f, +5.f);
                 }else if ((this->event.key.code == sf::Keyboard::Up) || (this->event.key.code == sf::Keyboard::W))
                 {
-                    myPlayer->playerShape.move(0.f, -5.f);
+                    myPlayer->itemShape.move(0.f, -5.f);
                 }//end if-moving
             }// end if-event
         }
 }
 void Gui::checkBorderAnimal(Animal *animal){
-    if (animal->animalShape.getPosition().x <= -12.f){
-        animal->animalShape.setPosition(-12.f, animal->animalShape.getPosition().y);
+    if (animal->itemShape.getPosition().x <= -12.f){
+        animal->itemShape.setPosition(-12.f, animal->itemShape.getPosition().y);
     } //Left
-    else if(animal->animalShape.getPosition().x >= this->videoMode.width - animal->animalWidth){
-        animal->animalShape.setPosition(this->videoMode.width - animal->animalWidth, animal->animalShape.getPosition().y);
+    else if(animal->itemShape.getPosition().x >= this->videoMode.width - animal->itemWidth){
+        animal->itemShape.setPosition(this->videoMode.width - animal->itemWidth, animal->itemShape.getPosition().y);
     } //Right
-    else if (animal->animalShape.getPosition().y <= 0.f){
-        animal->animalShape.setPosition(animal->animalShape.getPosition().x, 0.f);
+    else if (animal->itemShape.getPosition().y <= 0.f){
+        animal->itemShape.setPosition(animal->itemShape.getPosition().x, 0.f);
     } //Top
-    else if (animal->animalShape.getPosition().y >= this->videoMode.height - animal->animalHeight){
-        animal->animalShape.setPosition(animal->animalShape.getPosition().x, this->videoMode.height - animal->animalHeight);
+    else if (animal->itemShape.getPosition().y >= this->videoMode.height - animal->itemHeight){
+        animal->itemShape.setPosition(animal->itemShape.getPosition().x, this->videoMode.height - animal->itemHeight);
     } //Bottom
 }
 void Gui::checkBorderPlayer(){
-    if (myPlayer->playerShape.getPosition().x <= -12.f){
-        myPlayer->playerShape.setPosition(-10.f, myPlayer->playerShape.getPosition().y);
+    if (myPlayer->itemShape.getPosition().x <= -12.f){
+        myPlayer->itemShape.setPosition(-10.f, myPlayer->itemShape.getPosition().y);
     } //Left
-    else if(myPlayer->playerShape.getPosition().x >= this->videoMode.width - myPlayer->playerWidth){
-        myPlayer->playerShape.setPosition(this->videoMode.width - myPlayer->playerWidth-5.f, myPlayer->playerShape.getPosition().y);
+    else if(myPlayer->itemShape.getPosition().x >= this->videoMode.width - myPlayer->itemWidth){
+        myPlayer->itemShape.setPosition(this->videoMode.width - myPlayer->itemWidth-5.f, myPlayer->itemShape.getPosition().y);
     } //Right
-    else if (myPlayer->playerShape.getPosition().y <= 0.f){
-        myPlayer->playerShape.setPosition(myPlayer->playerShape.getPosition().x, 5.f);
+    else if (myPlayer->itemShape.getPosition().y <= 0.f){
+        myPlayer->itemShape.setPosition(myPlayer->itemShape.getPosition().x, 5.f);
     } //Top
-    else if (myPlayer->playerShape.getPosition().y >= this->videoMode.height - myPlayer->playerHeight){
-        myPlayer->playerShape.setPosition(myPlayer->playerShape.getPosition().x,this->videoMode.height - myPlayer->playerHeight-5.f);
+    else if (myPlayer->itemShape.getPosition().y >= this->videoMode.height - myPlayer->itemHeight){
+        myPlayer->itemShape.setPosition(myPlayer->itemShape.getPosition().x,this->videoMode.height - myPlayer->itemHeight-5.f);
     } //Bottom
 }
 
@@ -150,15 +150,15 @@ void Gui::checkWindow(){
     guiCounter++;
 }
 void Gui::resetCocoClock(){
-    this->myCoconut->accumulator+= this->myCoconut->clock.restart();
-    this->myCoconut2->accumulator+= this->myCoconut2->clock.restart();
-    this->myCoconut3->accumulator+= this->myCoconut3->clock.restart();
-    this->myCoconut4->accumulator+= this->myCoconut4->clock.restart();
-    this->myCoconut5->accumulator+= this->myCoconut5->clock.restart();
-    this->myScorpion->accumulator+= this->myScorpion->clock.restart();
-    this->myScorpion2->accumulator+= this->myScorpion2->clock.restart();
-    this->myScorpion3->accumulator+= this->myScorpion3->clock.restart();
-    this->myTiger->accumulator+= this->myTiger->clock.restart();
+    this->myCoconut->framecounter+= this->myCoconut->clock.restart();
+    this->myCoconut2->framecounter+= this->myCoconut2->clock.restart();
+    this->myCoconut3->framecounter+= this->myCoconut3->clock.restart();
+    this->myCoconut4->framecounter+= this->myCoconut4->clock.restart();
+    this->myCoconut5->framecounter+= this->myCoconut5->clock.restart();
+    this->myScorpion->framecounter+= this->myScorpion->clock.restart();
+    this->myScorpion2->framecounter+= this->myScorpion2->clock.restart();
+    this->myScorpion3->framecounter+= this->myScorpion3->clock.restart();
+    this->myTiger->framecounter+= this->myTiger->clock.restart();
 }
 
 // This function renders the window with a rgb-color, draws the shape and display it on the screen
@@ -168,11 +168,11 @@ void Gui::render()
     this->window->clear(sf::Color(139,139,0));
     this->window->draw(shapeJungle);
     this->window->draw(shapeHome);
-    this->window->draw(myPlayer->playerShape);
-    this->window->draw(myTiger->animalShape);
-    this->window->draw(myScorpion->animalShape);
-    this->window->draw(myScorpion2->animalShape);
-    this->window->draw(myScorpion3->animalShape);
+    this->window->draw(myPlayer->itemShape);
+    this->window->draw(myTiger->itemShape);
+    this->window->draw(myScorpion->itemShape);
+    this->window->draw(myScorpion2->itemShape);
+    this->window->draw(myScorpion3->itemShape);
     this->window->draw(myHeart->itemShape);
     this->window->draw(myCoconut->itemShape);
     this->window->draw(myCoconut2->itemShape);

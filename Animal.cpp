@@ -2,7 +2,7 @@
 #include <iostream>
 
 Animal::Animal(){
-
+    timePerFrame = sf::seconds(1.f/5.f);
 }
 Animal::~Animal(){
     
@@ -36,9 +36,9 @@ void Animal::move(){
         this->move();
     }
     
-    while(accumulator >= timePerFrame){
-        this->animalShape.move(sf::Vector2f(x,y));
-        accumulator -= timePerFrame;
+    while(framecounter >= timePerFrame){
+        this->itemShape.move(sf::Vector2f(x,y));
+        framecounter -= timePerFrame;
     }
     
 }//end move
