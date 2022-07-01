@@ -42,6 +42,14 @@ void Gui::update()
 {
     this->pollEvents();
     this->allCoconutsFly();
+    this->checkMyBorders();
+}
+void Gui::checkMyBorders(){
+    this->checkBorderPlayer();
+    this->checkBorderAnimal(this->myScorpion);
+    this->checkBorderAnimal(this->myScorpion2);
+    this->checkBorderAnimal(this->myScorpion3);
+    this->checkBorderAnimal(this->myTiger);
 }
 void Gui::allCoconutsFly(){
     this->myCoconut->flyCoconut();
@@ -80,6 +88,34 @@ void Gui::pollEvents()
                 }//end if-moving
             }// end if-event
         }
+}
+void Gui::checkBorderAnimal(Animal *animal){
+    if (animal->animalShape.getPosition().x <= -12.f){
+        animal->animalShape.setPosition(-12.f, animal->animalShape.getPosition().y);
+    } //Left
+    else if(animal->animalShape.getPosition().x >= this->videoMode.width - animal->animalWidth){
+        animal->animalShape.setPosition(this->videoMode.width - animal->animalWidth, animal->animalShape.getPosition().y);
+    } //Right
+    else if (animal->animalShape.getPosition().y <= 0.f){
+        animal->animalShape.setPosition(animal->animalShape.getPosition().x, 0.f);
+    } //Top
+    else if (animal->animalShape.getPosition().y >= this->videoMode.height - animal->animalHeight){
+        animal->animalShape.setPosition(animal->animalShape.getPosition().x, this->videoMode.height - animal->animalHeight);
+    } //Bottom
+}
+void Gui::checkBorderPlayer(){
+    if (myPlayer->playerShape.getPosition().x <= -12.f){
+        myPlayer->playerShape.setPosition(-10.f, myPlayer->playerShape.getPosition().y);
+    } //Left
+    else if(myPlayer->playerShape.getPosition().x >= this->videoMode.width - myPlayer->playerWidth){
+        myPlayer->playerShape.setPosition(this->videoMode.width - myPlayer->playerWidth-5.f, myPlayer->playerShape.getPosition().y);
+    } //Right
+    else if (myPlayer->playerShape.getPosition().y <= 0.f){
+        myPlayer->playerShape.setPosition(myPlayer->playerShape.getPosition().x, 5.f);
+    } //Top
+    else if (myPlayer->playerShape.getPosition().y >= this->videoMode.height - myPlayer->playerHeight){
+        myPlayer->playerShape.setPosition(myPlayer->playerShape.getPosition().x,this->videoMode.height - myPlayer->playerHeight-5.f);
+    } //Bottom
 }
 
 // checks if the window is running
