@@ -73,6 +73,24 @@ void Gui::pollEvents()
                 this->window->close();
             }else if (this->event.type == sf::Event::KeyPressed)
             {    // moves the Ape (player) with "wasd" or "arrow keys"
+               if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Left ) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::A ) )
+                {
+                    myPlayer->itemShape.move( -5.f, 0 );
+                }
+                else if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Right) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::D )) 
+                {
+                    myPlayer->itemShape.move( 5.f, 0 );
+                }
+                
+                if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Up) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::W ) )
+                {
+                    myPlayer->itemShape.move( 0, -5.f );
+                }
+                else if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Down) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::S ) )
+                {
+                    myPlayer->itemShape.move( 0, 5.f );
+                }
+                /*
                 if ((this->event.key.code == sf::Keyboard::Left) || (this->event.key.code == sf::Keyboard::A))
                 {
                     myPlayer->itemShape.move(-5.f, 0.f);
@@ -86,6 +104,7 @@ void Gui::pollEvents()
                 {
                     myPlayer->itemShape.move(0.f, -5.f);
                 }//end if-moving
+                */
             }// end if-event
         }
 }
