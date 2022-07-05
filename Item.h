@@ -8,7 +8,7 @@ protected:
     float posX = 0;
     float posY = 0;
 
-    // create Item
+    /// create Item
     sf::Image image;
     sf::Texture texture;
 
@@ -21,6 +21,7 @@ public:
     Item();
     virtual ~Item()=0;
     
+    /// declare sprite
     sf::Sprite sprite;
     float itemWidth = 20.f;
     float itemHeight = 20.f;

@@ -1,11 +1,21 @@
 #include "Scorpion.h"
 #include <iostream>
 
+/**
+ * @brief Construct a new Scorpion:: Scorpion object
+ * 
+ */
 Scorpion::Scorpion()
 {
 
 }
 
+/**
+ * @brief Construct a new Scorpion:: Scorpion object
+ * 
+ * @param x float x position of Scorpion
+ * @param y float y position of Scorpion
+ */
 Scorpion::Scorpion(float x, float y) {
     if (!image.loadFromFile("images\\SCORPION.png"));
     {
@@ -20,15 +30,19 @@ Scorpion::Scorpion(float x, float y) {
     /// Give Image to texture
     texture.loadFromImage(image);
 
-    // declarate Sprite
+    /// declarate Sprite
     sprite.setScale(sf::Vector2f(scaleWidth, scaleHeight));
     sprite.setPosition(x, y);
 
-    // Texture to Sprite
+    /// Texture to Sprite
     sprite.setTexture(texture);
  
 }
 
+/**
+ * @brief Destroy the Scorpion:: Scorpion object
+ * 
+ */
 Scorpion::~Scorpion()
 {
 }

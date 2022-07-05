@@ -15,8 +15,6 @@ public:
     ~Tiger();
     //changes
     const sf::Sprite Object;
-
 };
-
 
 #endif

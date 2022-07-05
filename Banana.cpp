@@ -1,12 +1,25 @@
 #include "Banana.h"
 #include <iostream>
-
+/**
+ * @brief Construct a new Banana:: Banana object
+ * default constructor
+ */
 Banana::Banana()
 {
 }
 
+/**
+ * @brief Construct a new Banana:: Banana object
+ * constructor with x and y values
+ * @param x float x position of banana
+ * @param y float y position of banana
+ */
 Banana::Banana(float x, float y)
 {
+    /**
+     * @brief if file couldn`t load
+     * 
+     */
     if (!image.loadFromFile("images\\BANANA.png"));
     {
         std::cerr << "Can`t load image_banana!" << std::endl;
@@ -28,6 +41,10 @@ Banana::Banana(float x, float y)
     sprite.setTexture(texture);  
 }
 
+/**
+ * @brief Destroy the Banana:: Banana object
+ * 
+ */
 Banana::~Banana()
 {
 }

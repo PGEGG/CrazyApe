@@ -1,17 +1,29 @@
 #include "Tiger.h"
 #include <iostream>
 
+/**
+ * @brief Construct a new Tiger:: Tiger object
+ * 
+ */
 Tiger::Tiger()
 {
 }
 
+/**
+ * @brief Construct a new Tiger:: Tiger object
+ * 
+ * @param x float x value of Tiger
+ * @param y float y value of Tiger
+ */
 Tiger::Tiger(float x, float y)
 {
+    /// load immage and print warning if it couldn`t load
     if (!image.loadFromFile("images\\TIGER.png"));
     {
         std::cerr << "Can`t load image_tiger!" << std::endl;
     }
 
+    /// set correct sizes of object
     itemWidth = 50.f;
     itemHeight = 80.f;
     scaleWidth = 0.3;
@@ -23,14 +35,17 @@ Tiger::Tiger(float x, float y)
     texture.loadFromImage(image);
     sprite.setScale(sf::Vector2f(scaleWidth, scaleHeight));
  
-    // declarate Sprite
+    /// declarate Sprite
     sprite.setPosition(x, y);
 
-    // Texture to Sprite
+    /// Texture to Sprite
     sprite.setTexture(texture);
- 
 }
 
+/**
+ * @brief Destroy the Tiger:: Tiger object
+ * 
+ */
 Tiger::~Tiger()
 {
 

@@ -6,16 +6,31 @@ std::mt19937 gen(rd());
 std::uniform_real_distribution<> distX(-1,-900);
 std::uniform_real_distribution<> distY(1,380);
 
+/**
+ * @brief Construct a new Coconut:: Coconut object
+ * default constructor of coconut 
+ */
 Coconut::Coconut()
 {
 
 }
 
-
+/**
+ * @brief Destroy the Coconut:: Coconut object
+ * 
+ */
 Coconut::~Coconut()
 {
 
 }
+
+/**
+ * @brief Construct a new Coconut:: Coconut object
+ * constructor with x and y values
+ * @param x float x position of Coconut
+ * @param y float y position of Coconut
+ * @param i i=1 brown Coconut, i=0 red Coconut
+ */
 Coconut::Coconut(float x, float y, int i)
 {
     if(i==1){
@@ -38,15 +53,19 @@ Coconut::Coconut(float x, float y, int i)
     scaleWidth = 0.15;
     scaleHeight = 0.15;
 
-    // declarate sprite
+    /// declarate sprite
     sprite.setScale(sf::Vector2f(scaleWidth, scaleHeight));
     sprite.setTexture(texture);
     sprite.setPosition(x, y);
 
-    // Texture to Sprite
+    /// Texture to Sprite
     sprite.setTexture(texture);
 }
 
+/**
+ * @brief this function let the coconuts fly
+ * 
+ */
 void Coconut::flyCoconut(){
     while(framecounter >= timePerFrame){
         sprite.move(sf::Vector2f(speed*direction*timePerFrame.asSeconds(), 0));
