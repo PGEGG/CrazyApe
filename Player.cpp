@@ -54,11 +54,6 @@ void Player::move()
 
 }
 
-void Player::change_lives(int value)
-{
-
-}
-
 void Player::check_new_cmd()
 {
 
@@ -71,5 +66,18 @@ int Player::get_Banana()
 
 int Player::get_Lives()
 {
+    return lives;
+}
+
+int Player::set_Lives(int live)
+{
+    if (lives == 5)
+    {
+        lives = 5;
+    }else
+    {
+        lives += live;
+    }
+    
     return lives;
 }

@@ -19,10 +19,10 @@ public:
     bool move_detected();
     bool move_check();
     void move();
-    void change_lives(int value);
     void check_new_cmd();
     int get_Banana();
     int get_Lives();
+    int set_Lives(int live);
     //changes
     const sf::Sprite Object;
 

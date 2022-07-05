@@ -200,7 +200,9 @@ void Gui::checkWindow(){
 void Gui::proofe_collision(){
     if ( Collision::PixelPerfectTest(myPlayer->sprite, myTiger->sprite ) )
     {
-        std::cout << "Collision" << std::endl;
+        std::cout << "Collision Tiger!" << std::endl;
+        myPlayer->set_Lives(-5);
+        delete(myPlayer);
     }
     else
     {
