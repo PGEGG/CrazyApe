@@ -7,9 +7,8 @@ class Player: public Item
 {
 private:
     int lives=5;
-    float pos_x = 0;
-    float pos_y = 0;
     int collected_banana=0;
+    
 
 public:
     Player();
@@ -24,6 +23,9 @@ public:
     void check_new_cmd();
     int get_Banana();
     int get_Lives();
+    //changes
+    const sf::Sprite Object;
+
         
 };
 

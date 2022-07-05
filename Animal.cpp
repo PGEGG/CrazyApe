@@ -37,7 +37,7 @@ void Animal::move(){
     }
     
     while(framecounter >= timePerFrame){
-        this->itemShape.move(sf::Vector2f(x,y));
+        this->sprite.move(sf::Vector2f(x,y));
         framecounter -= timePerFrame;
     }
     

@@ -7,6 +7,7 @@
 #include "Scorpion.h"
 #include "Tree.h"
 #include "Player.h"
+#include "Collision.h"
 
 class Gui
 {
@@ -21,18 +22,10 @@ private:
     sf::Font font_comic;
     sf::Text txt_manpage;
 
-/*    // create Ape (Player)
-    sf::Image imageApe;
-    sf::Texture textureApe;
-    sf::RectangleShape shapeApe;
-    sf::Sprite spriteApe;*/
+    // create Ape (Player)
     Player *myPlayer = new Player(70.f, 300.f);
 
-/*    // create Tiger (Endboss)
-    sf::Image imageTiger;
-    sf::Texture textureTiger;
-    sf::RectangleShape shapeTiger;
-    sf::Sprite spriteTiger;*/
+    // create Tiger (Endboss)
     Tiger *myTiger = new Tiger(300.f, 200.f);
 
     // create Scorpion
@@ -40,36 +33,23 @@ private:
     Scorpion *myScorpion2 = new Scorpion(80.f, 80.f);
     Scorpion *myScorpion3= new Scorpion(150.f, 200.f);
 
-/*    // create Heart
-    sf::Image imageHeart;
-    sf::Texture textureHeart;
-    sf::RectangleShape shapeHeart;
-    sf::Sprite spriteHeart;*/
+    // create Heart
     Heart *myHeart = new Heart(100.f, 200.f);
 
 
-/*    // create Coconut
-    sf::Image imageCoconut;
-    sf::Texture textureCoconut;
-    sf::RectangleShape shapeCoconut;
-    sf::Sprite spriteCoconut;*/
+    // create Coconut
     Coconut *myCoconut = new Coconut(-200.f,80.f, 1);
     Coconut *myCoconut2 = new Coconut(-500.f,200.f, 1);
     Coconut *myCoconut3 = new Coconut(-800.f,270.f, 1);
     Coconut *myCoconut4 = new Coconut(-1000.f,320.f, 1);
     Coconut *myCoconut5 = new Coconut(-1200.f,50.f, 0);
-/*    // create Bananatree
-    sf::Image imageBananatree;
-    sf::Texture textureBananatree;
-    sf::RectangleShape shapeBananatree;
-    sf::Sprite spriteBananatree;*/
+
+    // create Bananatree
     Tree *myTree = new Tree(100.f, 200.f);
-/*
+    Tree *myTree2 = new Tree(150.f, 150.f);
+    Tree *myTree3 = new Tree(200.f, 230.f);
+
     // create Banana
-    sf::Image imageBanana;
-    sf::Texture textureBanana;
-    sf::RectangleShape shapeBanana;
-    sf::Sprite spriteBanana;*/
     Banana *myBanana = new Banana(200.f, 250.f);
 
     // create Home
@@ -102,16 +82,9 @@ public:
     void reset_button();
     void allCoconutsFly();
     void resetCocoClock();
-    //void checkBorderAnimal(Animal *animal);
     void checkObjBorder(Item *object);
     void checkMyBorders();
     // create Gamethings
-    //void createApe();
-    //void createTiger();
-    //void createHeart();
-    //void createCoconut();
-    //void createBananatree();
-    //void createBanana();
     void createHome();
     void createJungle();
 
@@ -119,4 +92,7 @@ public:
     void openManpage();
 
     ~Gui();
+
+    //changes for collision method
+    void proofe_collision();
 };

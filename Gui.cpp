@@ -1,14 +1,11 @@
-
 #include <iostream>
 #include "Gui.h"
 #include "Gamecontroller.h"
 
 Gui::Gui()
 {
-
     this->initVariables();
     this->initWindow();
-
 }
 
 // deconstructor deletes windowpointer
@@ -73,69 +70,39 @@ void Gui::pollEvents()
                 this->window->close();
             }else if (this->event.type == sf::Event::KeyPressed)
             {    // moves the Ape (player) with "wasd" or "arrow keys"
-               if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Left ) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::A ) )
+                if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Left ) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::A ) )
                 {
-                    myPlayer->itemShape.move( -3.f, 0 );
+                    myPlayer->sprite.move( -5.f, 0 );
                 }
                 else if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Right) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::D )) 
                 {
-                    myPlayer->itemShape.move( +3.f, 0 );
+                    myPlayer->sprite.move( 5.f, 0 );
                 }
                 
                 if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Up) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::W ) )
                 {
-                    myPlayer->itemShape.move( 0, -3.f );
+                    myPlayer->sprite.move( 0, -5.f );
                 }
                 else if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Down) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::S ) )
                 {
-                    myPlayer->itemShape.move( 0, +3.f );
+                    myPlayer->sprite.move( 0, 5.f );
                 }
-                /*
-                if ((this->event.key.code == sf::Keyboard::Left) || (this->event.key.code == sf::Keyboard::A))
-                {
-                    myPlayer->itemShape.move(-5.f, 0.f);
-                }else if ((this->event.key.code == sf::Keyboard::Right) || (this->event.key.code == sf::Keyboard::D))
-                {
-                    myPlayer->itemShape.move(+5.f, 0.f);
-                }else if ((this->event.key.code == sf::Keyboard::Down) || (this->event.key.code == sf::Keyboard::S))
-                {
-                    myPlayer->itemShape.move(0.f, +5.f);
-                }else if ((this->event.key.code == sf::Keyboard::Up) || (this->event.key.code == sf::Keyboard::W))
-                {
-                    myPlayer->itemShape.move(0.f, -5.f);
-                }//end if-moving
-                */
             }// end if-event
         }
 }
-/*
-void Gui::checkBorderAnimal(Animal *animal){
-    if (animal->itemShape.getPosition().x <= -12.f){
-        animal->itemShape.setPosition(-12.f, animal->itemShape.getPosition().y);
-    } //Left
-    else if(animal->itemShape.getPosition().x >= this->videoMode.width - animal->itemWidth){
-        animal->itemShape.setPosition(this->videoMode.width - animal->itemWidth, animal->itemShape.getPosition().y);
-    } //Right
-    else if (animal->itemShape.getPosition().y <= 0.f){
-        animal->itemShape.setPosition(animal->itemShape.getPosition().x, 0.f);
-    } //Top
-    else if (animal->itemShape.getPosition().y >= this->videoMode.height - animal->itemHeight){
-        animal->itemShape.setPosition(animal->itemShape.getPosition().x, this->videoMode.height - animal->itemHeight);
-    } //Bottom
-}
-*/
+
 void Gui::checkObjBorder(Item *object){
-    if (object->itemShape.getPosition().x <= -12.f){
-        object->itemShape.setPosition(-10.f, object->itemShape.getPosition().y);
+    if (object->sprite.getPosition().x <= -12.f){
+        object->sprite.setPosition(-10.f, object->sprite.getPosition().y);
     } //Left
-    else if(object->itemShape.getPosition().x >= this->videoMode.width - object->itemWidth){
-        object->itemShape.setPosition(this->videoMode.width - object->itemWidth-5.f, object->itemShape.getPosition().y);
+    else if(object->sprite.getPosition().x >= this->videoMode.width - object->itemWidth){
+        object->sprite.setPosition(this->videoMode.width - object->itemWidth-5.f, object->sprite.getPosition().y);
     } //Right
-    else if (object->itemShape.getPosition().y <= 0.f){
-        object->itemShape.setPosition(object->itemShape.getPosition().x, 5.f);
+    else if (object->sprite.getPosition().y <= 0.f){
+        object->sprite.setPosition(object->sprite.getPosition().x, 5.f);
     } //Top
-    else if (object->itemShape.getPosition().y >= this->videoMode.height - object->itemHeight){
-        object->itemShape.setPosition(object->itemShape.getPosition().x,this->videoMode.height - object->itemHeight-5.f);
+    else if (object->sprite.getPosition().y >= this->videoMode.height - object->itemHeight){
+        object->sprite.setPosition(object->sprite.getPosition().x,this->videoMode.height - object->itemHeight-5.f);
     } //Bottom
 }
 
@@ -151,12 +118,6 @@ void Gui::checkWindow(){
     if (guiCounter == 0)
     {
         this->createJungle();
-        //this->createApe();
-        //this->createTiger();
-        //this->createHeart();
-        //this->createCoconut();
-        //this->createBananatree();
-        //this->createBanana();
         this->createHome();
         this->openManpage();
     }
@@ -166,10 +127,24 @@ void Gui::checkWindow(){
     {
         this->update();
         this->render();
+        this->proofe_collision();
     }
 
     guiCounter++;
 }
+
+//changes for collision method
+void Gui::proofe_collision(){
+    if ( Collision::PixelPerfectTest(myPlayer->sprite, myTiger->sprite ) )
+    {
+        std::cout << "Collision" << std::endl;
+    }
+    else
+    {
+        std::cout << "No Collision" << std::endl;
+    }
+}
+
 void Gui::resetCocoClock(){
     this->myCoconut->framecounter+= this->myCoconut->clock.restart();
     this->myCoconut2->framecounter+= this->myCoconut2->clock.restart();
@@ -189,19 +164,20 @@ void Gui::render()
     this->window->clear(sf::Color(139,139,0));
     this->window->draw(shapeJungle);
     this->window->draw(shapeHome);
-    this->window->draw(myPlayer->itemShape);
-    this->window->draw(myTiger->itemShape);
-    this->window->draw(myScorpion->itemShape);
-    this->window->draw(myScorpion2->itemShape);
-    this->window->draw(myScorpion3->itemShape);
-    this->window->draw(myHeart->itemShape);
-    this->window->draw(myCoconut->itemShape);
-    this->window->draw(myCoconut2->itemShape);
-    this->window->draw(myCoconut3->itemShape);
-    this->window->draw(myCoconut4->itemShape);
-    this->window->draw(myCoconut5->itemShape);
-    this->window->draw(myTree->itemShape);
-    this->window->draw(myBanana->itemShape);
+    this->window->draw(myPlayer->sprite);
+    this->window->draw(myTiger->sprite);
+
+    this->window->draw(myScorpion->sprite);
+    this->window->draw(myScorpion2->sprite);
+    this->window->draw(myScorpion3->sprite);
+    this->window->draw(myHeart->sprite);
+    this->window->draw(myCoconut->sprite);
+    this->window->draw(myCoconut2->sprite);
+    this->window->draw(myCoconut3->sprite);
+    this->window->draw(myCoconut4->sprite);
+    this->window->draw(myCoconut5->sprite);
+    this->window->draw(myTree->sprite);
+    this->window->draw(myBanana->sprite);
     this->window->display();
 }
 
@@ -230,157 +206,6 @@ void Gui::reset_button()
 {
 
 }
-/*
-void Gui::createApe()
-{
-    // Load imageApe
-    if (!(imageApe.loadFromFile("images\\APE.png")));
-    {
-        std::cerr << "Can`t load image!";
-    }
-
-    // Give Image to texture
-    // Glättet die Pixel (Schärft das Bild)
-    textureApe.setSmooth(true);
-    textureApe.loadFromImage(imageApe);
-
-    // declarate Shape
-    shapeApe.setSize(sf::Vector2(50.f,80.f));
-    shapeApe.setTexture(&textureApe);
-    shapeApe.setPosition(70, this->videoMode.height-80);
-
-    // Texture to Sprite
-    spriteApe.setTexture(textureApe);
-    
-    // setcolor from spriteApe with RGB
-    spriteApe.setColor(sf::Color(205, 102, 29));
-}// end createApe
-
-void Gui::createTiger()
-{
-    if (!(imageTiger.loadFromFile("images\\TIGER.png")));
-    {
-        std::cerr << "Can`t load image!";
-    }
-
-    // Give Image to texture
-    // Glättet die Pixel (Schärft das Bild)
-    textureTiger.setSmooth(true);
-    textureTiger.loadFromImage(imageTiger);
-
-    // declarate Shape
-    shapeTiger.setSize(sf::Vector2(50.f,80.f));
-    shapeTiger.setTexture(&textureTiger);
-    shapeTiger.setPosition(this->videoMode.width/2-50, this->videoMode.height/2-80);
-
-    // Texture to Sprite
-    spriteTiger.setTexture(textureTiger);
-    
-    // setcolor from spriteApe with RGB
-    spriteTiger.setColor(sf::Color(205, 102, 29));
-
-}// end createTiger
-
-void Gui::createHeart()
-{
-    if (!(imageHeart.loadFromFile("images\\HEART.png")));
-    {
-        std::cerr << "Can`t load image!";
-    }
-
-    // Give Image to texture
-    // Glättet die Pixel (Schärft das Bild)
-    textureHeart.setSmooth(true);
-    textureHeart.loadFromImage(imageHeart);
-
-    // declarate Shape
-    shapeHeart.setSize(sf::Vector2(20.f,20.f));
-    shapeHeart.setTexture(&textureHeart);
-    shapeHeart.setPosition(200, 200);
-
-    // Texture to Sprite
-    spriteHeart.setTexture(textureHeart);
-    
-    // setcolor from spriteApe with RGB
-    spriteHeart.setColor(sf::Color(205, 102, 29));
-
-}// end createHeart
-
-void Gui::createCoconut()
-{
-    if (!(imageCoconut.loadFromFile("images\\COCONUT.png")));
-    {
-        std::cerr << "Can`t load image!";
-    }
-
-    // Give Image to texture
-    // Glättet die Pixel (Schärft das Bild)
-    textureCoconut.setSmooth(true);
-    textureCoconut.loadFromImage(imageCoconut);
-
-    // declarate Shape
-    shapeCoconut.setSize(sf::Vector2(20.f,20.f));
-    shapeCoconut.setTexture(&textureCoconut);
-    shapeCoconut.setPosition(300, 200);
-
-    // Texture to Sprite
-    spriteCoconut.setTexture(textureCoconut);
-    
-    // setcolor from spriteApe with RGB
-    spriteCoconut.setColor(sf::Color(205, 102, 29));
-
-}// end createCoconut
-
-void Gui::createBananatree()
-{
-    if (!(imageBananatree.loadFromFile("images\\BANANATREE.png")));
-    {
-        std::cerr << "Can`t load image!";
-    }
-
-    // Give Image to texture
-    // Glättet die Pixel (Schärft das Bild)
-    textureBananatree.setSmooth(true);
-    textureBananatree.loadFromImage(imageBananatree);
-
-    // declarate Shape
-    shapeBananatree.setSize(sf::Vector2(80.f,80.f));
-    shapeBananatree.setTexture(&textureBananatree);
-    shapeBananatree.setPosition(100, 200);
-
-    // Texture to Sprite
-    spriteBananatree.setTexture(textureBananatree);
-    
-    // setcolor from spriteApe with RGB
-    spriteBananatree.setColor(sf::Color(205, 102, 29));
-
-}// end createBananatree
-
-void Gui::createBanana()
-{
-    if (!(imageBanana.loadFromFile("images\\BANANA.png")));
-    {
-        std::cerr << "Can`t load image!";
-    }
-
-    // Give Image to texture
-    // Glättet die Pixel (Schärft das Bild)
-    textureBanana.setSmooth(true);
-    textureBanana.loadFromImage(imageBanana);
-
-    // declarate Shape
-    shapeBanana.setSize(sf::Vector2(20.f,20.f));
-    shapeBanana.setTexture(&textureBanana);
-    shapeBanana.setPosition(200, 250);
-
-    // Texture to Sprite
-    spriteBanana.setTexture(textureBanana);
-    
-    // setcolor from spriteApe with RGB
-    spriteBanana.setColor(sf::Color(205, 102, 29));
-
-}// end createBanana
-*/
 
 void Gui::createHome()
 {

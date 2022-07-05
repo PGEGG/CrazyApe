@@ -13,25 +13,17 @@
 #include <time.h>       /* time */
 #include <SFML/Audio.hpp>
 
-
-#define FIELDSIZEX 50
-#define FIELDSIZEY 40
-using namespace std;
 class Gamecontroller
 {
 private:
     int runtime = 0;
-    int field[FIELDSIZEY][FIELDSIZEX];
 
-    bool freePosition(int x, int y);
     int randomNumber(int size);
-    int getfield();
 public:
     Gamecontroller();
     ~Gamecontroller();
 
     void startGame();
-    void reset();
     bool checkWon();
     bool checkDeath();
 };

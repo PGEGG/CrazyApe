@@ -29,19 +29,12 @@ Tree::Tree(float x, float y)
     texture.setSmooth(true);
     texture.loadFromImage(image);
 
-    // declarate Shape
-    itemShape.setSize(sf::Vector2(itemWidth, itemHeight));
-    itemShape.setTexture(&texture);
-    itemShape.setPosition(x, y);
+    // declarate Sprite
+    sprite.setPosition(x, y);
 
     // Texture to Sprite
     sprite.setTexture(texture);
-    
-    // setcolor from spriteApe with RGB
-    sprite.setColor(sf::Color(205, 102, 29));
-
-    
-    posY = y;
-    posX = x;
+    sprite.setScale(sf::Vector2f(scaleWidth, scaleHeight));
+ 
 }
 

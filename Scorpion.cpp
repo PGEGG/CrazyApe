@@ -7,7 +7,7 @@ Scorpion::Scorpion()
 }
 
 Scorpion::Scorpion(float x, float y) {
-    if (!(image.loadFromFile("images\\SCORPION.png")));
+    if (!image.loadFromFile("images\\SCORPION.png"));
     {
         std::cerr << "Can`t load image_scorpion!" << std::endl;
     }
@@ -20,20 +20,13 @@ Scorpion::Scorpion(float x, float y) {
     texture.setSmooth(true);
     texture.loadFromImage(image);
 
-    // declarate Shape
-    itemShape.setSize(sf::Vector2(itemWidth, itemHeight));
-    itemShape.setTexture(&texture);
-    itemShape.setPosition(x, y);
-
+    // declarate Sprite
+    sprite.setScale(sf::Vector2f(scaleWidth, scaleHeight));
+    sprite.setPosition(x, y);
 
     // Texture to Sprite
     sprite.setTexture(texture);
-    
-    // setcolor from spriteApe with RGB
-    sprite.setColor(sf::Color(205, 102, 29));
-    
-    posX=x;
-    posY=y;
+ 
 }
 
 Scorpion::~Scorpion()

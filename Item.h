@@ -11,17 +11,17 @@ protected:
     // create Item
     sf::Image image;
     sf::Texture texture;
-    sf::Sprite sprite;
 
     sf::Time timePerFrame = sf::seconds(1.f/60.f);
     int speed = 100;
+    float scaleWidth = 0.1;
+    float scaleHeight = 0.1;
 
 public: 
     Item();
     virtual ~Item()=0;
-    //virtual void setField(int x, int y) = 0;
     
-    sf::RectangleShape itemShape;
+    sf::Sprite sprite;
     float itemWidth = 20.f;
     float itemHeight = 20.f;
 

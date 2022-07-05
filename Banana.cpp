@@ -7,7 +7,7 @@ Banana::Banana()
 
 Banana::Banana(float x, float y)
 {
-    if (!(image.loadFromFile("images\\BANANA.png")));
+    if (!image.loadFromFile("images\\BANANA.png"));
     {
         std::cerr << "Can`t load image_banana!" << std::endl;
     }
@@ -16,20 +16,15 @@ Banana::Banana(float x, float y)
     // Glättet die Pixel (Schärft das Bild)
     texture.setSmooth(true);
     texture.loadFromImage(image);
+    scaleWidth = 0.075;
 
-    // declarate Shape
-    itemShape.setSize(sf::Vector2(itemWidth, itemHeight));
-    itemShape.setTexture(&texture);
-    itemShape.setPosition(x, y);
+    // declarate sprite
+    sprite.setScale(sf::Vector2f(scaleWidth, scaleHeight));
+    sprite.setTexture(texture);
+    sprite.setPosition(x, y);
 
     // Texture to Sprite
-    sprite.setTexture(texture);
-    
-    // setcolor from spriteApe with RGB
-    sprite.setColor(sf::Color(205, 102, 29));
-    
-    posX = x;
-    posY = y;   
+    sprite.setTexture(texture);  
 }
 
 Banana::~Banana()

@@ -8,7 +8,7 @@ Heart::Heart()
 Heart::Heart(float x, float y)
 {
 
-    if (!(image.loadFromFile("images\\HEART.png")));
+    if (!image.loadFromFile("images\\HEART.png"));
     {
         std::cerr << "Can`t load image!";
     }
@@ -18,19 +18,14 @@ Heart::Heart(float x, float y)
     texture.setSmooth(true);
     texture.loadFromImage(image);
 
-    // declarate Shape
-    itemShape.setSize(sf::Vector2(itemWidth, itemHeight));
-    itemShape.setTexture(&texture);
-    itemShape.setPosition(x, y);
+    // declarate Sprite
+    sprite.setScale(sf::Vector2f(scaleWidth, scaleHeight));
+    sprite.setTexture(texture);
+    sprite.setPosition(x, y);
 
     // Texture to Sprite
     sprite.setTexture(texture);
-    
-    // setcolor from spriteApe with RGB
-    sprite.setColor(sf::Color(205, 102, 29));
 
-    posX = x;
-    posY = y;
 }
 
 Heart::~Heart()
