@@ -23,7 +23,7 @@ private:
     sf::Text txt_manpage;
 
     /// create Ape (Player)
-    Player *myPlayer = new Player(70.f, 300.f);
+    Player *myPlayer = new Player(70.f, 350.f);
 
     /// create Tiger (Endboss)
     Tiger *myTiger = new Tiger(300.f, 200.f);
@@ -56,6 +56,7 @@ private:
     sf::Image imageHome;
     sf::Texture textureHome;
     sf::RectangleShape shapeHome;
+    sf::Sprite spriteHome;
 
     /// create Jungle
     sf::Image imageJungle;

@@ -37,7 +37,7 @@ void Gui::initVariables()
  */
 void Gui::initWindow()
 {
-    if (!(icon.loadFromFile("images\\ICON.png")))
+    if (!icon.loadFromFile("images\\ICON.png"))
     {
         std::cerr << "Can`t load image_icon!" << std::endl;
     }
@@ -232,6 +232,10 @@ void Gui::checkCollision(){
         myPlayer->addBanana();
         std::cout << myPlayer->getBanana() << std::endl;
         this->myBanana->sprite.setPosition(1.f, 1.f);
+    }else if (Collision::PixelPerfectTest(myPlayer->sprite, spriteHome ))
+    {
+        std::cout << "Collision Home!" << std::endl;
+        std::cout << "You need " << 3 - myPlayer->getBanana() << " to win!" << std::endl;
     }else
     {
         std::cout << "No Collision" << std::endl;
@@ -325,6 +329,13 @@ void Gui::createHome()
     shapeHome.setSize(sf::Vector2(100.f,120.f));
     shapeHome.setTexture(&textureHome);
     shapeHome.setPosition(0, this->videoMode.height-120);
+
+    // declarate Sprite
+    spriteHome.setScale(sf::Vector2f(0.5, 0.5));
+    spriteHome.setPosition(0, this->videoMode.height-120);
+
+    // Texture to Sprite
+    spriteHome.setTexture(textureHome);
 }// end createHome
 
 /**
@@ -345,7 +356,7 @@ void Gui::createJungle()
     textureJungle.loadFromImage(imageJungle);
 
     // declarate Shape
-    shapeJungle.setSize(sf::Vector2(600.f,400.f));
+    shapeJungle.setSize(sf::Vector2f(this->videoMode.width, this->videoMode.height));
     shapeJungle.setTexture(&textureJungle);
     shapeJungle.setPosition(0, 0);
 
