@@ -201,8 +201,10 @@ void Gui::proofe_collision(){
     if ( Collision::PixelPerfectTest(myPlayer->sprite, myTiger->sprite ) )
     {
         std::cout << "Collision Tiger!" << std::endl;
+        std::cout << myPlayer->get_Lives() << std::endl;
         myPlayer->set_Lives(-5);
-        delete(myPlayer);
+        std::cout << myPlayer->get_Lives() << std::endl;
+        //delete myPlayer;
     }
     else
     {
