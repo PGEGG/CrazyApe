@@ -11,10 +11,17 @@ int main(int argc, char* argv[]){
     //closing the CMD window
     //FreeConsole();
 
-    // Create an dynamic Object "on HEAP" fram Gamecontroller
+    /**
+     * @brief Create an dynamic Object "on HEAP" from Gamecontroller
+     * 
+     */
     Gamecontroller *myGc = new Gamecontroller;
-    myGc->startGame();
+    myGc->startGame();  /// start the Game in Gamecontroller
 
+    /**
+     * @brief delete Gamecontroller Object
+     * 
+     */
     delete(myGc);
 
     return EXIT_SUCCESS;

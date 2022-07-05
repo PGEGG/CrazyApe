@@ -2,25 +2,39 @@
 #include "Gui.h"
 #include "Gamecontroller.h"
 
+/**
+ * @brief Construct a new Gui:: Gui object
+ * call initVariables() and initWindow()
+ */
 Gui::Gui()
 {
     this->initVariables();
     this->initWindow();
 }
 
-// deconstructor deletes windowpointer
+/**
+ * @brief delete object Gui and this window
+ *  
+ */
 Gui::~Gui()
 {
     delete this->window;
 }
 
-// constructor generates a windowpointer and refers to nullpointer
+
+/**
+ * @brief constructor generates a windowpointer and refers to nullpointer
+ * 
+ */
 void Gui::initVariables()
 {
     this->window = nullptr;
 }
 
-// This function generates a window (Gui) with its size and title
+/**
+ * @brief This function generates a window (Gui) with its size and title
+ * 
+ */
 void Gui::initWindow()
 {
     if (!(icon.loadFromFile("images\\ICON.png")))
@@ -34,13 +48,21 @@ void Gui::initWindow()
     this->window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 }
 
-// This function refers to the pollEvent function
+/**
+ * @brief This function checks events 
+ * 
+ */
 void Gui::update()
 {
     this->pollEvents();
-    this->allCoconutsFly();
+    this->moveObjects();
     this->checkMyBorders();
 }
+
+/**
+ * @brief this function checks if any object will leave the window in the next step
+ * 
+ */
 void Gui::checkMyBorders(){
     this->checkObjBorder(this->myPlayer);
     this->checkObjBorder(this->myScorpion);
@@ -48,7 +70,14 @@ void Gui::checkMyBorders(){
     this->checkObjBorder(this->myScorpion3);
     this->checkObjBorder(this->myTiger);
 }
-void Gui::allCoconutsFly(){
+
+/**
+ * @brief this function moves all Objects 
+ * moves coconuts
+ * move scorpions
+ * moves Tiger
+ */
+void Gui::moveObjects(){
     this->myCoconut->flyCoconut();
     this->myCoconut2->flyCoconut();
     this->myCoconut3->flyCoconut();
@@ -60,68 +89,100 @@ void Gui::allCoconutsFly(){
     this->myTiger->move();
 }
 
-// This function checks if there is a Mouse or Keyboard event an the window
+/**
+ * @brief This function checks if there is a Mouse or Keyboard event an the window
+ * proofe wasd or up, down, left, right
+ * proofe if window was closed
+ */
 void Gui::pollEvents()
 {
     sf::Event event;
         while (this->window->pollEvent(this->event))
         {
-            if (this->event.type == sf::Event::Closed){ // close window if red "X" is clicked
+            /// close window if red "X" is clicked
+            if (this->event.type == sf::Event::Closed){ 
                 this->window->close();
-            }else if (this->event.type == sf::Event::KeyPressed)
-            {    // moves the Ape (player) with "wasd" or "arrow keys"
+            }
+
+            /// moves the Ape (player) with "wasd" or "arrow keys"
+            else if (this->event.type == sf::Event::KeyPressed)
+            {    
+                /// Left
                 if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Left ) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::A ) )
                 {
                     myPlayer->sprite.move( -5.f, 0 );
                 }
+
+                /// Right
                 else if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Right) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::D )) 
                 {
                     myPlayer->sprite.move( 5.f, 0 );
                 }
                 
+                /// Up
                 if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Up) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::W ) )
                 {
                     myPlayer->sprite.move( 0, -5.f );
                 }
+
+                ///Down
                 else if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Down) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::S ) )
                 {
                     myPlayer->sprite.move( 0, 5.f );
                 }
-            }// end if-event
+            }
         }
 }
 
-void Gui::checkObjBorder(Item *object){
+/**
+ * @brief this function checks if the passed Object will leave the window
+ * 
+ * @param object every Object of Item that moves in the window can be passed
+ */
+void Gui::checkObjBorder(Item *object)
+{
+    ///Left
     if (object->sprite.getPosition().x <= -12.f){
         object->sprite.setPosition(-10.f, object->sprite.getPosition().y);
-    } //Left
+    }
+
+    ///Right
     else if(object->sprite.getPosition().x >= this->videoMode.width - object->itemWidth){
         object->sprite.setPosition(this->videoMode.width - object->itemWidth-5.f, object->sprite.getPosition().y);
-    } //Right
+    } 
+
+    ///Top
     else if (object->sprite.getPosition().y <= 0.f){
         object->sprite.setPosition(object->sprite.getPosition().x, 5.f);
-    } //Top
+    } 
+
+    ///Bottom
     else if (object->sprite.getPosition().y >= this->videoMode.height - object->itemHeight){
         object->sprite.setPosition(object->sprite.getPosition().x,this->videoMode.height - object->itemHeight-5.f);
-    } //Bottom
+    } 
 }
 
-// checks if the window is running
+
+/**
+ * @brief  checks if the window is open
+ * 
+ * @return true if window is open
+ * @return false if window is closed
+ */
 const bool Gui::running()
 {
     return this->window->isOpen();
 }
 
-//  This function sets the setup for the "startwindow" and updates, renders window while its running
+/**
+ * @brief This function sets the setup for the "startwindow" and updates, renders window and proofe collision while its running
+ * 
+ */
 void Gui::checkWindow(){
-
-    if (guiCounter == 0)
-    {
-        this->createJungle();
-        this->createHome();
-        this->openManpage();
-    }
     
+    this->createJungle();
+    this->createHome();
+    this->openManpage();
 
     while (this->running())
     {
@@ -129,11 +190,13 @@ void Gui::checkWindow(){
         this->render();
         this->proofe_collision();
     }
-
-    guiCounter++;
 }
 
-//changes for collision method
+
+/**
+ * @brief this function checks player and the other objects for collision
+ * 
+ */
 void Gui::proofe_collision(){
     if ( Collision::PixelPerfectTest(myPlayer->sprite, myTiger->sprite ) )
     {
@@ -145,7 +208,11 @@ void Gui::proofe_collision(){
     }
 }
 
-void Gui::resetCocoClock(){
+/**
+ * @brief reset Clock for mooving objects
+ * 
+ */
+void Gui::resetClock(){
     this->myCoconut->framecounter+= this->myCoconut->clock.restart();
     this->myCoconut2->framecounter+= this->myCoconut2->clock.restart();
     this->myCoconut3->framecounter+= this->myCoconut3->clock.restart();
@@ -157,10 +224,13 @@ void Gui::resetCocoClock(){
     this->myTiger->framecounter+= this->myTiger->clock.restart();
 }
 
-// This function renders the window with a rgb-color, draws the shape and display it on the screen
+/**
+ * @brief This function renders the window with a rgb-color, draws the shape and sprite and display it on the screen
+ * 
+ */
 void Gui::render()
 {
-    this->resetCocoClock();
+    this->resetClock();
     this->window->clear(sf::Color(139,139,0));
     this->window->draw(shapeJungle);
     this->window->draw(shapeHome);
@@ -177,15 +247,14 @@ void Gui::render()
     this->window->draw(myCoconut4->sprite);
     this->window->draw(myCoconut5->sprite);
     this->window->draw(myTree->sprite);
+    this->window->draw(myTree2->sprite);
+    this->window->draw(myTree3->sprite);
     this->window->draw(myBanana->sprite);
+    this->window->draw(myBanana2->sprite);
+    this->window->draw(myBanana3->sprite);
     this->window->display();
 }
 
-
-void Gui::setField(int *field[])
-{
-
-}
 
 void Gui::info_button()
 {
@@ -207,41 +276,44 @@ void Gui::reset_button()
 
 }
 
+/**
+ * @brief this function initialise objet home
+ * 
+ */
 void Gui::createHome()
 {
+    /// if couldn`t load image
     if (!(imageHome.loadFromFile("images\\HOME.png")));
     {
         std::cerr << "Can`t load image_home!" << std::endl;
     }
 
-    // Give Image to texture
-    // Glättet die Pixel (Schärft das Bild)
+    /// Smooths the pixels (Sharpen the image)
     textureHome.setSmooth(true);
+    /// Give Image to texture
     textureHome.loadFromImage(imageHome);
 
     // declarate Shape
     shapeHome.setSize(sf::Vector2(100.f,120.f));
     shapeHome.setTexture(&textureHome);
     shapeHome.setPosition(0, this->videoMode.height-120);
-
-    // Texture to Sprite
-    spriteHome.setTexture(textureHome);
-    
-    // setcolor from spriteApe with RGB
-    spriteHome.setColor(sf::Color(205, 102, 29));
-
 }// end createHome
 
+/**
+ * @brief this function initialise object jungle
+ * 
+ */
 void Gui::createJungle()
 {
+    /// if couldn`t load image
     if (!(imageJungle.loadFromFile("images\\JUNGLE.png")));
     {
         std::cerr << "Can`t load image_jungle!" << std::endl;
     }
 
-    // Give Image to texture
-    // Glättet die Pixel (Schärft das Bild)
+    /// Smooths the pixels (Sharpen the image)
     textureJungle.setSmooth(true);
+    /// Give Image to texture
     textureJungle.loadFromImage(imageJungle);
 
     // declarate Shape
@@ -249,14 +321,12 @@ void Gui::createJungle()
     shapeJungle.setTexture(&textureJungle);
     shapeJungle.setPosition(0, 0);
 
-    // Texture to Sprite
-    spriteJungle.setTexture(textureJungle);
-    
-    // setcolor from spriteApe with RGB
-    spriteJungle.setColor(sf::Color(205, 102, 29));
-
 }// end createJungle
 
+/**
+ * @brief to do button manpage
+ * 
+ */
 void Gui::openManpage()
 {   
     

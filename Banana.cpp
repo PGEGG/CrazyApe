@@ -12,10 +12,11 @@ Banana::Banana(float x, float y)
         std::cerr << "Can`t load image_banana!" << std::endl;
     }
 
-    // Give Image to texture
-    // Glättet die Pixel (Schärft das Bild)
+    /// Smooths the pixels (Sharpen the image)
     texture.setSmooth(true);
+    /// Give Image to texture
     texture.loadFromImage(image);
+
     scaleWidth = 0.075;
 
     // declarate sprite

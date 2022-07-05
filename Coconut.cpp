@@ -29,10 +29,12 @@ Coconut::Coconut(float x, float y, int i)
         std::cerr << "Can`t load image_red_coconut!" << std::endl;
     }
     }
-    // Give Image to texture
-    // Glättet die Pixel (Schärft das Bild)
+    
+    /// Smooths the pixels (Sharpen the image)
     texture.setSmooth(true);
+    /// Give Image to texture
     texture.loadFromImage(image);
+
     scaleWidth = 0.15;
     scaleHeight = 0.15;
 

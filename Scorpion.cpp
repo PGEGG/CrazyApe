@@ -15,9 +15,9 @@ Scorpion::Scorpion(float x, float y) {
     itemWidth = 25.f;
     itemHeight = 25.f;
 
-    // Give Image to texture
-    // Glättet die Pixel (Schärft das Bild)
+    /// Smooths the pixels (Sharpen the image)
     texture.setSmooth(true);
+    /// Give Image to texture
     texture.loadFromImage(image);
 
     // declarate Sprite

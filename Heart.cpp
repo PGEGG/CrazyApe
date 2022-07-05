@@ -13,9 +13,9 @@ Heart::Heart(float x, float y)
         std::cerr << "Can`t load image!";
     }
     
-    // Give Image to texture
-    // Glättet die Pixel (Schärft das Bild)
+    /// Smooths the pixels (Sharpen the image)
     texture.setSmooth(true);
+    /// Give Image to texture
     texture.loadFromImage(image);
 
     // declarate Sprite

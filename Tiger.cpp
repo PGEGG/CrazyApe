@@ -16,9 +16,10 @@ Tiger::Tiger(float x, float y)
     itemHeight = 80.f;
     scaleWidth = 0.3;
     scaleHeight = 0.3;
-    // Give Image to texture
-    // Glättet die Pixel (Schärft das Bild)
+    
+    /// Smooths the pixels (Sharpen the image)
     texture.setSmooth(true);
+    /// Give Image to texture
     texture.loadFromImage(image);
     sprite.setScale(sf::Vector2f(scaleWidth, scaleHeight));
  

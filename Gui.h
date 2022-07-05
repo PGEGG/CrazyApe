@@ -51,23 +51,22 @@ private:
 
     // create Banana
     Banana *myBanana = new Banana(200.f, 250.f);
+    Banana *myBanana2 = new Banana(80.f, 100.f);
+    Banana *myBanana3 = new Banana(400.f, 300.f);
 
     // create Home
     sf::Image imageHome;
     sf::Texture textureHome;
     sf::RectangleShape shapeHome;
-    sf::Sprite spriteHome;
 
     // create Jungle
     sf::Image imageJungle;
     sf::Texture textureJungle;
     sf::RectangleShape shapeJungle;
-    sf::Sprite spriteJungle;
 
     void initVariables();
     void initWindow();
     
-    int guiCounter = 0;
 public:
     Gui();
     const bool running();
@@ -75,13 +74,12 @@ public:
     void render();
     void pollEvents();
     void checkWindow();
-    void setField(int *field[]);
     void info_button();
     void start_button();
     void stop_button();
     void reset_button();
-    void allCoconutsFly();
-    void resetCocoClock();
+    void moveObjects();
+    void resetClock();
     void checkObjBorder(Item *object);
     void checkMyBorders();
     // create Gamethings

@@ -24,9 +24,9 @@ Tree::Tree(float x, float y)
     itemWidth = 80.f;
     itemHeight = 80.f;
 
-    // Give Image to texture
-    // Glättet die Pixel (Schärft das Bild)
+    /// Smooths the pixels (Sharpen the image)
     texture.setSmooth(true);
+    /// Give Image to texture
     texture.loadFromImage(image);
 
     // declarate Sprite
@@ -37,4 +37,3 @@ Tree::Tree(float x, float y)
     sprite.setScale(sf::Vector2f(scaleWidth, scaleHeight));
  
 }
-
