@@ -345,7 +345,7 @@ void Gui::openManpage()
     {
         txt_line += "\n";
     }
-*/
+    */
     txt_manpage.setString("Test");
     txt_manpage.setCharacterSize(12);
     txt_manpage.setFont(font_comic);
