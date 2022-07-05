@@ -51,8 +51,6 @@ private:
 
     /// create Banana
     Banana *myBanana = new Banana(200.f, 250.f);
-    Banana *myBanana2 = new Banana(80.f, 100.f);
-    Banana *myBanana3 = new Banana(400.f, 300.f);
 
     /// create Home
     sf::Image imageHome;
@@ -92,5 +90,5 @@ public:
     ~Gui();
 
     /// changes for collision method
-    void proofe_collision();
+    void checkCollision();
 };

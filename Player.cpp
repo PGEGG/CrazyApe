@@ -50,12 +50,13 @@ Player::~Player()
 }
 
 /**
- * @brief this function increase banana if Player has collected one
+ * @brief this function return the amount of Bananas
  * 
+ * @return int amount of Bananas
  */
-void Player::increase_banana()
+int Player::getBanana()
 {
-    
+    return collected_banana;
 }
 
 bool Player::move_detected(){
@@ -78,13 +79,13 @@ void Player::check_new_cmd()
 }
 
 /**
- * @brief this function return the amount of Bananas
+ * @brief this function increase banana if Player has collected one
  * 
- * @return int amount of Bananas
  */
-int Player::get_Banana()
+void Player::addBanana()
 {
-    return collected_banana;
+    std::cout << "Added Banana!" << std::endl;
+    this->collected_banana++;
 }
 
 /**
@@ -104,15 +105,25 @@ int Player::get_Lives()
  * @param live amount of live to increase/decrease
  * @return int amount of new lives
  */
-int Player::set_Lives(int live)
+void Player::set_Lives(int live)
 {
-    if (lives == 5)
+    /*if (lives == 5 && live > 0)
     {
+        std::cout << "Live is still 5!" << std::endl;
         lives = 5;
-    }else
+    }else if (lives >= 0 && lives <= 5)
     {
         lives += live;
-    }
+        std::cout << "Live is changed to: " << lives << std::endl;
+    }else if (lives <= 0)
+    {
+        std::cout << "You are dead!" << std::endl;
+        lives = 0;
+    }else
+    {
+        std::cout << "No Live changes!" << std::endl;
+    }*/
     
-    return lives;
+    lives = live;
+    std::cout << lives << std::endl;
 }

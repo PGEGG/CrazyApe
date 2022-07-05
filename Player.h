@@ -6,8 +6,8 @@
 class Player: public Item
 {
 private:
-    int lives=5;
-    int collected_banana=0;
+    int lives = 5;
+    int collected_banana = 0;
     
 
 public:
@@ -15,14 +15,14 @@ public:
     Player(float x, float y);
     ~Player();
 
-    void increase_banana();
+    int getBanana();
     bool move_detected();
     bool move_check();
     void move();
     void check_new_cmd();
-    int get_Banana();
+    void addBanana();
     int get_Lives();
-    int set_Lives(int live);
+    void set_Lives(int live);
     //changes
     const sf::Sprite Object;
 
