@@ -8,7 +8,7 @@ private:
     int deamage = 1;
 public:
     Scorpion();
-    Scorpion(float x, float y);
+    //Scorpion(float x, float y);
     ~Scorpion();
 
 };

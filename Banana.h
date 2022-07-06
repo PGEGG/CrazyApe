@@ -5,7 +5,7 @@ class Banana: public Item
 {
 public:
     Banana();
-    Banana(float x, float y);
+    //Banana(float x, float y);
     ~Banana();
 
 };

@@ -4,9 +4,7 @@
  * @brief Construct a new Banana:: Banana object
  * default constructor
  */
-Banana::Banana()
-{
-}
+
 
 /**
  * @brief Construct a new Banana:: Banana object
@@ -14,7 +12,7 @@ Banana::Banana()
  * @param x float x position of banana
  * @param y float y position of banana
  */
-Banana::Banana(float x, float y)
+Banana::Banana()
 {
     /**
      * @brief if file couldn`t load
@@ -35,7 +33,7 @@ Banana::Banana(float x, float y)
     // declarate sprite
     sprite.setScale(sf::Vector2f(scaleWidth, scaleHeight));
     sprite.setTexture(texture);
-    sprite.setPosition(x, y);
+    sprite.setPosition(sf::Vector2f(setRandomPosX(), setRandomPosY()));
 
     // Texture to Sprite
     sprite.setTexture(texture);  

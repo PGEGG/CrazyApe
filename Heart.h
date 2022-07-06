@@ -8,7 +8,7 @@ private:
     int lifetime;
 public:
     Heart();
-    Heart(float x, float y);
+    //Heart(float x, float y);
     ~Heart();
 
 };

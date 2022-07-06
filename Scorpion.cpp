@@ -5,10 +5,7 @@
  * @brief Construct a new Scorpion:: Scorpion object
  * 
  */
-Scorpion::Scorpion()
-{
 
-}
 
 /**
  * @brief Construct a new Scorpion:: Scorpion object
@@ -16,7 +13,7 @@ Scorpion::Scorpion()
  * @param x float x position of Scorpion
  * @param y float y position of Scorpion
  */
-Scorpion::Scorpion(float x, float y) {
+Scorpion::Scorpion() {
     if (!image.loadFromFile("images\\SCORPION.png"));
     {
         std::cerr << "Can`t load image_scorpion!" << std::endl;
@@ -32,7 +29,7 @@ Scorpion::Scorpion(float x, float y) {
 
     /// declarate Sprite
     sprite.setScale(sf::Vector2f(scaleWidth, scaleHeight));
-    sprite.setPosition(x, y);
+    sprite.setPosition(sf::Vector2f(setRandomPosX(), setRandomPosY()));
 
     /// Texture to Sprite
     sprite.setTexture(texture);

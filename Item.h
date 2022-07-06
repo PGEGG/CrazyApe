@@ -2,6 +2,12 @@
 #include <SFML/Graphics.hpp>
 #include <random>
 
+//Randomizer
+#define RANDOM std::random_device rdi; \
+    std::mt19937 geni(rdi()); \
+    std::uniform_real_distribution<> distX2(1,550); \
+    std::uniform_real_distribution<> distY2(1,380);
+    
 class Item
 {
 protected:
@@ -16,11 +22,13 @@ protected:
     int speed = 100;
     float scaleWidth = 0.1;
     float scaleHeight = 0.1;
-
+    
 public: 
     Item();
     virtual ~Item()=0;
-    
+    //Random Values
+    float setRandomPosX();
+    float setRandomPosY();
     /// declare sprite
     sf::Sprite sprite;
     float itemWidth = 20.f;

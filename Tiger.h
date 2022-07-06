@@ -11,7 +11,7 @@ private:
 public:
     
     Tiger();
-    Tiger(float x, float y);
+    //Tiger(float x, float y);
     ~Tiger();
     //changes
     const sf::Sprite Object;

@@ -8,7 +8,7 @@ class Tree: public Item
 
 public:
     Tree();
-    Tree(float x, float y);
+    //Tree(float x, float y);
 
     void treeCollision(Player *player, Tree *tree);
 
