@@ -198,28 +198,36 @@ void Gui::checkWindow(){
  * 
  */
 void Gui::checkCollision(){
-    if ( Collision::PixelPerfectTest(myPlayer->sprite, myTiger->sprite ) )
+    if ( Collision::PixelPerfectTest(myPlayer->sprite, myTiger->sprite )&&
+    (!Collision::PixelPerfectTest(myPlayer->sprite, spriteHome )) )
     {
         std::cout << "Collision Tiger!" << std::endl;
         myPlayer->set_Lives(myPlayer->get_Lives()-5);
+        myPlayer->sprite.setPosition(70.f, 350.f);
         //delete(myPlayer);
-    }else if (Collision::PixelPerfectTest(myPlayer->sprite, myScorpion->sprite ) ||
+    }else if ((Collision::PixelPerfectTest(myPlayer->sprite, myScorpion->sprite ) ||
                 Collision::PixelPerfectTest(myPlayer->sprite, myScorpion2->sprite ) ||
-                Collision::PixelPerfectTest(myPlayer->sprite, myScorpion3->sprite ))
+                Collision::PixelPerfectTest(myPlayer->sprite, myScorpion3->sprite ))&&
+                (!Collision::PixelPerfectTest(myPlayer->sprite, spriteHome )))
     {
         std::cout << "Collision Scorpion!" << std::endl;
         myPlayer->set_Lives(myPlayer->get_Lives()-1);
-    }else if (Collision::PixelPerfectTest(myPlayer->sprite, myCoconut->sprite ) ||
+        myPlayer->sprite.setPosition(70.f, 350.f);
+    }else if ((Collision::PixelPerfectTest(myPlayer->sprite, myCoconut->sprite ) ||
                 Collision::PixelPerfectTest(myPlayer->sprite, myCoconut2->sprite ) ||
                 Collision::PixelPerfectTest(myPlayer->sprite, myCoconut3->sprite ) ||
-                Collision::PixelPerfectTest(myPlayer->sprite, myCoconut4->sprite ))
+                Collision::PixelPerfectTest(myPlayer->sprite, myCoconut4->sprite ))&&
+                (!Collision::PixelPerfectTest(myPlayer->sprite, spriteHome )))
     {
         std::cout << "Collision Coconut!" << std::endl;
         myPlayer->set_Lives(myPlayer->get_Lives()-1);
-    }else if (Collision::PixelPerfectTest(myPlayer->sprite, myCoconut5->sprite ))
+        myPlayer->sprite.setPosition(70.f, 350.f);
+    }else if ((Collision::PixelPerfectTest(myPlayer->sprite, myCoconut5->sprite ))&&
+    (!Collision::PixelPerfectTest(myPlayer->sprite, spriteHome )))
     {
         std::cout << "Collision Red Coconut!" << std::endl;
         myPlayer->set_Lives(myPlayer->get_Lives()-3);
+        myPlayer->sprite.setPosition(70.f, 350.f);
     }else if (Collision::PixelPerfectTest(myPlayer->sprite, myHeart->sprite ))
     {
         std::cout << "Collision Heard!" << std::endl;
