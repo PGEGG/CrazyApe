@@ -8,7 +8,12 @@
 #include "Tree.h"
 #include "Player.h"
 #include "Collision.h"
-
+//Randomizer
+#define RANDOM std::random_device rdi; \
+    std::mt19937 geni(rdi()); \
+    std::uniform_real_distribution<> distX2(1,550); \
+    std::uniform_real_distribution<> distY2(1,380);
+    
 class Gui
 {
 private:
@@ -26,15 +31,15 @@ private:
     Player *myPlayer = new Player(70.f, 350.f);
 
     /// create Tiger (Endboss)
-    Tiger *myTiger = new Tiger(300.f, 200.f);
+    Tiger *myTiger = new Tiger();
 
     /// create Scorpion
-    Scorpion *myScorpion = new Scorpion(300.f, 100.f);
-    Scorpion *myScorpion2 = new Scorpion(80.f, 80.f);
-    Scorpion *myScorpion3= new Scorpion(150.f, 200.f);
+    Scorpion *myScorpion = new Scorpion();
+    Scorpion *myScorpion2 = new Scorpion();
+    Scorpion *myScorpion3= new Scorpion();
 
     /// create Heart
-    Heart *myHeart = new Heart(100.f, 200.f);
+    Heart *myHeart = new Heart();
 
 
     /// create Coconut
@@ -45,12 +50,12 @@ private:
     Coconut *myCoconut5 = new Coconut(-1200.f,50.f, 0);
 
     /// create Bananatree
-    Tree *myTree = new Tree(100.f, 200.f);
-    Tree *myTree2 = new Tree(150.f, 150.f);
-    Tree *myTree3 = new Tree(200.f, 230.f);
+    Tree *myTree = new Tree();
+    Tree *myTree2 = new Tree();
+    Tree *myTree3 = new Tree();
 
     /// create Banana
-    Banana *myBanana = new Banana(200.f, 250.f);
+    Banana *myBanana = new Banana();
 
     /// create Home
     sf::Image imageHome;

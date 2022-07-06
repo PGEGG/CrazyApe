@@ -5,17 +5,17 @@
  * @brief Construct a new Tiger:: Tiger object
  * 
  */
-Tiger::Tiger()
+/*Tiger::Tiger()
 {
 }
-
+*/
 /**
  * @brief Construct a new Tiger:: Tiger object
  * 
  * @param x float x value of Tiger
  * @param y float y value of Tiger
  */
-Tiger::Tiger(float x, float y)
+Tiger::Tiger()
 {
     /// load immage and print warning if it couldn`t load
     if (!image.loadFromFile("images\\TIGER.png"));
@@ -36,7 +36,7 @@ Tiger::Tiger(float x, float y)
     sprite.setScale(sf::Vector2f(scaleWidth, scaleHeight));
  
     /// declarate Sprite
-    sprite.setPosition(x, y);
+    sprite.setPosition(sf::Vector2f(setRandomPosX(), setRandomPosY()));
 
     /// Texture to Sprite
     sprite.setTexture(texture);

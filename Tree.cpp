@@ -1,17 +1,14 @@
 #include "Tree.h"
 #include <iostream>
 
-Tree::Tree()
-{
 
-}
 
 
 Tree::~Tree()
 {
 
 }
-Tree::Tree(float x, float y)
+Tree::Tree()
 {
     
     if (!(image.loadFromFile("images\\BANANATREE.png")));
@@ -28,7 +25,7 @@ Tree::Tree(float x, float y)
     texture.loadFromImage(image);
 
     // declarate Sprite
-    sprite.setPosition(x, y);
+    sprite.setPosition(sf::Vector2f(setRandomPosX(), setRandomPosY()));
 
     // Texture to Sprite
     sprite.setTexture(texture);

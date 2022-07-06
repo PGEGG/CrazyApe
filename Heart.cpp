@@ -5,10 +5,6 @@
  * @brief Construct a new Heart:: Heart object
  * default constructor
  */
-Heart::Heart()
-{
-
-}
 
 /**
  * @brief Construct a new Heart:: Heart object
@@ -16,7 +12,7 @@ Heart::Heart()
  * @param x float x position of heart
  * @param y float y position of heart
  */
-Heart::Heart(float x, float y)
+Heart::Heart()
 {
     /// if file couldn`t load
     if (!image.loadFromFile("images\\HEART.png"));
@@ -32,7 +28,7 @@ Heart::Heart(float x, float y)
     /// declarate Sprite
     sprite.setScale(sf::Vector2f(scaleWidth, scaleHeight));
     sprite.setTexture(texture);
-    sprite.setPosition(x, y);
+    sprite.setPosition(sf::Vector2f(setRandomPosX(), setRandomPosY())); 
 
     /// Texture to Sprite
     sprite.setTexture(texture);
