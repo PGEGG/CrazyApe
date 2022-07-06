@@ -36,29 +36,14 @@ Tree::Tree(float x, float y)
  
 }
 
+/**
+ * @brief This Function blocks the tree on the Gamefield for the player
+ * 
+ * @param player 
+ * @param tree 
+ */
 void Tree::treeCollision(Player *player, Tree *tree)
 {
-    /*if (myPlayer->sprite.getPosition().x <= myTree->sprite.getPosition().x ||
-                myPlayer->sprite.getPosition().x <= myTree2->sprite.getPosition().x ||
-                myPlayer->sprite.getPosition().x <= myTree3->sprite.getPosition().x)
-        {
-            myPlayer->sprite.setPosition(myPlayer->sprite.getPosition().x -5.f, myPlayer->sprite.getPosition().y);
-        }else if (myPlayer->sprite.getPosition().x >= myTree->sprite.getPosition().x ||
-                    myPlayer->sprite.getPosition().x >= myTree2->sprite.getPosition().x ||
-                    myPlayer->sprite.getPosition().x >= myTree3->sprite.getPosition().x)
-        {
-            myPlayer->sprite.setPosition(myPlayer->sprite.getPosition().x +5.f, myPlayer->sprite.getPosition().y);
-        }else if (myPlayer->sprite.getPosition().y >= myTree->sprite.getPosition().y ||
-                    myPlayer->sprite.getPosition().y >= myTree2->sprite.getPosition().y ||
-                    myPlayer->sprite.getPosition().y >= myTree3->sprite.getPosition().y)
-        {
-            myPlayer->sprite.setPosition(myPlayer->sprite.getPosition().x, myPlayer->sprite.getPosition().y -5.f);
-        }else if (myPlayer->sprite.getPosition().y <= myTree->sprite.getPosition().y ||
-                    myPlayer->sprite.getPosition().y <= myTree2->sprite.getPosition().y ||
-                    myPlayer->sprite.getPosition().y <= myTree3->sprite.getPosition().y)
-        {
-            myPlayer->sprite.setPosition(myPlayer->sprite.getPosition().x, myPlayer->sprite.getPosition().y +5.f);
-        }*/
         if (player->sprite.getPosition().x <= tree->sprite.getPosition().x)
         {
             player->sprite.setPosition(player->sprite.getPosition().x -5.f, player->sprite.getPosition().y);
