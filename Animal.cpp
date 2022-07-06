@@ -40,16 +40,16 @@ void Animal::move(){
     
     if (randomValue == 1)
     {
-        x = -5.f;
+        x = -10.f;
     }else if (randomValue == 2)
     {
-        x = +5.f;
+        x = +10.f;
     }else if (randomValue == 3)
     {
-        y = -5.f;
+        y = -10.f;
     }else if (randomValue == 4)
     {
-        y = +5.f;
+        y = +10.f;
     }else{
         this->move();
     }

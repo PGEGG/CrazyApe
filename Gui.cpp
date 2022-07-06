@@ -245,7 +245,9 @@ void Gui::checkCollision(){
                 Collision::PixelPerfectTest(myPlayer->sprite, myTree3->sprite ))
     {
         std::cout << "Collision Tree!" << std::endl;
-        myPlayer->sprite.setPosition(myPlayer->sprite.getPosition().x, myPlayer->sprite.getPosition().y);
+        myTree->treeCollision(myPlayer, myTree);
+        myTree2->treeCollision(myPlayer, myTree2);
+        myTree3->treeCollision(myPlayer, myTree3);
     }else if (Collision::PixelPerfectTest(myPlayer->sprite, spriteHome ))
     {
         std::cout << "Collision Home!" << std::endl;
