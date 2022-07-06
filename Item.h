@@ -6,7 +6,7 @@
 #define RANDOM std::random_device rdi; \
     std::mt19937 geni(rdi()); \
     std::uniform_real_distribution<> distX2(1,550); \
-    std::uniform_real_distribution<> distY2(1,380);
+    std::uniform_real_distribution<> distY2(1,360);
     
 class Item
 {
