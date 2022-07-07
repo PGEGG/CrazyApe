@@ -11,6 +11,7 @@ private:
     int lives = 5;
     int collected_banana = 0;
     
+    bool checkDeath();
 
 public:
     Player();
@@ -22,9 +23,7 @@ public:
     int get_Lives();
     void set_Lives(int live);
     bool checkWon();
-    bool checkDeath();
-
-        
+  
 };
 
 #endif

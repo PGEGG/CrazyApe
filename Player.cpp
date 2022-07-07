@@ -123,7 +123,7 @@ bool Player::checkDeath(){
         return true;
     }else
     {
-        std::cout << "You have " << this->get_Lives() << "lives left." << std::endl;
+        std::cout << "You have " << this->get_Lives() << " lives left." << std::endl;
     }
     
     return false;
