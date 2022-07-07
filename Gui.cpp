@@ -198,7 +198,6 @@ void Gui::checkWindow(){
  * 
  */
 void Gui::checkCollision(){
-    RANDOM;
     if ( Collision::PixelPerfectTest(myPlayer->sprite, myTiger->sprite )&&
     (!Collision::PixelPerfectTest(myPlayer->sprite, spriteHome )) )
     {

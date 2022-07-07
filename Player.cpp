@@ -107,23 +107,6 @@ int Player::get_Lives()
  */
 void Player::set_Lives(int live)
 {
-    /*if (lives == 5 && live > 0)
-    {
-        std::cout << "Live is still 5!" << std::endl;
-        lives = 5;
-    }else if (lives >= 0 && lives <= 5)
-    {
-        lives += live;
-        std::cout << "Live is changed to: " << lives << std::endl;
-    }else if (lives <= 0)
-    {
-        std::cout << "You are dead!" << std::endl;
-        lives = 0;
-    }else
-    {
-        std::cout << "No Live changes!" << std::endl;
-    }*/
-    
     lives = live;
     std::cout << lives << std::endl;
 }
