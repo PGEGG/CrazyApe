@@ -8,6 +8,7 @@
 #include "Tree.h"
 #include "Player.h"
 #include "Collision.h"
+#include <fstream>
 
 class Gui
 {

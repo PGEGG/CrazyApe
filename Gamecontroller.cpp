@@ -43,6 +43,8 @@ void Gamecontroller::startGame(){
      */
     Gui *myGui = new Gui;
     
+    //myGui->openManpage();
+    
     ///call checkWindow() to initialise Jungle, Home an Manpage
     myGui->checkWindow();
 

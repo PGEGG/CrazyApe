@@ -379,30 +379,27 @@ void Gui::createJungle()
 }// end createJungle
 
 /**
- * @brief to do button manpage
+ * @brief opens and reads txt-file "manpage"
  * 
  */
 void Gui::openManpage()
 {   
     
-    if (!font_comic.loadFromFile("fonts\\comic.ttf"))
-    {
-        std::cerr << "Unable to load Font!" << std::endl;
-    }
-    /*
-    FILE* manpage = nullptr;
-    if (fopen(manpage, "files\\manpage.txt"))
-    {
-        std::cerr << "Unable to load manpage!" << std::endl;
-    }
+    std::ifstream manpage;
+    std::string gelesen;
 
-    while (std::getline(manpage, txt_line))
+    manpage.open("files\\manpage.txt");
+    if (!manpage.fail())
     {
-        txt_line += "\n";
+        while (std::getline(manpage, gelesen))
+        {
+            std::cout << gelesen << std::endl;
+        }
+    }else
+    {
+        std::cout << "Could not load manpage!" << std::endl;
     }
-    */
-    txt_manpage.setString("Test");
-    txt_manpage.setCharacterSize(12);
-    txt_manpage.setFont(font_comic);
-    this->window->draw(txt_manpage);
+    
+    manpage.close();
+
 }// end openManpage
