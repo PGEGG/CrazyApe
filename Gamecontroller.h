@@ -18,14 +18,12 @@ class Gamecontroller
 private:
     int runtime = 0;
 
-    int randomNumber(int size);
 public:
     Gamecontroller();
     ~Gamecontroller();
 
     void startGame();
-    bool checkWon();
-    bool checkDeath();
+
 };
 
 #endif

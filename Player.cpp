@@ -59,25 +59,6 @@ int Player::getBanana()
     return collected_banana;
 }
 
-bool Player::move_detected(){
-    return false;
-}
-
-bool Player::move_check()
-{
-    return false;
-}
-
-void Player::move()
-{
-
-}
-
-void Player::check_new_cmd()
-{
-
-}
-
 /**
  * @brief this function increase banana if Player has collected one
  * 
@@ -109,4 +90,40 @@ void Player::set_Lives(int live)
 {
     lives = live;
     std::cout << lives << std::endl;
+}
+
+/**
+ * @brief This function checks if the player has enough (3) bananas collected
+ * 
+ * @return true - when player has enough collected banana
+ * @return false - when player has to collect more banana
+ */
+bool Player::checkWon(){
+    if (this->getBanana() >= 3 && this->lives >= 0)
+    {
+        std::cout << "You have won!" << std::endl;
+        return true;
+    }else{
+        std::cout << "You need " << 3 - this->getBanana() << " more banana to win the game!" << std::endl;
+    }
+    return false;
+}
+
+/**
+ * @brief This function checks if the player has more live than 0
+ * 
+ * @return true - if the player has lost all its lieves
+ * @return false - if the player has enough live to play
+ */
+bool Player::checkDeath(){
+    
+    if (this->get_Lives() <= 0) {
+        std::cout << "Your Dead, try again!" << std::endl;
+        return true;
+    }else
+    {
+        std::cout << "You have " << this->get_Lives() << "lives left." << std::endl;
+    }
+    
+    return false;
 }

@@ -8,7 +8,7 @@
 #include "Tree.h"
 #include "Player.h"
 #include "Collision.h"
-    
+
 class Gui
 {
 private:
@@ -23,7 +23,7 @@ private:
     sf::Text txt_manpage;
 
     /// create Ape (Player)
-    Player *myPlayer = new Player(70.f, 350.f);
+    Player *myPlayer = new Player(STARTPOSX, 350.f);
 
     /// create Tiger (Endboss)
     Tiger *myTiger = new Tiger();

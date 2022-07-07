@@ -3,6 +3,8 @@
 #include <SFML/Graphics.hpp>
 #include "Item.h"
 
+#define STARTPOSX 50.f
+
 class Player: public Item
 {
 private:
@@ -16,15 +18,11 @@ public:
     ~Player();
 
     int getBanana();
-    bool move_detected();
-    bool move_check();
-    void move();
-    void check_new_cmd();
     void addBanana();
     int get_Lives();
     void set_Lives(int live);
-    //changes
-    const sf::Sprite Object;
+    bool checkWon();
+    bool checkDeath();
 
         
 };

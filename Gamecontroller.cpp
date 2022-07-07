@@ -47,32 +47,3 @@ void Gamecontroller::startGame(){
     myGui->checkWindow();
 
 }
-
-bool Gamecontroller::checkWon(){
-    /*
-    if(myPlayer->get_banana==3) {
-
-        return true;
-    }
-    */
-    return false;
-}
-
-bool Gamecontroller::checkDeath(){
-    /*
-    if (myPlayer->get_Lives==0) {
-        return true;
-    }
-    //or proofe if he touch the tiger
-    */
-    return false;
-}
-
-// get a random number
-int Gamecontroller::randomNumber(int size){
-    /* initialize random seed: */
-     srand (time(NULL));
-
-    /* generate secret number between 1 and 10: */
-    return (rand() % size + 1);
-}
