@@ -104,6 +104,7 @@ bool Player::checkWon(){
         std::cout << "You have won!" << std::endl;
         return true;
     }else{
+        this->checkDeath();
         std::cout << "You need " << 3 - this->getBanana() << " more banana to win the game!" << std::endl;
     }
     return false;

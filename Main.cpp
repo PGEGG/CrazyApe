@@ -6,7 +6,7 @@
 
 int main(int argc, char* argv[]){
 
-    std::cout << "Starting CrazyApe ...\n" << std::endl;
+    std::cout << "Starting CrazyApe.exe ..." << std::endl;
 
     /// closing the CMD window
     /// FreeConsole();
@@ -23,6 +23,8 @@ int main(int argc, char* argv[]){
      * 
      */
     delete(myGc);
+
+    std::cout << "Ending CrazyApe.exe ..." << std::endl;
 
     return EXIT_SUCCESS;
 
