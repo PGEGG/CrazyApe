@@ -88,7 +88,14 @@ int Player::get_Lives()
  */
 void Player::set_Lives(int live)
 {
-    lives = live;
+    if (live > 5)
+    {
+        lives = 5;
+    }else
+    {
+        lives = live;
+    }
+    
     std::cout << lives << std::endl;
 }
 
@@ -99,9 +106,11 @@ void Player::set_Lives(int live)
  * @return false - when player has to collect more banana
  */
 bool Player::checkWon(){
-    if (this->getBanana() >= 3 && this->lives >= 0)
+    if (this->getBanana() >= 3 && this->lives > 0)
     {
         std::cout << "You have won!" << std::endl;
+        this->sprite.setColor(sf::Color(0, 204, 0));    /// RGB colors player green
+        this->sprite.setPosition(STARTPOSX, STARTPOSY);
         return true;
     }else{
         this->checkDeath();
@@ -120,6 +129,8 @@ bool Player::checkDeath(){
     
     if (this->get_Lives() <= 0) {
         std::cout << "Your Dead, try again!" << std::endl;
+        this->sprite.setColor(sf::Color(255, 51, 51));  /// RGB colors player red
+        this->sprite.setPosition(STARTPOSX, STARTPOSY);
         return true;
     }else
     {
