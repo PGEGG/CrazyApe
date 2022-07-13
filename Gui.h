@@ -8,6 +8,7 @@
 #include "Tree.h"
 #include "Player.h"
 #include "Collision.h"
+#include "Menu.h"
 #include <fstream>
 
 class Gui
@@ -63,6 +64,9 @@ private:
     sf::Image imageJungle;
     sf::Texture textureJungle;
     sf::RectangleShape shapeJungle;
+
+    /// create Object Menu
+    Menu *myMenu = new Menu();
 
     void initVariables();
     void initWindow();

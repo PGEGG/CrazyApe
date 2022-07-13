@@ -42,8 +42,8 @@ void Gui::initWindow()
         std::cerr << "Can`t load image_icon!" << std::endl;
     }
     
-    this->videoMode.height = 400;
-    this->videoMode.width = 600;
+    this->videoMode.height = 622;
+    this->videoMode.width = 1024;
     this->window = new sf::RenderWindow(this->videoMode, "CrazyApe.exe");
     this->window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 }
@@ -57,6 +57,7 @@ void Gui::update()
     this->pollEvents();
     this->moveObjects();
     this->checkMyBorders();
+    myMenu->updateBananaHeart(myPlayer);
 }
 
 /**
@@ -105,7 +106,7 @@ void Gui::pollEvents()
             }
 
             /// moves the Ape (player) with "wasd" or "arrow keys"
-            else if (this->event.type == sf::Event::KeyPressed)
+            else if (this->event.type == sf::Event::KeyPressed && (!myMenu->getInfo()) && (!myMenu->getPause()))
             {    
                 /// Left
                 if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Left ) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::A ) )
@@ -131,6 +132,23 @@ void Gui::pollEvents()
                     myPlayer->sprite.move( 0, 5.f );
                 }
             }
+            else if (this->event.type == sf::Event::MouseButtonPressed) {
+                sf::Vector2i mousePos = sf::Mouse::getPosition(*window);
+                sf::Vector2f mousePosF(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
+
+                /// if button play/pause button is clicked
+                if (myMenu->playButtonImage.getGlobalBounds().contains(mousePosF))
+                {
+                    myMenu->pauseclicked();
+                }
+
+                /// if button info is clicked
+                if (myMenu->infoButtonImage.getGlobalBounds().contains(mousePosF))
+                {
+                    myMenu->infoclicked();
+                }
+            }
+
         }
 }
 
@@ -186,9 +204,22 @@ void Gui::checkWindow(){
 
     while (this->running())
     {
+        myMenu->checkInfoButton();
+        //myMenu->drawMenu(this->window);
         this->update();
-        this->render();
-        this->checkCollision();
+        //myMenu->checkButtonEvents();
+        if ( myMenu->getInfo() || myMenu->getPause() ) {
+            /// bleibt hier und hält das Spiel an, solange info oder pause gedrückt sind
+
+        } 
+        else {
+            /// hier steht der normale Programmcode. Dieser wird unterbrochen und das Spiel angehalten, sofern pause oder info gedrückt ist
+            //std::cout <<"Durchlauf" << std::endl;
+            
+            this->render();
+            this->checkCollision();
+
+        }
     }
 }
 
@@ -300,6 +331,21 @@ void Gui::render()
     this->window->draw(myTree2->sprite);
     this->window->draw(myTree3->sprite);
     this->window->draw(myBanana->sprite);
+
+    window->draw(myMenu->menuImage);
+    window->draw(myMenu->heartImage);
+    window->draw(myMenu->playButtonImage);
+    window->draw(myMenu->infoButtonImage);
+    window->draw(myMenu->bananaText);
+    window->draw(myMenu->amountBananaText);
+    window->draw(myMenu->livesText);
+    window->draw(myMenu->amountlivesText);
+    window->draw(myMenu->wonGamesText);
+    window->draw(myMenu->amountwonGamesText);
+    window->draw(myMenu->bananaImage);
+    window->draw(myMenu->infowindowImage);
+    window->draw(myMenu->infoText);
+
     this->window->display();
 }
 

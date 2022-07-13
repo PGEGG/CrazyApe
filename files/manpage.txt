@@ -1,2 +1,12 @@
-Crazy Ape
-------------------------------
+CrazyApe.exe
+-------------------------------------------------------------
+Ziel des Spiels ist es nacheinander durch bewegen des Affen,
+alle 3 Bananen einzusammeln und zum Haus zu bringen,
+wobei die Bäume ein Hindernis darstellen.
+Dabei hat der Affe 3 Leben.
+Durch einsammeln von herzen können weitere Leben
+dazu gewonnen werden.
+Beim berühren eines Skorpions oder einer braunen Kokusnus
+wird ein Leben abgezogen, bei einer roten Kokosnus 3 leben
+und beim berühren des Tigers stirbt der Affe
+und das Spiel startet von Vorne
