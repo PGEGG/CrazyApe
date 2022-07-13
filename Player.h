@@ -4,7 +4,7 @@
 #include "Item.h"
 
 #define STARTPOSX 50.f
-#define STARTPOSY 350.f
+#define STARTPOSY 572.f
 
 class Player: public Item
 {

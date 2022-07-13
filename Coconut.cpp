@@ -4,7 +4,7 @@
 std::random_device rd;
 std::mt19937 gen(rd());
 std::uniform_real_distribution<> distX(-1,-900);
-std::uniform_real_distribution<> distY(1,380);
+std::uniform_real_distribution<> distY(1,580);
 
 /**
  * @brief Construct a new Coconut:: Coconut object

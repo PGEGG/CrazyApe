@@ -25,7 +25,7 @@ private:
     sf::Text txt_manpage;
 
     /// create Ape (Player)
-    Player *myPlayer = new Player(STARTPOSX, 350.f);
+    Player *myPlayer = new Player(STARTPOSX, STARTPOSY);
 
     /// create Tiger (Endboss)
     Tiger *myTiger = new Tiger();
