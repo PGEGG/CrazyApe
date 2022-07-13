@@ -170,8 +170,8 @@ void Gui::checkObjBorder(Item *object)
     } 
 
     ///Top
-    else if (object->sprite.getPosition().y <= 0.f){
-        object->sprite.setPosition(object->sprite.getPosition().x, 5.f);
+    else if (object->sprite.getPosition().y <= myMenu->menu.getSize().y - 30 ){
+        object->sprite.setPosition(object->sprite.getPosition().x, myMenu->menu.getSize().y - 30);
     } 
 
     ///Bottom

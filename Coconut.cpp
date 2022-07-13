@@ -4,7 +4,7 @@
 std::random_device rd;
 std::mt19937 gen(rd());
 std::uniform_real_distribution<> distX(-1,-900);
-std::uniform_real_distribution<> distY(1,580);
+std::uniform_real_distribution<> distY(50,580);
 
 /**
  * @brief Construct a new Coconut:: Coconut object
@@ -71,7 +71,7 @@ void Coconut::flyCoconut(){
         sprite.move(sf::Vector2f(speed*direction*timePerFrame.asSeconds(), 0));
         framecounter -= timePerFrame;
     }
-     if(sprite.getPosition().x >= 600.f){
+     if(sprite.getPosition().x >= 1024.f){
         sprite.setPosition(sf::Vector2f(distX(gen), distY(gen)));
     }
 }
