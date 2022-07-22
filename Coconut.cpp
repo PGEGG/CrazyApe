@@ -69,9 +69,7 @@ Coconut::Coconut(float x, float y, int i)
 void Coconut::flyCoconut(bool gamebreak){
     
     if (gamebreak) {
-        while(framecounter >= timePerFrame){
-            framecounter -= timePerFrame;
-        }
+        clock.restart();
     }
     
     while(framecounter >= timePerFrame){

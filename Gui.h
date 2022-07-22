@@ -50,6 +50,8 @@ private:
     Tree *myTree = new Tree();
     Tree *myTree2 = new Tree();
     Tree *myTree3 = new Tree();
+    Tree *myTree4 = new Tree();
+    Tree *myTree5 = new Tree();
 
     /// create Banana
     Banana *myBanana = new Banana();

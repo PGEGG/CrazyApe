@@ -210,13 +210,8 @@ void Gui::checkWindow(){
         //myMenu->checkButtonEvents();
         if ( myMenu->getInfo() || myMenu->getPause() ) {
             gamebreak=true;
-            if (count==0) {
-                //myCoconut5->framecounterold = myCoconut5->framecounter;
-            }
-            count=3;
             /// bleibt hier und hält das Spiel an, solange info oder pause gedrückt sind
-            //myCoconut5->framecounter = myCoconut5->framecounterold;
-            //myPlayer->timePerFrame = sf::seconds(0.f/0.f);
+            
             
         } 
         else {
@@ -226,7 +221,6 @@ void Gui::checkWindow(){
             this->resetClock();
             this->checkCollision();
             //myCoconut5->framecounterold = myCoconut5->framecounter;
-            count=0;
             gamebreak=false;
             //myPlayer->timePerFrame = sf::seconds(1.f/5.f);
             
@@ -341,6 +335,8 @@ void Gui::render()
     this->window->draw(myTree->sprite);
     this->window->draw(myTree2->sprite);
     this->window->draw(myTree3->sprite);
+    this->window->draw(myTree4->sprite);
+    this->window->draw(myTree5->sprite);
     this->window->draw(myBanana->sprite);
 
     this->window->draw(myMenu->menuImage);

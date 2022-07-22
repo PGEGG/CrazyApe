@@ -25,8 +25,10 @@ Tree::Tree()
     texture.loadFromImage(image);
 
     // declarate Sprite
-    sprite.setPosition(sf::Vector2f(setRandomPosX(), setRandomPosY()));
-
+    
+    do{
+        sprite.setPosition(sf::Vector2f(setRandomPosX(), setRandomPosY()));
+    }while((sprite.getPosition().x < 100.f) &&(sprite.getPosition().y > 450.f));
     // Texture to Sprite
     sprite.setTexture(texture);
     sprite.setScale(sf::Vector2f(scaleWidth, scaleHeight));

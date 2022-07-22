@@ -29,7 +29,9 @@ Scorpion::Scorpion() {
 
     /// declarate Sprite
     sprite.setScale(sf::Vector2f(scaleWidth, scaleHeight));
-    sprite.setPosition(sf::Vector2f(setRandomPosX(), setRandomPosY()));
+    do{
+        sprite.setPosition(sf::Vector2f(setRandomPosX(), setRandomPosY()));
+    }while((sprite.getPosition().x < 100.f) &&(sprite.getPosition().y > 450.f));
 
     /// Texture to Sprite
     sprite.setTexture(texture);

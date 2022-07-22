@@ -8,7 +8,7 @@ class Animal: public Item
 {
 protected:
     int getDirection();
-
+    
 public:
     Animal();
     virtual ~Animal() = 0;
