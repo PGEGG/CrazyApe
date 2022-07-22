@@ -78,10 +78,6 @@ public:
     void render();
     void pollEvents();
     void checkWindow();
-    void info_button();
-    void start_button();
-    void stop_button();
-    void reset_button();
     void moveObjects();
     void resetClock();
     void checkObjBorder(Item *object);

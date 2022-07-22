@@ -332,43 +332,23 @@ void Gui::render()
     this->window->draw(myTree3->sprite);
     this->window->draw(myBanana->sprite);
 
-    window->draw(myMenu->menuImage);
-    window->draw(myMenu->heartImage);
-    window->draw(myMenu->playButtonImage);
-    window->draw(myMenu->infoButtonImage);
-    window->draw(myMenu->bananaText);
-    window->draw(myMenu->amountBananaText);
-    window->draw(myMenu->livesText);
-    window->draw(myMenu->amountlivesText);
-    window->draw(myMenu->wonGamesText);
-    window->draw(myMenu->amountwonGamesText);
-    window->draw(myMenu->bananaImage);
-    window->draw(myMenu->infowindowImage);
-    window->draw(myMenu->infoText);
+    this->window->draw(myMenu->menuImage);
+    this->window->draw(myMenu->heartImage);
+    this->window->draw(myMenu->playButtonImage);
+    this->window->draw(myMenu->infoButtonImage);
+    this->window->draw(myMenu->bananaText);
+    this->window->draw(myMenu->amountBananaText);
+    this->window->draw(myMenu->livesText);
+    this->window->draw(myMenu->amountlivesText);
+    this->window->draw(myMenu->wonGamesText);
+    this->window->draw(myMenu->amountwonGamesText);
+    this->window->draw(myMenu->bananaImage);
+    this->window->draw(myMenu->infowindowImage);
+    this->window->draw(myMenu->infoText);
 
     this->window->display();
 }
 
-
-void Gui::info_button()
-{
-
-}
-
-void Gui::start_button()
-{
-
-}
-
-void Gui::stop_button()
-{
-
-}
-
-void Gui::reset_button()
-{
-
-}
 
 /**
  * @brief this function initialise objet home
