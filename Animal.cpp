@@ -33,7 +33,7 @@ int Animal::getDirection(){
  * calls the function getDirection then gets an int value that tells in which direction the animal sould move
  * 
  */
-void Animal::move(){
+void Animal::move(bool gamebreak){
     float x = 0.0;
     float y = 0.0;
     int randomValue = getDirection();
@@ -51,9 +51,11 @@ void Animal::move(){
     {
         y = +10.f;
     }else{
-        this->move();
+        this->move(gamebreak);
     }
-    
+    if (gamebreak) {
+        framecounter=(timePerFrame-timePerFrame);
+    }
     while(framecounter >= timePerFrame){
         this->sprite.move(sf::Vector2f(x,y));
         framecounter -= timePerFrame;

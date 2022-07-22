@@ -66,7 +66,12 @@ Coconut::Coconut(float x, float y, int i)
  * @brief this function let the coconuts fly
  * 
  */
-void Coconut::flyCoconut(){
+void Coconut::flyCoconut(bool gamebreak){
+    
+    if (gamebreak) {
+        framecounter=(timePerFrame-timePerFrame);
+    }
+    
     while(framecounter >= timePerFrame){
         sprite.move(sf::Vector2f(speed*direction*timePerFrame.asSeconds(), 0));
         framecounter -= timePerFrame;

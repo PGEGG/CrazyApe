@@ -34,3 +34,5 @@ float Item::setRandomPosY(){
     RANDOM;
     return distY2(geni);
 }
+
+

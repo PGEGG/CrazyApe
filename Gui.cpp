@@ -54,7 +54,7 @@ void Gui::initWindow()
  */
 void Gui::update()
 {
-    this->pollEvents();
+    //this->pollEvents();
     this->moveObjects();
     this->checkMyBorders();
     myMenu->updateBananaHeart(myPlayer);
@@ -79,15 +79,15 @@ void Gui::checkMyBorders(){
  * moves Tiger
  */
 void Gui::moveObjects(){
-    this->myCoconut->flyCoconut();
-    this->myCoconut2->flyCoconut();
-    this->myCoconut3->flyCoconut();
-    this->myCoconut4->flyCoconut();
-    this->myCoconut5->flyCoconut();
-    this->myScorpion->move();
-    this->myScorpion2->move();
-    this->myScorpion3->move();
-    this->myTiger->move();
+    this->myCoconut->flyCoconut(gamebreak);
+    this->myCoconut2->flyCoconut(gamebreak);
+    this->myCoconut3->flyCoconut(gamebreak);
+    this->myCoconut4->flyCoconut(gamebreak);
+    this->myCoconut5->flyCoconut(gamebreak);
+    this->myScorpion->move(gamebreak);
+    this->myScorpion2->move(gamebreak);
+    this->myScorpion3->move(gamebreak);
+    this->myTiger->move(gamebreak);
 }
 
 /**
@@ -205,19 +205,31 @@ void Gui::checkWindow(){
     while (this->running())
     {
         myMenu->checkInfoButton();
-        this->update();
+        //this->update();
+        this->pollEvents();
         //myMenu->checkButtonEvents();
         if ( myMenu->getInfo() || myMenu->getPause() ) {
+            gamebreak=true;
+            if (count==0) {
+                //myCoconut5->framecounterold = myCoconut5->framecounter;
+            }
+            count=3;
             /// bleibt hier und hält das Spiel an, solange info oder pause gedrückt sind
-
+            //myCoconut5->framecounter = myCoconut5->framecounterold;
+            //myPlayer->timePerFrame = sf::seconds(0.f/0.f);
+            
         } 
         else {
             /// hier steht der normale Programmcode. Dieser wird unterbrochen und das Spiel angehalten, sofern pause oder info gedrückt ist
             //std::cout <<"Durchlauf" << std::endl;
-            
+            this->update();
             this->resetClock();
             this->checkCollision();
-
+            //myCoconut5->framecounterold = myCoconut5->framecounter;
+            count=0;
+            gamebreak=false;
+            //myPlayer->timePerFrame = sf::seconds(1.f/5.f);
+            
         }
         this->render();
     }

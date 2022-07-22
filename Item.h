@@ -18,7 +18,6 @@ protected:
     sf::Image image;
     sf::Texture texture;
 
-    sf::Time timePerFrame = sf::seconds(1.f/60.f);
     int speed = 100;
     float scaleWidth = 0.1;
     float scaleHeight = 0.1;
@@ -29,11 +28,14 @@ public:
     //Random Values
     float setRandomPosX();
     float setRandomPosY();
+    
     /// declare sprite
     sf::Sprite sprite;
     float itemWidth = 20.f;
     float itemHeight = 20.f;
 
     sf::Clock clock; 
-    sf::Time framecounter = sf::Time::Zero; 
+    sf::Time framecounter = sf::Time::Zero;
+    sf::Time framecounterold = sf::Time::Zero; 
+    sf::Time timePerFrame = sf::seconds(1.f/60.f);
 };

@@ -12,7 +12,7 @@ protected:
 public:
     Animal();
     virtual ~Animal() = 0;
-    virtual void move();
+    virtual void move(bool gamebreak);
 };
 
 

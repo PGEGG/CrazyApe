@@ -9,7 +9,7 @@ public:
     Coconut();
     Coconut(float x, float y, int i);
     ~Coconut();
-    void flyCoconut();
+    void flyCoconut(bool gamebreak);
 
 
 };

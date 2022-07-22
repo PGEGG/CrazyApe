@@ -68,10 +68,13 @@ private:
     /// create Object Menu
     Menu *myMenu = new Menu();
 
+    int count=0;
+
     void initVariables();
     void initWindow();
     
 public:
+    bool gamebreak=false;
     Gui();
     const bool running();
     void update();
