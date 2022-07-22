@@ -205,7 +205,6 @@ void Gui::checkWindow(){
     while (this->running())
     {
         myMenu->checkInfoButton();
-        //myMenu->drawMenu(this->window);
         this->update();
         //myMenu->checkButtonEvents();
         if ( myMenu->getInfo() || myMenu->getPause() ) {
@@ -216,10 +215,11 @@ void Gui::checkWindow(){
             /// hier steht der normale Programmcode. Dieser wird unterbrochen und das Spiel angehalten, sofern pause oder info gedrückt ist
             //std::cout <<"Durchlauf" << std::endl;
             
-            this->render();
+            this->resetClock();
             this->checkCollision();
 
         }
+        this->render();
     }
 }
 
@@ -311,7 +311,6 @@ void Gui::resetClock(){
  */
 void Gui::render()
 {
-    this->resetClock();
     this->window->clear(sf::Color(139,139,0));
     this->window->draw(shapeJungle);
     this->window->draw(shapeHome);

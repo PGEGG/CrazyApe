@@ -3,7 +3,7 @@
 
 class Coconut : public Item {
 private:
-    int deamage = 1;
+    int damage = 1;
     int direction = 1;
 public:
     Coconut();

@@ -5,7 +5,7 @@
 class Tiger : public Animal
 {
 private:
-    int deamage = 5;
+    int damage = 5;
     int lifetime = 0;
     
 public:

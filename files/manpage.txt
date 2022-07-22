@@ -3,7 +3,7 @@ CrazyApe.exe
 Ziel des Spiels ist es nacheinander durch bewegen des Affen,
 alle 3 Bananen einzusammeln und zum Haus zu bringen,
 wobei die Bäume ein Hindernis darstellen.
-Dabei hat der Affe 3 Leben.
+Dabei hat der Affe 5 Leben.
 Durch einsammeln von herzen können weitere Leben
 dazu gewonnen werden.
 Beim berühren eines Skorpions oder einer braunen Kokusnus
