@@ -54,7 +54,9 @@ void Animal::move(bool gamebreak){
         this->move(gamebreak);
     }
     if (gamebreak) {
-        framecounter=(timePerFrame-timePerFrame);
+       while(framecounter >= timePerFrame){
+            framecounter -= timePerFrame;
+    }
     }
     while(framecounter >= timePerFrame){
         this->sprite.move(sf::Vector2f(x,y));
