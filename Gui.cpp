@@ -228,12 +228,16 @@ void Gui::checkWindow(){
         }
         this->render();
         this->checkfinished();
+<<<<<<< HEAD
         myMenu->updateBananaHeart(myPlayer);
         
+=======
+>>>>>>> 68738a9b206777fe45ec80ceca6739b32514fc25
     }
 }
 
 void Gui::checkfinished(){
+<<<<<<< HEAD
     if ( myPlayer->getIsfinished() > 0 ) {
         if (counter==0) {
             myTree->newPosition();
@@ -253,6 +257,23 @@ void Gui::checkfinished(){
             myMenu->pauseclicked();
             counter++;
         }
+=======
+    if (myPlayer->getIsfinished()) {
+        myPlayer->setIsfinished();
+        myTree->newPosition();
+        myTree2->newPosition();
+        myTree3->newPosition();
+        myTree4->newPosition();
+        myTree5->newPosition();
+        myScorpion->newPosition();
+        myScorpion2->newPosition();
+        myScorpion3->newPosition();
+        myTiger->newPosition();
+        myHeart->newPosition();
+        myBanana->newPosition();
+        myPlayer->set_Lives(5);
+        myPlayer->set_Banana(0);
+>>>>>>> 68738a9b206777fe45ec80ceca6739b32514fc25
     }
 }
 
