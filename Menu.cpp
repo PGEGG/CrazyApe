@@ -123,14 +123,6 @@ void  Menu::checkButtonEvents(sf::RenderWindow *window) {
 }
 */
 void  Menu::initialiseMenu() {
-    /*
-  /// background
-  if (!background.loadFromFile("images//jungle.png")) {
-    std::cout << "Error: Could not load image" << std::endl;
-  }
-  backgroundImage.setTexture(background);
-*/
-  /// menubar (at the top)
   if (!menu.loadFromFile("images//menubar.png")) {
     std::cout << "Error: Could not display image" << std::endl;
   }
@@ -235,7 +227,7 @@ string Menu::readFileIntoString(const string& path) {
     return string((std::istreambuf_iterator<char>(input_file)), std::istreambuf_iterator<char>());
 }
 
-void  Menu::checkInfoButton() {
+void  Menu::checkInfoButton(int value) {
   /// if info menu
   if (info) {
     /// make info visible
@@ -248,7 +240,40 @@ void  Menu::checkInfoButton() {
     infoText.setCharacterSize(27);
     infoText.setPosition(80.0f, 90.0f);
   } 
-  else {    
+  /// if it is running
+  else if (value==0){ 
+    /// make info not visible   
+    infowindowImage.setScale(sf::Vector2f(0.0f, 0.0f)); 
+    infoText.setString("");
+  }
+}
+
+
+void Menu::checkWonLostImage(int value) {
+  /// won the game
+  
+  if (value == 1 || value == 2) {
+    
+    /// make won info visible
+    infowindowImage.setScale(sf::Vector2f(0.5f, 0.4f));
+    infowindowImage.setPosition(200.0f,180.0f);
+    infoText.setFont( font );
+    infoText.setStyle(sf::Text::Bold);
+    if (value == 1) {
+      infoText.setString("YOU WON THE GAME!\n Press Play to restart!");
+    }
+    else if (value == 2) {
+      infoText.setString("YOU LOST THE GAME!\n Press Play to restart!");
+    }
+    //infoText.setString(readFileIntoString("files\\manpage.txt"));
+    infoText.setFillColor(sf::Color::Black);
+    infoText.setCharacterSize(30);
+    infoText.setPosition(270.f, 270.f);
+
+  } 
+  //if it is not in info
+  else if (!info){
+    /// make info not visible   
     infowindowImage.setScale(sf::Vector2f(0.0f, 0.0f)); 
     infoText.setString("");
   }
@@ -257,6 +282,9 @@ void  Menu::checkInfoButton() {
 void Menu::updateBananaHeart(Player* myPlayer) {
     strbanana = to_string(myPlayer->getBanana());
     amountBananaText.setString(strbanana);
+
+    strwon = to_string(myPlayer->getWon());
+    amountwonGamesText.setString(strwon);
 
     strlives = to_string(myPlayer->get_Lives());
     amountlivesText.setString(strlives);

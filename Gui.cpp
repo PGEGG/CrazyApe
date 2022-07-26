@@ -57,7 +57,6 @@ void Gui::update()
     //this->pollEvents();
     this->moveObjects();
     this->checkMyBorders();
-    myMenu->updateBananaHeart(myPlayer);
 }
 
 /**
@@ -140,6 +139,10 @@ void Gui::pollEvents()
                 if (myMenu->playButtonImage.getGlobalBounds().contains(mousePosF))
                 {
                     myMenu->pauseclicked();
+                    if(myPlayer->getIsfinished()>0) {
+                        counter=0;
+                        myPlayer->setIsfinished(0);
+                    }
                 }
 
                 /// if button info is clicked
@@ -204,31 +207,54 @@ void Gui::checkWindow(){
 
     while (this->running())
     {
-        myMenu->checkInfoButton();
-        //this->update();
+        myMenu->checkInfoButton(myPlayer->getIsfinished());
+        myMenu->checkWonLostImage(myPlayer->getIsfinished());
         this->pollEvents();
-        //myMenu->checkButtonEvents();
-        if ( myMenu->getInfo() || myMenu->getPause() ) {
+        if ( myMenu->getInfo() || myMenu->getPause()) { // || myPlayer->getIsfinished()>0 
             gamebreak=true;
+            //myPlayer->setIsfinished(myPlayer->getIsfinished());
             /// bleibt hier und hält das Spiel an, solange info oder pause gedrückt sind
             
             
         } 
         else {
             /// hier steht der normale Programmcode. Dieser wird unterbrochen und das Spiel angehalten, sofern pause oder info gedrückt ist
-            //std::cout <<"Durchlauf" << std::endl;
             this->update();
             this->resetClock();
             this->checkCollision();
-            //myCoconut5->framecounterold = myCoconut5->framecounter;
             gamebreak=false;
-            //myPlayer->timePerFrame = sf::seconds(1.f/5.f);
-            
+            //myPlayer->setIsfinished(0);
+           
         }
         this->render();
+        this->checkfinished();
+        myMenu->updateBananaHeart(myPlayer);
+        
     }
 }
 
+void Gui::checkfinished(){
+    if ( myPlayer->getIsfinished() > 0 ) {
+        if (counter==0) {
+            myTree->newPosition();
+            myTree2->newPosition();
+            myTree3->newPosition();
+            myTree4->newPosition();
+            myTree5->newPosition();
+            myScorpion->newPosition();
+            myScorpion2->newPosition();
+            myScorpion3->newPosition();
+            myTiger->newPosition();
+            myHeart->newPosition();
+            myBanana->newPosition();
+            myPlayer->set_Lives(5);
+            myPlayer->set_Banana(0);
+            ///call pauseclicked
+            myMenu->pauseclicked();
+            counter++;
+        }
+    }
+}
 
 /**
  * @brief this function checks player and the other objects for collision
@@ -285,8 +311,13 @@ void Gui::checkCollision(){
         myTree->treeCollision(myPlayer, myTree);
         myTree2->treeCollision(myPlayer, myTree2);
         myTree3->treeCollision(myPlayer, myTree3);
+        myTree4->treeCollision(myPlayer, myTree4);
+        myTree5->treeCollision(myPlayer, myTree5);
     }else if (Collision::PixelPerfectTest(myPlayer->sprite, spriteHome ))
     {
+        myPlayer->checkDeath();
+        myPlayer->checkWon();
+        /*
         std::cout << "Collision Home!" << std::endl;
         if(myPlayer->checkWon()){
             screenText.setString("Du hast gewonnen!");
@@ -301,6 +332,7 @@ void Gui::checkCollision(){
             textRect.top  + textRect.height/2.0f);
             screenText.setPosition(sf::Vector2f(videoMode.width/2.0f,videoMode.height/2.0f));
         }
+        */
         
     }else
     {

@@ -77,7 +77,8 @@ class Menu {
 
         Menu();
         ~Menu();
-        void checkInfoButton();
+        void checkInfoButton(int value);
+        void checkWonLostImage(int value);
         bool getInfo();
         bool getPause();
         void pauseclicked();

@@ -75,9 +75,11 @@ private:
 
     void initVariables();
     void initWindow();
+    void checkfinished();
     
 public:
     bool gamebreak=false;
+    int counter=0;
     Gui();
     const bool running();
     void update();

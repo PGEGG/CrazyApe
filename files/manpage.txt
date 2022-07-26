@@ -1,12 +1,12 @@
 CrazyApe.exe
 -------------------------------------------------------------
-Ziel des Spiels ist es nacheinander durch bewegen des Affen,
-alle 3 Bananen einzusammeln und zum Haus zu bringen,
-wobei die Bäume ein Hindernis darstellen.
-Dabei hat der Affe 5 Leben.
-Durch einsammeln von herzen können weitere Leben
-dazu gewonnen werden.
-Beim berühren eines Skorpions oder einer braunen Kokusnus
-wird ein Leben abgezogen, bei einer roten Kokosnus 3 leben
-und beim berühren des Tigers stirbt der Affe
-und das Spiel startet von Vorne
+The aim of the game is to move the monkey one after the 
+other, collect all 3 bananas and bring them to the house,
+with the trees being an obstacle.
+The monkey has 5 lives.
+By collecting hearts you can get back your lost lives.
+When touching a scorpion or a brown coconut
+1 life is deducted, a red coconut 3 lives
+and when touching the tiger the monkey dies
+and the game starts from the beginning, by pressing the
+Play-Button. 

@@ -59,6 +59,11 @@ int Player::getBanana()
     return collected_banana;
 }
 
+int Player::getWon()
+{
+    return won_games;
+}
+
 /**
  * @brief this function increase banana if Player has collected one
  * 
@@ -99,6 +104,11 @@ void Player::set_Lives(int live)
     std::cout << lives << std::endl;
 }
 
+void Player::set_Banana(int banana)
+{
+    collected_banana=banana;
+}
+
 /**
  * @brief This function checks if the player has enough (3) bananas collected
  * 
@@ -109,14 +119,24 @@ bool Player::checkWon(){
     if (this->getBanana() >= 3 && this->lives > 0)
     {
         std::cout << "You have won!" << std::endl;
-        this->sprite.setColor(sf::Color(0, 204, 0));    /// RGB colors player green
+        //this->sprite.setColor(sf::Color(0, 204, 0));    /// RGB colors player green
         this->sprite.setPosition(STARTPOSX, STARTPOSY);
+         isfinished =1;
+         won_games++;
         return true;
     }else{
         //this->checkDeath();
         std::cout << "You need " << 3 - this->getBanana() << " more banana to win the game!" << std::endl;
     }
     return false;
+}
+
+int Player::getIsfinished(){
+    return isfinished;
+}
+
+void Player::setIsfinished(int val){
+    isfinished = val;
 }
 
 /**
@@ -128,13 +148,14 @@ bool Player::checkWon(){
 bool Player::checkDeath(){
     
     if (this->get_Lives() <= 0) {
-        std::cout << "Your Dead, try again!" << std::endl;
-        this->sprite.setColor(sf::Color(255, 51, 51));  /// RGB colors player red
+        //std::cout << "Your Dead, try again!" << std::endl;
+        //this->sprite.setColor(sf::Color(255, 51, 51));  /// RGB colors player red
         this->sprite.setPosition(STARTPOSX, STARTPOSY);
+        isfinished = 2;
         return true;
     }else
     {
-        std::cout << "You have " << this->get_Lives() << " lives left." << std::endl;
+        //std::cout << "You have " << this->get_Lives() << " lives left." << std::endl;
     }
     
     return false;
