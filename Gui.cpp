@@ -228,16 +228,12 @@ void Gui::checkWindow(){
         }
         this->render();
         this->checkfinished();
-<<<<<<< HEAD
         myMenu->updateBananaHeart(myPlayer);
         
-=======
->>>>>>> 68738a9b206777fe45ec80ceca6739b32514fc25
     }
 }
 
 void Gui::checkfinished(){
-<<<<<<< HEAD
     if ( myPlayer->getIsfinished() > 0 ) {
         if (counter==0) {
             myTree->newPosition();
@@ -257,23 +253,6 @@ void Gui::checkfinished(){
             myMenu->pauseclicked();
             counter++;
         }
-=======
-    if (myPlayer->getIsfinished()) {
-        myPlayer->setIsfinished();
-        myTree->newPosition();
-        myTree2->newPosition();
-        myTree3->newPosition();
-        myTree4->newPosition();
-        myTree5->newPosition();
-        myScorpion->newPosition();
-        myScorpion2->newPosition();
-        myScorpion3->newPosition();
-        myTiger->newPosition();
-        myHeart->newPosition();
-        myBanana->newPosition();
-        myPlayer->set_Lives(5);
-        myPlayer->set_Banana(0);
->>>>>>> 68738a9b206777fe45ec80ceca6739b32514fc25
     }
 }
 
@@ -326,7 +305,9 @@ void Gui::checkCollision(){
         this->myBanana->sprite.setPosition(sf::Vector2f(this->myBanana->setRandomPosX(), this->myBanana->setRandomPosY()));
     }else if (Collision::PixelPerfectTest(myPlayer->sprite, myTree->sprite ) ||
                 Collision::PixelPerfectTest(myPlayer->sprite, myTree2->sprite ) ||
-                Collision::PixelPerfectTest(myPlayer->sprite, myTree3->sprite ))
+                Collision::PixelPerfectTest(myPlayer->sprite, myTree3->sprite ) ||
+                Collision::PixelPerfectTest(myPlayer->sprite, myTree4->sprite ) ||
+                Collision::PixelPerfectTest(myPlayer->sprite, myTree5->sprite ))
     {
         std::cout << "Collision Tree!" << std::endl;
         myTree->treeCollision(myPlayer, myTree);
@@ -338,26 +319,9 @@ void Gui::checkCollision(){
     {
         myPlayer->checkDeath();
         myPlayer->checkWon();
-        /*
-        std::cout << "Collision Home!" << std::endl;
-        if(myPlayer->checkWon()){
-            screenText.setString("Du hast gewonnen!");
-            sf::FloatRect textRect = screenText.getLocalBounds();
-            screenText.setOrigin(textRect.left + textRect.width/2.0f,
-            textRect.top  + textRect.height/2.0f);
-            screenText.setPosition(sf::Vector2f(videoMode.width/2.0f,videoMode.height/2.0f));
-        }else if(myPlayer->checkDeath()){
-            screenText.setString("Du hast verloren!");
-            sf::FloatRect textRect = screenText.getLocalBounds();
-            screenText.setOrigin(textRect.left + textRect.width/2.0f,
-            textRect.top  + textRect.height/2.0f);
-            screenText.setPosition(sf::Vector2f(videoMode.width/2.0f,videoMode.height/2.0f));
-        }
-        */
-        
     }else
     {
-        std::cout << "No Collision" << std::endl;
+        //std::cout << "No Collision" << std::endl;
     }
 }
 

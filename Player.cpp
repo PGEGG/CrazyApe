@@ -121,11 +121,7 @@ bool Player::checkWon(){
         std::cout << "You have won!" << std::endl;
         //this->sprite.setColor(sf::Color(0, 204, 0));    /// RGB colors player green
         this->sprite.setPosition(STARTPOSX, STARTPOSY);
-<<<<<<< HEAD
          isfinished =1;
-=======
-         isfinished =true;
->>>>>>> 68738a9b206777fe45ec80ceca6739b32514fc25
          won_games++;
         return true;
     }else{
@@ -135,21 +131,12 @@ bool Player::checkWon(){
     return false;
 }
 
-<<<<<<< HEAD
 int Player::getIsfinished(){
     return isfinished;
 }
 
 void Player::setIsfinished(int val){
     isfinished = val;
-=======
-bool Player::getIsfinished(){
-    return isfinished;
-}
-
-void Player::setIsfinished(){
-    isfinished =false;
->>>>>>> 68738a9b206777fe45ec80ceca6739b32514fc25
 }
 
 /**

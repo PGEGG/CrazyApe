@@ -9,7 +9,7 @@ int main(int argc, char* argv[]){
     std::cout << "Starting CrazyApe.exe ..." << std::endl;
 
     /// closing the CMD window
-    /// FreeConsole();
+    FreeConsole();
 
     /**
      * @brief Create an dynamic Object "on HEAP" from Gamecontroller
