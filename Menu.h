@@ -67,6 +67,7 @@ class Menu {
         sf::Text livesText;
 
         sf::Font font;
+        
 
         sf::Text amountlivesText;
 

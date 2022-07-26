@@ -288,7 +288,20 @@ void Gui::checkCollision(){
     }else if (Collision::PixelPerfectTest(myPlayer->sprite, spriteHome ))
     {
         std::cout << "Collision Home!" << std::endl;
-        myPlayer->checkWon();
+        if(myPlayer->checkWon()){
+            screenText.setString("Du hast gewonnen!");
+            sf::FloatRect textRect = screenText.getLocalBounds();
+            screenText.setOrigin(textRect.left + textRect.width/2.0f,
+            textRect.top  + textRect.height/2.0f);
+            screenText.setPosition(sf::Vector2f(videoMode.width/2.0f,videoMode.height/2.0f));
+        }else if(myPlayer->checkDeath()){
+            screenText.setString("Du hast verloren!");
+            sf::FloatRect textRect = screenText.getLocalBounds();
+            screenText.setOrigin(textRect.left + textRect.width/2.0f,
+            textRect.top  + textRect.height/2.0f);
+            screenText.setPosition(sf::Vector2f(videoMode.width/2.0f,videoMode.height/2.0f));
+        }
+        
     }else
     {
         std::cout << "No Collision" << std::endl;

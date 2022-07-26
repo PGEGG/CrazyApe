@@ -18,7 +18,8 @@ private:
     sf::Event event;
     sf::VideoMode videoMode;
     sf::Image icon;
-
+    sf::Text screenText;
+    
     // create Label
     std::string txt_line;
     sf::Font font_comic;
