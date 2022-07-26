@@ -75,6 +75,7 @@ private:
 
     void initVariables();
     void initWindow();
+    void checkfinished();
     
 public:
     bool gamebreak=false;

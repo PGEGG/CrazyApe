@@ -258,6 +258,9 @@ void Menu::updateBananaHeart(Player* myPlayer) {
     strbanana = to_string(myPlayer->getBanana());
     amountBananaText.setString(strbanana);
 
+    strwon = to_string(myPlayer->getWon());
+    amountwonGamesText.setString(strwon);
+
     strlives = to_string(myPlayer->get_Lives());
     amountlivesText.setString(strlives);
 }

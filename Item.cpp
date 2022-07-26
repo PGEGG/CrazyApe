@@ -34,5 +34,8 @@ float Item::setRandomPosY(){
     RANDOM;
     return distY2(geni);
 }
+void Item::newPosition() {
+    this->sprite.setPosition(sf::Vector2f(setRandomPosX(), setRandomPosY()));
+}
 
 

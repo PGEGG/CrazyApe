@@ -226,9 +226,28 @@ void Gui::checkWindow(){
             
         }
         this->render();
+        this->checkfinished();
     }
 }
 
+void Gui::checkfinished(){
+    if (myPlayer->getIsfinished()) {
+        myPlayer->setIsfinished();
+        myTree->newPosition();
+        myTree2->newPosition();
+        myTree3->newPosition();
+        myTree4->newPosition();
+        myTree5->newPosition();
+        myScorpion->newPosition();
+        myScorpion2->newPosition();
+        myScorpion3->newPosition();
+        myTiger->newPosition();
+        myHeart->newPosition();
+        myBanana->newPosition();
+        myPlayer->set_Lives(5);
+        myPlayer->set_Banana(0);
+    }
+}
 
 /**
  * @brief this function checks player and the other objects for collision

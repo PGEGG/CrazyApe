@@ -28,6 +28,7 @@ public:
     //Random Values
     float setRandomPosX();
     float setRandomPosY();
+    void newPosition();
     
     /// declare sprite
     sf::Sprite sprite;

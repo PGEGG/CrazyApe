@@ -11,6 +11,8 @@ class Player: public Item
 private:
     int lives = 5;
     int collected_banana = 0;
+    int won_games = 0;
+    bool isfinished =false;
     
     
 
@@ -23,8 +25,12 @@ public:
     void addBanana();
     int get_Lives();
     void set_Lives(int live);
+    int getWon();
     bool checkWon();
     bool checkDeath();
+    bool getIsfinished();
+    void setIsfinished();
+    void set_Banana(int banana);
 };
 
 #endif
