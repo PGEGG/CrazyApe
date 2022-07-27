@@ -53,8 +53,8 @@ namespace Collision
     
     BitmaskManager Bitmasks;
     
-    bool PixelPerfectTest(const sf::Sprite& Object1, const sf::Sprite& Object2, sf::Uint8 AlphaLimit) {
-    //bool PixelPerfectTest(const sf::Shape& Object1, const sf::Shape& Object2, sf::Uint8 AlphaLimit) {
+    bool PixelCollision(const sf::Sprite& Object1, const sf::Sprite& Object2, sf::Uint8 AlphaLimit) {
+    //bool PixelCollision(const sf::Shape& Object1, const sf::Shape& Object2, sf::Uint8 AlphaLimit) {
         sf::FloatRect Intersection;
         if (Object1.getGlobalBounds().intersects(Object2.getGlobalBounds(), Intersection)) {
             sf::IntRect O1SubRect = Object1.getTextureRect();

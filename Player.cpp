@@ -116,21 +116,17 @@ void Player::set_Banana(int banana)
 /**
  * @brief This function checks if the player has enough (3) bananas collected
  * 
- * @return true - when player has enough collected banana
- * @return false - when player has to collect more banana
+ * @return true - when player has enough collected bananas
+ * @return false - when player has to collect more bananas or hasn't enough lives
  */
 bool Player::checkWon(){
     if (this->getBanana() >= 3 && this->lives > 0)
     {
         std::cout << "You have won!" << std::endl;
-        //this->sprite.setColor(sf::Color(0, 204, 0));    /// RGB colors player green
         this->sprite.setPosition(STARTPOSX, STARTPOSY);
          isfinished =1;
          won_games++;
         return true;
-    }else{
-        //this->checkDeath();
-        std::cout << "You need " << 3 - this->getBanana() << " more banana to win the game!" << std::endl;
     }
     return false;
 }
