@@ -232,7 +232,7 @@ void  Menu::checkInfoButton(int value) {
   if (info) {
     /// make info visible
     infowindowImage.setScale(sf::Vector2f(0.74f, 0.65f));
-
+    infowindowImage.setPosition(45.0f, 60.0f);
     infoText.setFont( font );
     infoText.setStyle(sf::Text::Bold);
     infoText.setString(readFileIntoString("files\\manpage.txt"));
