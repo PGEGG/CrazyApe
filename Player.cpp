@@ -104,6 +104,10 @@ void Player::set_Lives(int live)
     std::cout << lives << std::endl;
 }
 
+/**
+ * @brief set the amounts of banana
+ * 
+ */
 void Player::set_Banana(int banana)
 {
     collected_banana=banana;
@@ -131,10 +135,20 @@ bool Player::checkWon(){
     return false;
 }
 
+/**
+ * @brief this method retuns the isfinished value
+ * 
+ * @return int 0=game running, 1=won, 2=death
+ */
 int Player::getIsfinished(){
     return isfinished;
 }
 
+/**
+ * @brief this method set the isfinished value 
+ * 
+ * @param val 0=game running, 1=won, 2=death
+ */
 void Player::setIsfinished(int val){
     isfinished = val;
 }
@@ -148,15 +162,9 @@ void Player::setIsfinished(int val){
 bool Player::checkDeath(){
     
     if (this->get_Lives() <= 0) {
-        //std::cout << "Your Dead, try again!" << std::endl;
-        //this->sprite.setColor(sf::Color(255, 51, 51));  /// RGB colors player red
         this->sprite.setPosition(STARTPOSX, STARTPOSY);
         isfinished = 2;
         return true;
-    }else
-    {
-        //std::cout << "You have " << this->get_Lives() << " lives left." << std::endl;
     }
-    
     return false;
 }

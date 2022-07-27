@@ -1,14 +1,7 @@
 #include "Tiger.h"
 #include <iostream>
 
-/**
- * @brief Construct a new Tiger:: Tiger object
- * 
- */
-/*Tiger::Tiger()
-{
-}
-*/
+
 /**
  * @brief Construct a new Tiger:: Tiger object
  * 

@@ -86,42 +86,10 @@ void  Menu::infoclicked() {
   info=!info;
 }
 
-/*
-void  Menu::checkButtonEvents(sf::RenderWindow *window) {
-  sf::Event Event;
-  while (window->pollEvent(Event))
-  {
-    /// call up event
-    switch (Event.type)
-    {
-    /// if window is closed  
-    case sf::Event::Closed:
-      window->close();
-      break;
-    
-    /// mouse button is ckicked
-    case sf::Event::MouseButtonPressed:
-    {
-      sf::Vector2i mousePos = sf::Mouse::getPosition(window);
-      sf::Vector2f mousePosF(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
-
-      /// if button play/pause button is clicked
-      if (playButtonImage.getGlobalBounds().contains(mousePosF))
-      {
-        pauseclicked();
-      }
-
-      /// if button info is clicked
-      if (infoButtonImage.getGlobalBounds().contains(mousePosF))
-      {
-        infoclicked();
-      }
-    }      
-    break;
-    }
-  }
-}
-*/
+/**
+ * @brief this method initialise the Menu
+ * 
+ */
 void  Menu::initialiseMenu() {
   if (!menu.loadFromFile("images//menubar.png")) {
     std::cout << "Error: Could not display image" << std::endl;
@@ -217,6 +185,12 @@ void  Menu::initialiseMenu() {
   amountwonGamesText.setPosition(795.0f, 0.0f);
 }
 
+/**
+ * @brief this method reads the info file from a .txt file
+ * 
+ * @param path path of Manpage.txt
+ * @return string 
+ */
 string Menu::readFileIntoString(const string& path) {
     ifstream input_file(path);
     if (!input_file.is_open()) {
@@ -227,6 +201,11 @@ string Menu::readFileIntoString(const string& path) {
     return string((std::istreambuf_iterator<char>(input_file)), std::istreambuf_iterator<char>());
 }
 
+/**
+ * @brief this method set the info Button depending of value
+ * 
+ * @param value 
+ */
 void  Menu::checkInfoButton(int value) {
   /// if info menu
   if (info) {
@@ -248,7 +227,11 @@ void  Menu::checkInfoButton(int value) {
   }
 }
 
-
+/**
+ * @brief checks the won lost
+ * 
+ * @param value 
+ */
 void Menu::checkWonLostImage(int value) {
   /// won the game
   
@@ -279,6 +262,11 @@ void Menu::checkWonLostImage(int value) {
   }
 }
 
+/**
+ * @brief this method updates the amount of banana and Hearts in the menubar
+ * 
+ * @param myPlayer is the Object with amount of banana and heart
+ */
 void Menu::updateBananaHeart(Player* myPlayer) {
     strbanana = to_string(myPlayer->getBanana());
     amountBananaText.setString(strbanana);
@@ -290,10 +278,22 @@ void Menu::updateBananaHeart(Player* myPlayer) {
     amountlivesText.setString(strlives);
 }
 
+/**
+ * @brief this method return the pause value
+ * 
+ * @return true : the game is on pause
+ * @return false : the game is running
+ */
 bool Menu::getPause() {
     return pause;
 }
 
+/**
+ * @brief this method returns the Info value
+ * 
+ * @return true : the game is on pause
+ * @return false : the game is running
+ */
 bool Menu::getInfo() {
     return info;
 }

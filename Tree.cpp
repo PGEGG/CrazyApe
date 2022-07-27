@@ -1,13 +1,19 @@
 #include "Tree.h"
 #include <iostream>
 
-
-
-
+/**
+ * @brief Destroy the Tree:: Tree object
+ * 
+ */
 Tree::~Tree()
 {
 
 }
+
+/**
+ * @brief Construct a new Tree:: Tree object
+ * 
+ */
 Tree::Tree()
 {
     

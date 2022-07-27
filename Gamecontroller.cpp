@@ -29,7 +29,7 @@ void Gamecontroller::startGame(){
      */
     sf::Music music;
 
-    /// if it couldn`t load the music
+    /// load the music file
     if (!(music.openFromFile("music//music.ogg"))){
         std::cout << "Failed to load music" << std::endl;
     }
@@ -43,7 +43,6 @@ void Gamecontroller::startGame(){
      */
     Gui *myGui = new Gui;
     
-    //myGui->openManpage();
     
     ///call checkWindow() to initialise Jungle, Home an Manpage
     myGui->checkWindow();

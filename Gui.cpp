@@ -37,11 +37,15 @@ void Gui::initVariables()
  */
 void Gui::initWindow()
 {
+    /// load icon File
     if (!icon.loadFromFile("images\\ICON.png"))
     {
         std::cerr << "Can`t load image_icon!" << std::endl;
     }
-    
+    /**
+     * @brief set the size of the window
+     * 
+     */
     this->videoMode.height = 622;
     this->videoMode.width = 1024;
     this->window = new sf::RenderWindow(this->videoMode, "CrazyApe.exe");
@@ -49,12 +53,11 @@ void Gui::initWindow()
 }
 
 /**
- * @brief This function checks events 
+ * @brief This function checks boarders and events for the objects 
  * 
  */
 void Gui::update()
 {
-    //this->pollEvents();
     this->moveObjects();
     this->checkMyBorders();
 }
@@ -104,7 +107,10 @@ void Gui::pollEvents()
                 this->window->close();
             }
 
-            /// moves the Ape (player) with "wasd" or "arrow keys"
+            /**
+             * @brief moves the Ape (player) with "wasd" or "arrow keys"
+             * 
+             */
             else if (this->event.type == sf::Event::KeyPressed && (!myMenu->getInfo()) && (!myMenu->getPause()))
             {    
                 /// Left
@@ -131,6 +137,10 @@ void Gui::pollEvents()
                     myPlayer->sprite.move( 0, 5.f );
                 }
             }
+            /**
+             * @brief chekcks event if a button was clicked
+             * 
+             */
             else if (this->event.type == sf::Event::MouseButtonPressed) {
                 sf::Vector2i mousePos = sf::Mouse::getPosition(*window);
                 sf::Vector2f mousePosF(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
@@ -200,39 +210,58 @@ const bool Gui::running()
  * 
  */
 void Gui::checkWindow(){
-    
+    /**
+     * @brief set up the winow for the first time
+     * 
+     */
     this->createJungle();
     this->createHome();
     this->openManpage();
 
+    /**
+     * @brief this loop runs while the game is running
+     * 
+     */
     while (this->running())
     {
+        /// set the info menu
         myMenu->checkInfoButton(myPlayer->getIsfinished());
+        /// set the won or lost info
         myMenu->checkWonLostImage(myPlayer->getIsfinished());
+
+        /**
+         * @brief take new events from the gui
+         * 
+         */
         this->pollEvents();
+        /// remains here if the game is on pause, info or finished
         if ( myMenu->getInfo() || myMenu->getPause()) { // || myPlayer->getIsfinished()>0 
             gamebreak=true;
-            //myPlayer->setIsfinished(myPlayer->getIsfinished());
-            /// bleibt hier und hält das Spiel an, solange info oder pause gedrückt sind
-            
-            
         } 
+        /// remains here if the game is running
         else {
-            /// hier steht der normale Programmcode. Dieser wird unterbrochen und das Spiel angehalten, sofern pause oder info gedrückt ist
+            /// moves the objects and check the border
             this->update();
+            /// reset the clock for the moving objects
             this->resetClock();
+            /// check collision between Player and other objects
             this->checkCollision();
             gamebreak=false;
-            //myPlayer->setIsfinished(0);
-           
         }
+        /// draw the objects on the window
         this->render();
+        /// check if the game is finished (death or won)
         this->checkfinished();
+        /// update the amount of bananas and heart in the Menubar
         myMenu->updateBananaHeart(myPlayer);
         
     }
 }
 
+/**
+ * @brief this method checks if Game is finished
+ * 
+ */
 void Gui::checkfinished(){
     if ( myPlayer->getIsfinished() > 0 ) {
         if (counter==0) {
@@ -249,7 +278,6 @@ void Gui::checkfinished(){
             myBanana->newPosition();
             myPlayer->set_Lives(5);
             myPlayer->set_Banana(0);
-            ///call pauseclicked
             myMenu->pauseclicked();
             counter++;
         }
@@ -261,14 +289,22 @@ void Gui::checkfinished(){
  * 
  */
 void Gui::checkCollision(){
+    /**
+     * @brief check collision between Tiger and Player
+     * 
+     */
     if ( Collision::PixelPerfectTest(myPlayer->sprite, myTiger->sprite ) &&
     (!Collision::PixelPerfectTest(myPlayer->sprite, spriteHome )) )
     {
         std::cout << "Collision Tiger!" << std::endl;
         myPlayer->set_Lives(myPlayer->get_Lives()-5);
         myPlayer->sprite.setPosition(STARTPOSX, STARTPOSY);
-        //delete(myPlayer);
-    }else if ((Collision::PixelPerfectTest(myPlayer->sprite, myScorpion->sprite ) ||
+    }
+    /**
+     * @brief check collision between Scorpion and Player
+     * 
+     */
+    else if ((Collision::PixelPerfectTest(myPlayer->sprite, myScorpion->sprite ) ||
                 Collision::PixelPerfectTest(myPlayer->sprite, myScorpion2->sprite ) ||
                 Collision::PixelPerfectTest(myPlayer->sprite, myScorpion3->sprite )) &&
                 (!Collision::PixelPerfectTest(myPlayer->sprite, spriteHome )))
@@ -276,7 +312,12 @@ void Gui::checkCollision(){
         std::cout << "Collision Scorpion!" << std::endl;
         myPlayer->set_Lives(myPlayer->get_Lives()-1);
         myPlayer->sprite.setPosition(STARTPOSX, STARTPOSY);
-    }else if ((Collision::PixelPerfectTest(myPlayer->sprite, myCoconut->sprite ) ||
+    }
+    /**
+     * @brief check collision between (brown) Coconut and Player
+     * 
+     */
+    else if ((Collision::PixelPerfectTest(myPlayer->sprite, myCoconut->sprite ) ||
                 Collision::PixelPerfectTest(myPlayer->sprite, myCoconut2->sprite ) ||
                 Collision::PixelPerfectTest(myPlayer->sprite, myCoconut3->sprite ) ||
                 Collision::PixelPerfectTest(myPlayer->sprite, myCoconut4->sprite )) &&
@@ -285,25 +326,44 @@ void Gui::checkCollision(){
         std::cout << "Collision Coconut!" << std::endl;
         myPlayer->set_Lives(myPlayer->get_Lives()-1);
         myPlayer->sprite.setPosition(STARTPOSX, STARTPOSY);
-    }else if ((Collision::PixelPerfectTest(myPlayer->sprite, myCoconut5->sprite )) &&
+    }
+    /**
+     * @brief check collision between red Coconut and Player
+     * 
+     */
+    else if ((Collision::PixelPerfectTest(myPlayer->sprite, myCoconut5->sprite )) &&
     (!Collision::PixelPerfectTest(myPlayer->sprite, spriteHome )))
     {
         std::cout << "Collision Red Coconut!" << std::endl;
         myPlayer->set_Lives(myPlayer->get_Lives()-3);
         myPlayer->sprite.setPosition(STARTPOSX, STARTPOSY);
-    }else if (Collision::PixelPerfectTest(myPlayer->sprite, myHeart->sprite ))
+    }
+    /**
+     * @brief check collision between heart and Player
+     * 
+     */
+    else if (Collision::PixelPerfectTest(myPlayer->sprite, myHeart->sprite ))
     {
         std::cout << "Collision Heard!" << std::endl;
         myPlayer->set_Lives(myPlayer->get_Lives()+1);
         this->myHeart->sprite.setPosition(sf::Vector2f(this->myHeart->setRandomPosX(), this->myHeart->setRandomPosY()));
-        //delete(myHeart);
-    }else if (Collision::PixelPerfectTest(myPlayer->sprite, myBanana->sprite ))
+    }
+    /**
+     * @brief check collision between Banana and Player
+     * 
+     */
+    else if (Collision::PixelPerfectTest(myPlayer->sprite, myBanana->sprite ))
     {
         std::cout << "Collision Banana!" << std::endl;
         myPlayer->addBanana();
         std::cout << myPlayer->getBanana() << std::endl;
         this->myBanana->sprite.setPosition(sf::Vector2f(this->myBanana->setRandomPosX(), this->myBanana->setRandomPosY()));
-    }else if (Collision::PixelPerfectTest(myPlayer->sprite, myTree->sprite ) ||
+    }
+    /**
+     * @brief check collision between Tree and Player
+     * 
+     */
+    else if (Collision::PixelPerfectTest(myPlayer->sprite, myTree->sprite ) ||
                 Collision::PixelPerfectTest(myPlayer->sprite, myTree2->sprite ) ||
                 Collision::PixelPerfectTest(myPlayer->sprite, myTree3->sprite ) ||
                 Collision::PixelPerfectTest(myPlayer->sprite, myTree4->sprite ) ||
@@ -315,7 +375,12 @@ void Gui::checkCollision(){
         myTree3->treeCollision(myPlayer, myTree3);
         myTree4->treeCollision(myPlayer, myTree4);
         myTree5->treeCollision(myPlayer, myTree5);
-    }else if (Collision::PixelPerfectTest(myPlayer->sprite, spriteHome ))
+    }
+    /**
+     * @brief check if the player is death of has won
+     * 
+     */
+    else if (Collision::PixelPerfectTest(myPlayer->sprite, spriteHome ))
     {
         myPlayer->checkDeath();
         myPlayer->checkWon();

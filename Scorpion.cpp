@@ -1,11 +1,6 @@
 #include "Scorpion.h"
 #include <iostream>
 
-/**
- * @brief Construct a new Scorpion:: Scorpion object
- * 
- */
-
 
 /**
  * @brief Construct a new Scorpion:: Scorpion object
