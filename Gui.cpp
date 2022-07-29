@@ -54,12 +54,21 @@ void Gui::initWindow()
 
 /**
  * @brief This function checks boarders and events for the objects 
- * 
+ * moves the Player
+ * moves the objects which moove randomly
+ * check the Borders of the Gamefield
+ * reset the clock for the moving objects
  */
 void Gui::update()
 {
+    /// moves the Player
+    this->movePlayer();
+    /// moves the objects which moove randomly
     this->moveObjects();
+    /// check the Borders of the Gamefield
     this->checkMyBorders();
+    /// reset the clock for the moving objects
+    this->resetClock();
 }
 
 /**
@@ -94,7 +103,7 @@ void Gui::moveObjects(){
 
 /**
  * @brief This function checks if there is a Mouse or Keyboard event an the window
- * proofe wasd or up, down, left, right
+ * proofe mouse click for Buttons
  * proofe if window was closed
  */
 void Gui::pollEvents()
@@ -107,36 +116,6 @@ void Gui::pollEvents()
                 this->window->close();
             }
 
-            /**
-             * @brief moves the Ape (player) with "wasd" or "arrow keys"
-             * 
-             */
-            else if (this->event.type == sf::Event::KeyPressed && (!myMenu->getInfo()) && (!myMenu->getPause()))
-            {    
-                /// Left
-                if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Left ) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::A ) )
-                {
-                    myPlayer->sprite.move( -5.f, 0 );
-                }
-
-                /// Right
-                else if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Right) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::D )) 
-                {
-                    myPlayer->sprite.move( 5.f, 0 );
-                }
-                
-                /// Up
-                if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Up) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::W ) )
-                {
-                    myPlayer->sprite.move( 0, -5.f );
-                }
-
-                ///Down
-                else if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Down) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::S ) )
-                {
-                    myPlayer->sprite.move( 0, 5.f );
-                }
-            }
             /**
              * @brief chekcks event if a button was clicked
              * 
@@ -240,13 +219,11 @@ void Gui::checkWindow(){
         } 
         /// remains here if the game is running
         else {
+            gamebreak=false;
             /// moves the objects and check the border
             this->update();
-            /// reset the clock for the moving objects
-            this->resetClock();
             /// check collision between Player and other objects
             this->checkCollision();
-            gamebreak=false;
         }
         /// draw the objects on the window
         this->render();
@@ -254,6 +231,25 @@ void Gui::checkWindow(){
         this->checkfinished();
         /// update the amount of bananas and heart in the Menubar
         myMenu->updateBananaHeart(myPlayer);
+    }
+}
+
+void Gui::movePlayer() {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Left))
+    {
+        myPlayer->sprite.move( -0.25f, 0 );
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Right))
+    {
+        myPlayer->sprite.move( 0.25f, 0 );
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Up))
+    {
+        myPlayer->sprite.move( 0.f, -0.25f );
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Down))
+    {
+        myPlayer->sprite.move( 0.f, 0.25f );
     }
 }
 

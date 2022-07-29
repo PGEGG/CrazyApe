@@ -14,8 +14,6 @@ void Menu::setPauseButton() {
   }
   playButtonImage.setScale(sf::Vector2f(0.4f, 0.4f));
   playButtonImage.setPosition(10.0f, 4.0f);
-  //float playButtonWidth = playButtonImage.getLocalBounds().width;
-  //float playButtonHeight = playButtonImage.getLocalBounds().height;
   playButtonImage.setTexture(playButton);
 }
 
@@ -59,7 +57,6 @@ void  Menu::pauseclicked() {
       setInfoButton();
     }
   }
-  pause!=pause;
 }
 
 void  Menu::infoclicked() {
